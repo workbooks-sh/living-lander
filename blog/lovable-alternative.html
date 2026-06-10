@@ -142,7 +142,7 @@
       </li>
     </ul>
 
-    <h2>What changes when the alternative starts on your desktop</h2>
+    <h2>What changes when the app outlives the platform</h2>
 
     <p>
       Workbooks is the ecosystem this site is part of. The desktop app is
@@ -151,30 +151,37 @@
     </p>
 
     <p>
-      <strong>Apps are portable, not platform-leashed.</strong> A workbook
-      is a self-contained app — interface, logic, and data travel
-      together as one unit the runtime can open and run. Open it on your
-      laptop, email it to a colleague, run it offline. The runtime that
-      runs it is open-source
-      (<code>github.com/workbooks-sh/workbooks.sh</code>), so what runs
-      the app is itself inspectable. If the company behind it disappears
-      tomorrow, the app still works.
+      <strong>The app is portable, the platform is not in the
+      path.</strong> A workbook is a self-contained file. Open it on
+      a different laptop, email it to a colleague, run it offline
+      on a plane — no hosted service is in the loop. The runtime
+      that runs it is open-source
+      (<code>github.com/workbooks-sh/workbooks.sh</code>), so the
+      thing that executes the app is itself inspectable. If the
+      company behind the platform disappears tomorrow, the apps
+      it made are still files on disk, and they still run.
     </p>
 
     <p>
-      <strong>There is no "your account" prerequisite.</strong> The
-      desktop app installs the way any desktop app does. No sign-up
-      before you can build anything. No trial expiry. The first thing
-      you make is yours, on your machine, with no one else's name on
-      the receipt.
+      <strong>The source of the app is the source of the truth.</strong>
+      "Forkable on GitHub" usually means a generated frontend in a
+      repo, not a real source tree. A workbook's source is the
+      same file the runtime runs — one readable place, no separate
+      "what the AI generated" layer that disappears the moment the
+      platform does. The non-developer who described the app can
+      still read it; the engineer who joins later can read it too.
     </p>
 
     <p>
-      <strong>The same artifact scales with you.</strong> A workbook
-      built for yourself is built the same way as a workbook shipped to
-      a team of fifty, or fifty thousand. The runtime is what scales; the
-      app is the same file. There is no "weekend prototype → rewrite to
-      ship" cliff, because the prototype is the product.
+      <strong>The non-developer who started the app can keep
+      editing it.</strong> This is the part the lovable cohort gets
+      right in the first ten minutes; the part it usually loses
+      in the next ten months is that the app drifts out of
+      non-developer reach the moment it gets "real." A workbook
+      stays in the same editing shape the whole way through. The
+      person who described the screen keeps describing the
+      screen; the rules that branch on conditions stay native to
+      the artifact, not buried in a generated code tree.
     </p>
 
     <p>

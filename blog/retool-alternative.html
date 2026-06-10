@@ -173,7 +173,7 @@
       </li>
     </ul>
 
-    <h2>What changes when the alternative is a real app</h2>
+    <h2>What changes when the operations team is the build team</h2>
 
     <p>
       Workbooks is the ecosystem this site is part of. The desktop
@@ -183,36 +183,35 @@
     </p>
 
     <p>
-      <strong>It starts on your desktop, not on a server you
-      deploy.</strong> The desktop app installs the way any desktop
-      app does. No "stand up the platform" step, no auth broker to
-      configure, no connector credentials to rotate. The first
-      thing you make runs on the laptop in front of you, against
-      the database that is already on the laptop in front of you.
-      The team that needs the tool is the team that can build it,
-      with no engineering team in the loop.
+      <strong>The person who needs the tool is the person who builds
+      it.</strong> No engineering team to stand up the instance, no
+      auth broker to configure, no connector credentials to rotate.
+      The operations person who needs the dashboard builds the
+      dashboard. When the process changes, the same person changes
+      the tool — no ticket, no sprint, no deploy queue. The listicle
+      gap of "the engineering team is the bottleneck" stops being a
+      gap.
     </p>
 
     <p>
-      <strong>Interface, logic, and data travel together as one
-      app.</strong> A workbook is not a window onto a database —
-      it is a small program with its own interface, its own logic
-      that branches on conditions, and its own data. The branching
-      rules, the role-based views, the "this changes depending on
-      who is looking" — those are native to the shape, not a
-      JavaScript snippet in a corner. The non-developer who built
-      the screen can keep owning the logic when it gets more
-      interesting.
+      <strong>The branching lives where the screen does.</strong>
+      A workbook is built around the rules: the role-based views,
+      the conditionals, the "this changes depending on who is
+      looking." The person who designed the screen owns the logic
+      when the rules get more interesting. The handoff to
+      engineering that stalls most internal-tools projects does not
+      happen here, because there is no handoff.
     </p>
 
     <p>
-      <strong>The same artifact scales with you.</strong> A workbook
-      built for three operations people is built the same way as a
-      workbook shipped to fifty thousand customers. The runtime is
-      what scales; the app is the same file. If the tool you build
-      on day one is the tool the rest of the company needs by day
-      ninety, and the tool the customers need by year two, you do
-      not rewrite it. You run the same file on a bigger runtime.
+      <strong>The data is not on someone else's server.</strong>
+      Retool, Budibase, and Appsmith all need an external database
+      the team operates — a connector, a credential, a host. A
+      workbook carries its own data. The operations team keeps
+      owning the spreadsheet they used to keep owning; the tool
+      they build reads it directly. When the operations team needs
+      to leave a vendor, the tool leaves with them, because the
+      data was theirs all along.
     </p>
 
     <p>

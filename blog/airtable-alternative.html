@@ -150,7 +150,7 @@
       </li>
     </ul>
 
-    <h2>What changes when the alternative is a real app</h2>
+    <h2>What changes when the thing is actually a program</h2>
 
     <p>
       Workbooks is the ecosystem this site is part of. The desktop
@@ -160,34 +160,35 @@
     </p>
 
     <p>
-      <strong>Interface, logic, and data travel together as one app.</strong>
-      A workbook is not a table — it is a small program. It has
-      interface, it has logic, and it has data, all bundled into one
-      unit the runtime can open and run. You can build a form with
-      branching rules, a dashboard that recomputes when a row
-      changes, a tool that emails a person based on a condition —
-      the things people bend Airtable into doing with hacks.
+      <strong>It is a small program, not a database with a pretty
+      face.</strong> The thing you build has logic, not just fields.
+      A form with a conditional; a dashboard that recomputes when a
+      row changes; a tool that emails a person based on a rule. The
+      things people bend Airtable into doing with hacks are the
+      shape, not a workaround — and the non-developer who designed
+      the screen owns the rules, because the rules live where the
+      screen does.
     </p>
 
     <p>
-      <strong>It starts on your desktop.</strong> The desktop app
-      installs the way any desktop app does — no sign-up to build
-      anything, no trial that expires, no seat count. The first
-      thing you make is yours, on your machine, with no one else's
-      name on the receipt. If the company behind it disappears
-      tomorrow, the app still runs because the runtime is
-      open-source
-      (<code>github.com/workbooks-sh/workbooks.sh</code>) and what
-      runs the app is itself inspectable.
+      <strong>The branching is part of the artifact.</strong> A
+      workbook's role-based views, its "this changes depending on
+      who is looking", its approval flows are not features bolted
+      onto a table. They are part of how the thing is built. The
+      listicle's "you can do it with formulas and a clever schema"
+      answer is the wrong shape of answer: the underlying problem is
+      that a spreadsheet is the wrong shape of artifact.
     </p>
 
     <p>
-      <strong>The same artifact scales with you.</strong> A
-      workbook built for yourself is built the same way as one
-      shipped to fifty teammates, or fifty thousand customers. The
-      runtime is what scales; the app is the same file. There is
-      no "spreadsheet → rewrite as a real app" cliff, because the
-      thing on the other side of that cliff is a workbook too.
+      <strong>The file you build is the file you keep.</strong>
+      Airtable exports as a CSV; a self-hosted database exports as
+      whatever the team wrote. A workbook exports as itself — the
+      interface, the logic, and the data, all in one place — and
+      the source for the thing that runs it
+      (<code>github.com/workbooks-sh/workbooks.sh</code>) is
+      readable on GitHub today. If the company behind the search
+      result disappears, the app does not go with it.
     </p>
 
     <p>
