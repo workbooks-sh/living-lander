@@ -1,3 +1,18 @@
 [
-  { "slug": "lovable-alternative", "title": "Lovable alternative: open-source, runs on your desktop", "date": "2026-06-10", "excerpt": "What changes when the AI app builder is open-source, portable, and starts on your own machine.", "tag": "compare", "file": "blog/lovable-alternative.html" }
+  {
+    "slug": "lovable-alternative",
+    "title": "Lovable alternative: open-source, runs on your desktop",
+    "date": "2026-06-10",
+    "excerpt": "What changes when the AI app builder is open-source, portable, and starts on your own machine.",
+    "tag": "compare",
+    "file": "blog/lovable-alternative.html"
+  },
+  {
+    "slug": "airtable-alternative",
+    "title": "Airtable alternative: a real app, not a spreadsheet",
+    "date": "2026-06-10",
+    "excerpt": "What changes when the answer is an open-source app on your own machine instead of another base.",
+    "tag": "compare",
+    "file": "blog/airtable-alternative.html"
+  }
 ]
