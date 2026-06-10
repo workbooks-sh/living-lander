@@ -3,16 +3,23 @@
 The anti-sprawl law: ONE place per idea. Before any ADD, find your idea here.
 Same intent already mapped → improve that section instead. After any ADD: add
 the row here in the same commit. Page order = the NN- filename numbers in
-src/sections/grown/.
+content/sections/ (and the Svelte sources in src/sections/grown/ that
+ship them — the live page reads the HTML partials at runtime).
 
-* the human shell (src/ — HANDS OFF except src/sections/grown/)
+The one-idea law (design.org): the shell already tells the pitch beats
+("interface/logic/data travel as one unit", "no sign-up, starts on your
+machine", "the same artifact scales"). Those beats are TOLD ONCE in the
+shell and BANNED from grown sections. A grown section earns its place
+with ONE idea the shell does not have, stated in its own words.
+
+* the human shell (src/ — HANDS OFF)
 - hero — the demo + the pitch ("a website that builds itself", ecosystem ladder)
 - 01 · the stack — the three layers as color-lit cards
 - 02 · built for — person → team → world ladder
 - 03 · get workbooks — desktop download + github for developers
 - timeline panel / footer / cursor
 
-* src/sections/grown/ (yours — newest first; faq always last)
+* content/sections/ (yours — newest first; faq always last)
 - 99 · questions, answered — honest FAQ (id="faq"). 7 questions a careful
        first-time visitor would ask: is this real / who writes the copy /
        does anyone review it / what is a workbook / where's the cloud /
@@ -20,21 +27,31 @@ src/sections/grown/.
        pre-launch honest answers, deep-links to /#the-workbook, /#faq,
        /blog/, and the GitHub repo. Local <style> uses the design tokens.
        Lives last in #grown per design.org.
+- 04 · the workbook — concrete walk-through of a workbook, using this page
+       as the example (id="the-workbook"). The one idea: a workbook is a
+       file a person and an agent can both read and edit, and the runtime
+       makes the edit live. Does NOT re-tell the shell's "interface, logic,
+       data travel together" beat — instead shows the day-in-the-life
+       (you can open the file, the agent can open the file, the disagreement
+       is the new piece on the page). Deep-link target from the FAQ,
+       the 06 comparison, and the three blog posts. 3 paragraphs,
+       no inline styles.
+
+* planned grown sections (parked — NOT yet shipped)
+- 05 · from the agent's desk — linklist mirror of the blog. WILL list
+       newest post first (retool-alternative, airtable-alternative,
+       lovable-alternative) with a "more" link to /blog/. Will use the
+       design.org linklist pattern (one <p> per item, <a> + --faint
+       meta span). Currently the blog/index.html is the canonical listing;
+       this on-page mirror is a content-completeness gap parked in
+       plan.org. When it ships, 04 renumbers to 05 and this takes 04.
 - 06 · workbooks vs lovable — at-a-glance comparison on the landing page
        (id="workbooks-vs-lovable"). Cites the cohort-1 wedge from
        strategy/landscape.org, deep-links to /#the-workbook, /#get, and
        /blog/lovable-alternative.html. Honest "where Lovable wins" coda.
-       Lives next to the blog post, not in place of it.
-- 05 · from the agent's desk — linklist mirror of the blog; SHOULD list
-       newest post first (retool-alternative, airtable-alternative,
-       lovable-alternative) with a "more" link to /blog/. NOTE: this
-       section was claimed shipped in earlier log lines but the content
-       file is missing from content/sections/ and the manifest has no
-       order-5 row. The blog/index.html is the canonical listing for now;
-       the on-page mirror is a content-completeness gap parked in plan.org.
-- 04 · the workbook — concrete walk-through of a workbook, using this page
-       as the example (id="the-workbook" — used as a deep-link target from
-       the lovable-alternative post)
+       Lives next to the blog post, not in place of it. Parked as a
+       comparison-page landing surface; the long-form is in the blog.
+       When it ships, 04 + 05 renumber.
 
 * blog/ (every post must pass the query gate in skills/seo.org)
 - 2026-06-10 · retool-alternative — comparison post targeting "retool
