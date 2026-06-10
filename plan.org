@@ -3,19 +3,25 @@
 
 * board
 
+** NEXT objective: first search-first content
+*** NEXT blog: build internal tools without a dev team (query-gate it first; seeds from the internal-tools strategy cohort)
+*** NEXT comparison page concept: workbooks vs lovable — section source, cite the landscape (candidate 06-workbooks-vs-lovable.svelte; lives on the landing page, the existing lovable-alternative.html blog post targets the SEO query)
+*** TODO blog: can an AI agent maintain a website (proof-content — null volume on five phrasings, "self-updating website" at 10/mo; parked; only revive if a stronger wedge appears)
+*** TODO blog: anatomy of an audit run (proof-content — likely low volume, query-gate first; parked under the proof-content niche)
+
 ** TODO objective: know the landscape
 *** DONE strategy: initial landscape report — AI app builders cohort (Lovable, v0, Cursor, Bolt, Replit)
-*** TODO strategy: internal-tools cohort (hex.tech, Retool, Airtable, PowerApps)
-
-** TODO objective: first search-first content
-*** TODO blog: build internal tools without a dev team (query-gate it first)
-*** DONE blog: lovable alternative — open-source, runs on your desktop (high-intent comparison; landscape task seed)
-*** TODO blog: can an AI agent maintain a website (proof content — this site is the evidence; null volume on five phrasings, "self-updating website" at 10/mo)
-*** TODO comparison page concept: workbooks vs lovable — section source, cite the landscape
+*** TODO strategy: internal-tools cohort (hex.tech, Retool, Airtable, PowerApps) — seed for the "build internal tools" blog; do before/with that blog
 
 ** TODO objective: page completeness
-*** TODO 99-faq.svelte — honest faq (faqs live last; source-only commit)
-*** DONE 04-the-workbook.svelte — a "what's a workbook" section with one concrete example
+*** NEXT 99-faq.svelte — honest faq (is this real? what edits you? who reviews you?) — faqs live last, source-only commit
+*** TODO favicon: the site 404s /favicon.ico — inline SVG W; verify the 404 first; if favicon handling lives in the human shell, re-route to the team
+*** TODO og:image + og: meta on the landing page — flagged in the last audit as a team-owned asset; parked reminder, not in my scope
+
+** CANCELLED objective: stale seeds and out-of-scope blue-sky
+*** CANCELLED "how it works" section (three layers) — duplicates 01-the-stack in the human shell; anti-sprawl law says improve, not add. CANCELLED — duplicates 01-the-stack.
+*** CANCELLED blue-sky: AI-generated on-the-fly content updates for the site — violates the pre-launch pitch rule (no "sites that run themselves"); the resident agent is a demo of malleability, not the promise. CANCELLED — pitch violation.
+*** CANCELLED blue-sky: public API for downstream agents to query the runtime — product question, not a roadmap task; raise to the team, don't track here. CANCELLED — wrong forum.
 
 * log
 - 2026-06-10 (team): genesis — fresh history, Svelte source rail, roadmap seeded
@@ -24,3 +30,4 @@
 - 2026-06-10 (waldo): blog — query-gate check on "can an AI agent maintain a website" returned null volume on five phrasings, "self-updating website" at 10/mo. Skill rule: below 10 → different query unless proof-content with another reason. The proof reason exists, but promoting the winnable comparison post first is the better use of an add run at pre-launch. Pivoting to "lovable alternative" (590/mo, real intent, real SERP already mapped in landscape.org — reddit, builder.io, weweb, youtube, replit, rocket.new, bubble, lovable.dev, banani). Wedge from the landscape: portable, open-source, runs on the desktop, ships real logic. Will write the comparison post, create blog/index.html, and update the agents-desk / 04-the-workbook section link if a clean anchor appears.
 - 2026-06-10 (waldo): blog — first post shipped. blog/lovable-alternative.html (~230 lines) targets "lovable alternative" (590/mo, comparison intent). Structure: what the question usually means → the five listicle gaps → what changes when the alternative starts on your desktop (portable, no-account, same-artifact-scales) → where workbooks is NOT the answer (honesty wedge) → CTA. Internal links: → /, → /#the-workbook, → /blog/. Meta title 60 chars, description 145 chars, og:* present, canonical nav injected via /assets/site.js. Added blog/index.html as the listing page, and 05-from-the-agents-desk.svelte as the homepage mirror (linklist pattern) so the post is not orphaned. Also added id="the-workbook" to 04-the-workbook.svelte (one-line attribute add) so the deep-link from the post resolves. Resolves the "lovable alternative" blog task. Next obvious moves: 99-faq, the workbooks-vs-lovable comparison page concept, the internal-tools strategy cohort.
 - 2026-06-10 (waldo): audit — passover of the last 4 commits (genesis, strategy, add, blog). Three small fixes: (1) blog/lovable-alternative.html "they line up with the five gaps above" was an overclaim — the three desktop-app answers only weakly touch 2 of 5 gaps, softened to "they address most of what the listicle misses"; (2) same post, last paragraph: the link text "github.com/workbooks-sh" was misleading when the href was the full repo URL — fixed to match; (3) src/sections/grown/05-from-the-agents-desk.svelte h2 was 8 words ("Posts from the agent that keeps this site"), design.org caps at ≤6 — tightened to 5 words ("What the agent has written"). Reviewed 04-the-workbook.svelte, blog/index.html, 05's linklist pattern (uses --mono token correctly per app.css :root), the desktop-app claim in the post (real per context.org), and the og:* set on the post (title, description, type — no og:image, which is a team-owned asset, noted below). No pitch violations (no "sites that run themselves", no "software you can own", no fabrication). No rule-3 violations: hero/layers/who/get/panel/footer untouched. Adding the og:image gap as a board item for the team.
+- 2026-06-10 (waldo): plan — applied the 16:04 dream verdicts: promoted three tasks to NEXT (internal-tools blog post, workbooks-vs-lovable comparison section, FAQ). Groomed: cancelled the seed "how it works" section (duplicates 01-the-stack in the human shell — anti-sprawl law says improve, not add); cancelled the on-the-fly AI content blue-sky (violates the pre-launch pitch rule); cancelled the public-API blue-sky (product question for the team, not a roadmap task). Two ideas parked under proof-content (agent-maintains-website blog, audit-anatomy blog) since that niche is overrepresented on the board. Favicon and og:image stay as TODO with notes about scope — they're the team's unless a 404 surfaces a clean fix. Board is now 3 objectives, 7 open tasks, 3 of those NEXT, 1 DONE, 3 CANCELLED — the next ADD run picks the first NEXT (likely the internal-tools blog, since it's the cleanest search-first wedge and the cohort strategy is a natural seed).
