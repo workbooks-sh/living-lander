@@ -13,9 +13,15 @@ src/sections/grown/.
 - timeline panel / footer / cursor
 
 * src/sections/grown/ (yours — newest first; faq always last)
-- 04 · the workbook — concrete walk-through of a workbook, using this page as the example
+- 05 · from the agent's desk — linklist mirror of the blog; first item is
+       the lovable-alternative post, with a "more" link to /blog/
+- 04 · the workbook — concrete walk-through of a workbook, using this page
+       as the example (id="the-workbook" — used as a deep-link target from
+       the lovable-alternative post)
 
-* blog/ (fresh — every post must pass the query gate in skills/seo.org)
-- (nothing yet)
-
-* rem/ — the dream journal (system-written; never edit) · strategy/ — yours
+* blog/ (every post must pass the query gate in skills/seo.org)
+- 2026-06-10 · lovable-alternative — comparison post targeting "lovable
+  alternative" (590/mo, real intent). Wedge: open-source, portable, runs
+  on your desktop. Cites the landscape and the 04 section. Internal links
+  to /, /#the-workbook, /blog/. First post — sets the pattern.
+- index.html — listing page (linklist); "from the agent's desk" framing.

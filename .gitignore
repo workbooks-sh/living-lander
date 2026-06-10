@@ -1,3 +1,12 @@
 node_modules/
 dist/
 _steps.jsonl
+scratch/
+.workbooks/
+.beads/
+.claude/
+memory/
+tmp/
+_*.jsonl
+_*.json
+_*.db

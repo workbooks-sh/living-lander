@@ -5,7 +5,7 @@
   import { reveal } from '../../lib/stores.js';
 </script>
 
-<section class="grown">
+<section class="grown" id="the-workbook">
   <div class="kicker reveal" use:reveal>04 · the workbook</div>
   <h2 class="reveal" use:reveal>A workbook, in one example</h2>
 
