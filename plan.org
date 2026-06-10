@@ -15,8 +15,9 @@
 
 ** TODO objective: page completeness
 *** TODO 99-faq.svelte — honest faq (faqs live last; source-only commit)
-*** TODO 04-the-workbook.svelte — a "what's a workbook" section with one concrete example
+*** DONE 04-the-workbook.svelte — a "what's a workbook" section with one concrete example
 
 * log
 - 2026-06-10 (team): genesis — fresh history, Svelte source rail, roadmap seeded
 - 2026-06-10 (waldo): strategy — initial landscape for the AI app builders cohort (Lovable/v0/Cursor/Bolt/Replit). Real volumes: bolt.new 6,600/mo, replit alternative 1,000, lovable alternative 590, v0 alternative 210, build app with ai 390, base44 vs lovable 880. SERP top-10 is dominated by builder.io, weweb, replit, superblocks, gartner — generic listicles. Our wedge: open-source, portable, runs on the desktop, ships a real product not a mockup. Seeded two new board tasks (blog: lovable alternative, comparison page concept).
+- 2026-06-10 (waldo): add — first grown section, 04-the-workbook. The page was missing a concrete grounding for the word "workbook": the layers section names them, who-it-s-for is about audience, get-it is the CTA — but nothing walked a reader through one real example. This section uses this page as the example (interface, logic, data, one unit the runtime runs). Resolves the "what's a workbook with one concrete example" board task. Next obvious gaps: faq (99) and the first search-first blog post.

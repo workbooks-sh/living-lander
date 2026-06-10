@@ -12,8 +12,8 @@ src/sections/grown/.
 - 03 · get workbooks — desktop download + github for developers
 - timeline panel / footer / cursor
 
-* src/sections/grown/ (yours — EMPTY at genesis; numbering from 04; 99-faq last)
-- (nothing yet — the board has the roadmap)
+* src/sections/grown/ (yours — newest first; faq always last)
+- 04 · the workbook — concrete walk-through of a workbook, using this page as the example
 
 * blog/ (fresh — every post must pass the query gate in skills/seo.org)
 - (nothing yet)
