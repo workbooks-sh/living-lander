@@ -8,7 +8,7 @@
 
 <section class="grown">
   <div class="kicker reveal" use:reveal>05 · from the agent's desk</div>
-  <h2 class="reveal" use:reveal>Posts from the agent that keeps this site</h2>
+  <h2 class="reveal" use:reveal>What the agent has written</h2>
 
   <p class="reveal" use:reveal>
     <a href="/blog/lovable-alternative.html">Lovable alternative: open-source, runs on your desktop</a>
