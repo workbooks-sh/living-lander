@@ -1,0 +1,139 @@
+#+TITLE: strategy — competitive landscape for the workbooks site
+#+STARTUP: overview
+
+This is the SEO/positioning ground truth. The site (and every blog or
+comparison page it ships) cites this file. When a dream points at strategy,
+you re-validate the relevant rows here, then update board tasks accordingly.
+
+Two cohorts, one file. Format per cohort:
+  - cohort: who's in it
+  - what they own: the high-volume queries with REAL data (DataForSEO,
+    US, English, captured 2026-06-10 — refresh quarterly)
+  - what they CAN'T say: the wedge, the angle only we can credibly take
+  - SERP top-10: who actually ranks for the top queries (so we know the gap)
+  - shipped content / planned: what we've published or queued
+
+* cohort 1 — AI app builders (prompt-to-app for builders)
+
+  Members: Lovable · v0 (Vercel) · Cursor · Bolt.new (StackBlitz) ·
+           Replit Agent · (also surfacing: Base44, WeWeb, Builder.io, Dyad)
+
+  The shared story they tell: "describe your app, ship it in an afternoon."
+  Their business model: cloud-hosted, account-bound, platform-leashed.
+
+  * What they own (real search volumes, US, 2026-06-10)
+
+    | query                         | vol/mo | cpc   | comp   |
+    |-------------------------------|-------:|------:|--------|
+    | bolt.new                      |  6,600 | $5.40 | MEDIUM |
+    | ai code generator             |  4,400 | $15.91| MEDIUM |
+    | replit alternative            |  1,000 | $17.87| MEDIUM |
+    | base44 vs lovable             |    880 | $10.32| MEDIUM |
+    | app making company            |  6,600 |   -   |   -    |  (Lovable ranks #4 for this — head term surprise)
+    | lovable alternative           |    590 | $16.91| MEDIUM |
+    | build app with ai             |    390 | $41.34| MEDIUM |
+    | v0 alternative                |    210 | $22.52| MEDIUM |
+    | ai app coding                 |    110 |   -   |   -    |  (Lovable ranks #1 — long-tail head term)
+    | desktop app builder           |     10 | $23.73| HIGH   |  (this is OUR ground; tiny but uncontested)
+    | open source ai app builder    |   n/a  |   -   |   -    |  (zero ad data — see "wedge" below)
+
+    Branded "vs" comparisons are mostly 10–170/mo — low volume individually
+    but HIGH intent, and the SERPs are winnable.
+
+  * What they CAN'T say (our wedge — every comparison page leans on these)
+
+    - "What you build is yours to keep." Lovable/Bolt/Replit apps are
+      platform-hosted; export is partial or absent. Workbooks apps are
+      portable client packages; the runtime is open-source; the desktop
+      app runs offline.
+    - "It runs on YOUR machine, not ours." The desktop app is the front
+      door. Every other cohort member starts with "make an account."
+    - "From a personal tool to a shipped product, same artifact." The
+      three-layer story (workbooks / runtime / toolkits) beats the
+      "weekend prototype → rewrite to scale" arc the cohort all implies.
+    - "Open-source, inspectable, self-hostable." Several cohort members
+      (Bolt, Replit, v0) are closed-source; only Lovable has a "fork on
+      GitHub" surface and it is a partial read-only mirror.
+    - "It's not just a front-of-card mockup." Several cohort demos look
+      great and don't work past a few screens or users. Workbooks ship
+      real logic on a real runtime.
+
+  * SERP top-10 we actually compete with (US, 2026-06-10)
+
+    "lovable alternative" (590/mo):
+      reddit, builder.io/blog, weweb.io, youtube, replit.com,
+      rocket.new, bubble.io/blog, lovable.dev, banani.co
+      → Mostly "list of 8–12 alternatives" pieces. We can win this with
+        a sharper angle (the wedge bullets above) and one canonical
+        page, not a listicle.
+
+    "replit alternative" (1,000/mo):
+      reddit, zite.com, builder.io, superblocks.com, gartner.com,
+      replit.com, emergent.sh, digitalocean.com, orchids.app
+      → Gartner and DigitalOcean are heavy. A "for developers who want
+        to self-host" angle cuts through.
+
+    "build app with ai" (390/mo):
+      anything.com, reddit, replit.com, jotform, lindy.ai, figma.com,
+      onspace.ai, firebase.google.com, databricks, bolt.new
+      → Firebase/Google ranks on its own authority. Need a uniquely
+        framed comparison, not a list.
+
+    "v0 alternative" (210/mo):
+      medium, reddit, uibakery, dev.to, codinit.dev, balsamiq, dyad.sh
+      → Dyad.sh appears — a fellow open-source angle. Differentiator
+        must be the runtime + ecosystem, not just "open source."
+
+    "ai code generator" (4,400/mo):
+      zzzcode, deepai, figma, llamacoder, qodo, ninjatech, canva, prismic
+      → Mostly code COMPLETION tools, not app builders. Big volume,
+        but the SERP isn't our cohort — skip unless the post reframes.
+
+  * What we should NOT chase (and why)
+
+    - "ai code generator" (4.4K/mo): wrong intent — completion, not build.
+    - "app making company" (6.6K/mo): broad B2B intent, dominated by
+      incumbents with 100x our link profile. Save for later.
+    - Branded "vs" pages for closed-source players we don't integrate
+      with: high-effort, low-volume, no defensible angle.
+
+  * Shipped content (this site)
+    - (none yet)
+
+  * Planned content (board tasks; cite this file)
+    - blog: "lovable alternative — open-source, runs on your desktop"
+      (590/mo; wedge: the five bullets above)
+    - blog: "build app with ai — what changes when the app is portable"
+      (390/mo; wedge: portability + desktop)
+    - blog: "can an AI agent maintain a website" (proof content; the
+      site is the evidence; this landscape is a by-cite, not a target)
+    - section/comparison: workbooks vs lovable — section source, ties
+      into the hero's "ecosystem ladder" pitch
+
+  * Refresh cadence
+    Quarterly: re-pull volumes + SERPs for the top 8 queries in this
+    table. Add any new cohort members (Base44 is the most recent
+    arrival; watch for the next "v0 clone"). Update the SERP notes if
+    the top-10 changes — that's our competitive signal.
+
+* cohort 2 — Internal tools / data apps (team tooling)
+
+  Members: hex.tech · Retool · Airtable · PowerApps · (also: Superblocks,
+           Budibase, Appsmith, Glide, Softr)
+
+  Not yet mapped. Board task lives under "know the landscape". Data
+  pull is the next strategy run — likely focused on:
+    - "internal tools builder", "build internal tools", "no code
+       database app", "retool alternative", "airtable alternative",
+       "self hosted retool", "internal app for ops team"
+
+  Wedge hypothesis (to validate with data):
+    - "From the team's spreadsheet to a shipped product without a
+       rewrite." The cohort's growth ceiling is "we have an internal
+       tool, now we need engineers to make it a real app." Workbooks
+       skips the ceiling.
+    - "It starts on the analyst's laptop." Desktop-first, no IT setup,
+       then lift to a team runtime when there's a team.
+    - "The data and the logic travel with the app." The cohort's
+       apps are dashboards over a backend they don't control; workbooks
+       apps carry their data.
