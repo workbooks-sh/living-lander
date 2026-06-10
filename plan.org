@@ -3,6 +3,17 @@
 
 * board
 
+** NEXT objective: design the grown band as a whole (the team reset it — read design.org's one-idea + band design laws first)
+The team removed 04-the-workbook and 06-workbooks-vs-lovable: both restated
+the shell's pitch beats (one-unit / no-signup / scales), which the one-idea
+law now bans. Only 99-faq survived. The next PLAN run designs the band as a
+SET — 2 to 4 sections, each named with its ONE idea the page doesn't already
+have, its order, and why a first-time reader needs it — written here as child
+tasks. ADD runs then build slots from that design. A "what's a workbook"
+walk-through may EARN a slot again, but written to its own idea (the concrete
+example), without one banned beat in it.
+*** NEXT plan: write the band design (this is a plan-run task — produce the child tasks, don't build sections in it)
+
 ** DONE objective: first search-first content
 *** DONE blog: lovable alternative (590/mo, compare intent) — shipped 2026-06-10 as blog/lovable-alternative.html. Five-gap structure; wedge from cohort 1; deep-links to /, /#the-workbook, /blog/. Mirror row in 05.
 *** DONE blog: airtable alternative (720/mo, compare intent, MEDIUM comp, $15.85 cpc) — shipped 2026-06-10 as blog/airtable-alternative.html. Same five-gap pattern; wedge: "you wanted an app, not another database." Mirror row in 05.
@@ -35,7 +46,7 @@ visible. None of these are the next ADD run.
 *** TODO tweet: hello world (first use of skills/tweet.org) — the skill exists, the write-only law is clear. Constraints: ONLY about something real (a shipped post or section, a true milestone, or one honest observation from the work), ≤2/day, link the thing. Concrete plan: link /blog/lovable-alternative.html or the /blog/ index — the text should describe the work ("first comparison post is up, what the agent has been writing"), not pitch the agent as perpetual. No hashtags, no "sites that run themselves" framing, no fabricated users. Wait until the next add run ships a real thing to link, then schedule a tweet run. Re-retool: three posts now ship on the index, the tweet can link to a real comparison set ("three comparison posts up, here is the page") — better angle than the original "first post is up" plan.
 *** TODO favicon: site 404s /favicon.ico — inline SVG W. Likely lives in the human shell (per the shell's asset graph); verify the 404 and the existing route, then either ship a one-liner or re-route to the team.
 *** TODO og:image + og: meta on the landing page — team-owned (per the last audit); kept here as a polite reminder, not in scope for an add run. When the team ships the asset, the post og:* mirror pattern from blog/lovable-alternative.html and blog/airtable-alternative.html can be back-ported to the landing page.
-*** TODO 05-from-the-agents-desk.svelte / content/sections/05-from-the-agents-desk.html never actually shipped — content/sections.json has no order-5 row, and the post landing pages have no on-page mirror to the blog index. The blog/index.html is the canonical listing for now; the on-page mirror was promised in the airtable + retool log lines but never delivered. Worth a follow-up add run that ships the linklist section proper (or merges the pattern into 04-the-workbook's closing if the page is getting heavy). Parked as a content-completeness gap.
+*** CANCELLED (shell ships this now — the agent's-desk listing is a shell component reading content/blog.json; never rebuild it as a section) 05-from-the-agents-desk — content/sections.json has no order-5 row, and the post landing pages have no on-page mirror to the blog index. The blog/index.html is the canonical listing for now; the on-page mirror was promised in the airtable + retool log lines but never delivered. Worth a follow-up add run that ships the linklist section proper (or merges the pattern into 04-the-workbook's closing if the page is getting heavy). Parked as a content-completeness gap.
 
 ** CANCELLED objective: stale seeds and out-of-scope blue-sky
 *** CANCELLED "how it works" section (three layers) — duplicates 01-the-stack in the human shell; anti-sprawl law says improve, not add.

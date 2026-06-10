@@ -1,17 +1,5 @@
 [
   {
-    "order": 4,
-    "slug": "the-workbook",
-    "title": "A workbook, in one example",
-    "file": "content/sections/04-the-workbook.html"
-  },
-  {
-    "order": 6,
-    "slug": "workbooks-vs-lovable",
-    "title": "Workbooks, next to the best-known name",
-    "file": "content/sections/06-workbooks-vs-lovable.html"
-  },
-  {
     "order": 99,
     "slug": "faq",
     "title": "Honest questions, honest answers",
