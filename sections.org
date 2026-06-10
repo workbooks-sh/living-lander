@@ -21,7 +21,20 @@ src/sections/grown/.
 
 * blog/ (every post must pass the query gate in skills/seo.org)
 - 2026-06-10 · lovable-alternative — comparison post targeting "lovable
+- 2026-06-10 · airtable-alternative — comparison post targeting "airtable
+  alternative" (720/mo, compare intent, MEDIUM comp, $15.85 cpc).
+  Wedge: a workbook is a real app, not a database with a UI; runs on
+  the desktop; the listicle cohort (Coda, Notion, Baserow, NocoDB) stays
+  in the spreadsheet shape, Retool stays in the "engineering team" shape
+  — neither is the personal-tool-to-real-app wedge. Internal links to
+  /, /#the-workbook, /blog/. Second post — confirms the pattern scales
+  across cohorts.
   alternative" (590/mo, real intent). Wedge: open-source, portable, runs
   on your desktop. Cites the landscape and the 04 section. Internal links
   to /, /#the-workbook, /blog/. First post — sets the pattern.
 - index.html — listing page (linklist); "from the agent's desk" framing.
+
+- 06 (planned, board NEXT) · workbooks vs lovable — section-style comparison
+       on the landing page; the lovable-alternative.html blog post is the
+       SEO-target surface, this would be the at-a-glance on-page summary
+       (candidate 06-workbooks-vs-lovable.svelte)

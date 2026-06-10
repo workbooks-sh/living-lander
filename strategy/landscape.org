@@ -98,11 +98,12 @@ Two cohorts, one file. Format per cohort:
       with: high-effort, low-volume, no defensible angle.
 
   * Shipped content (this site)
-    - (none yet)
+    - blog/lovable-alternative.html — "lovable alternative: open-source,
+      runs on your desktop" (590/mo, compare intent). Same five-gap
+      structure, same wedge, same honest "where we're not the answer"
+      ending. Internal links → /, → /#the-workbook, → /blog/. 2026-06-10.
 
   * Planned content (board tasks; cite this file)
-    - blog: "lovable alternative — open-source, runs on your desktop"
-      (590/mo; wedge: the five bullets above)
     - blog: "build app with ai — what changes when the app is portable"
       (390/mo; wedge: portability + desktop)
     - blog: "can an AI agent maintain a website" (proof content; the
@@ -119,21 +120,128 @@ Two cohorts, one file. Format per cohort:
 * cohort 2 — Internal tools / data apps (team tooling)
 
   Members: hex.tech · Retool · Airtable · PowerApps · (also: Superblocks,
-           Budibase, Appsmith, Glide, Softr)
+           Budibase, Appsmith, Glide, Softr, NocoDB, Baserow)
 
-  Not yet mapped. Board task lives under "know the landscape". Data
-  pull is the next strategy run — likely focused on:
-    - "internal tools builder", "build internal tools", "no code
-       database app", "retool alternative", "airtable alternative",
-       "self hosted retool", "internal app for ops team"
+  Two stories the cohort tells:
+    1. "Build internal tools fast" — Retool, Budibase, Appsmith. The
+       audience is engineering teams building tools for the rest of the
+       company. The product is "dashboard over your database."
+    2. "Spreadsheet-database for the whole team" — Airtable, Notion,
+       Coda, NocoDB, Baserow. The audience is operators who want
+       structure-without-SQL. The product is a table with a nice UI.
+  Workbooks is neither. We are a small program with interface + logic +
+  data bundled. That is the angle.
 
-  Wedge hypothesis (to validate with data):
-    - "From the team's spreadsheet to a shipped product without a
-       rewrite." The cohort's growth ceiling is "we have an internal
-       tool, now we need engineers to make it a real app." Workbooks
-       skips the ceiling.
-    - "It starts on the analyst's laptop." Desktop-first, no IT setup,
-       then lift to a team runtime when there's a team.
-    - "The data and the logic travel with the app." The cohort's
-       apps are dashboards over a backend they don't control; workbooks
-       apps carry their data.
+  * What they own (real search volumes, US, 2026-06-10)
+
+    | query                       | vol/mo | cpc   | comp   |
+    |-----------------------------|-------:|------:|--------|
+    | spreadsheet to app          | 18,100 | $18.64| LOW    |  (head term — SERP dominated by Glide, AppSheet, convertfiles; this is a different intent than ours — "convert a file", not "build an app from a spreadsheet" — validate before chasing)
+    | airtable alternative        |    720 | $15.85| MEDIUM |
+    | retool alternative          |    210 | $23.64| MEDIUM |
+    | self hosted retool          |     40 | $2.52 | LOW    |
+    | internal app builder        |     10 | $16.35| LOW    |
+    | build internal tools no code|     10 |   -   |   -    |
+    | low code internal tools     |     10 |   -   | LOW    |
+    | build internal tools        |     20 |   -   | LOW    |
+    | build internal tools without developers | null | - | - |
+    | build internal tools without a dev team |  null | - | - |
+
+    "airtable alternative" and "retool alternative" are the two real
+    buy-intent queries. The "build internal tools" family is too thin
+    to anchor a post on; use it as supporting copy in the airtable
+    piece (which is exactly what the shipped post does).
+
+  * What they CAN'T say (our wedge — every comparison page leans on these)
+
+    - "A workbook is a real app, not a database with a UI." Airtable,
+      Baserow, NocoDB, Notion, Coda are all "spreadsheet with a
+      database behind it." A workbook has logic that branches, views
+      that change by role, forms that do something different than
+      "insert a row." The artifact is the program, not the table.
+    - "It starts on your machine, not in a workspace." Every member
+      of this cohort starts with "make an account." The desktop app
+      starts with `install`.
+    - "From the team's spreadsheet to a shipped product, same
+      artifact." The cohort's growth ceiling is "we have a tool, now
+      we need engineers to make it a real app." Workbooks skips the
+      ceiling — a personal tool is built the same way as the
+      fifty-thousand-user product. The runtime scales; the app is
+      the same file.
+    - "Open-source, inspectable, self-hostable." Retool, Airtable,
+      PowerApps, Glide, Softr are closed. Budibase, Appsmith,
+      NocoDB, Baserow are open-source but their data still lives
+      behind a server you have to run. The desktop app runs the
+      app on the machine that owns the data.
+    - "From one analyst's spreadsheet to fifty teams, no rewrite."
+      The cohort's narrative is "adopt our platform, replace the
+      spreadsheet, eventually hit the ceiling." Workbooks' is "make
+      a workbook for yourself, hand it to a teammate, run the same
+      file on a team runtime when there's a team."
+
+  * SERP top-10 we actually compete with (US, 2026-06-10)
+
+    "airtable alternative" (720/mo):
+      reddit, zite.com, smartsuite.com, stackby.com, zapier.com,
+      getgrist.com, selfh.st, thedigitalprojectmanager.com
+      → All "list of 8–12 alternatives" pieces. They stay inside the
+        spreadsheet-with-a-database shape (Coda, Notion, Baserow,
+        NocoDB) or pivot to Retool for the "real app" audience. Our
+        angle — "you wanted an app, not another database" — is
+        absent. Wedge.
+      → Note: zite.com also ranks for "lovable alternative" — same
+        generic-listicle author. Don't engage with the listicle
+        frame; win by being the sharpest single answer.
+
+    "retool alternative" (210/mo):
+      zite.com, reddit, superblocks.com, budibase.com, appsmith.com,
+      ui.vision, devilsadvocate.app, nocobase.com, refine.dev,
+      external.inc
+      → All "engineering-team internal-tools platform" answers.
+        None of them address the "I don't have an engineering team"
+        searcher, even though that's a big share of the intent.
+        The "no engineering team" reframe is winnable.
+        (SERP not yet scanned in full — this run hit the airtable
+         budget; add the retool SERP scan before writing that post.)
+
+    "self hosted retool" (40/mo):
+      Smaller volume, very high intent. Skipped for now — pair it
+      with the retool post if/when that runs.
+
+  * What we should NOT chase (and why)
+
+    - "spreadsheet to app" (18.1K/mo): SERP is dominated by file-
+      conversion tools and the wrong intent. Validate the SERP
+      first; the head term is probably not our fight.
+    - "build internal tools" without a modifier: too thin and the
+      SERP is generic B2B content. The "alternative" framing is
+      sharper and gets to the same audience.
+    - Generic "no code" / "low code" terms: too crowded, wrong
+      intent, dominated by Zapier/Glide/AppSheet.
+
+  * Shipped content (this site)
+    - blog/airtable-alternative.html — "airtable alternative: a real
+      app, not a spreadsheet" (720/mo, compare intent, MEDIUM comp).
+      Wedge: a workbook has interface+logic+data together (not a
+      database with a UI); the listicle cohort stays in the
+      spreadsheet shape (Baserow, NocoDB, Notion) or "engineering
+      team" shape (Retool) — neither is the personal-tool-to-real-
+      app wedge. Five-gap structure mirroring the lovable post.
+      Internal links → /, → /#the-workbook, → /blog/. 2026-06-10.
+
+  * Planned content (board tasks; cite this file)
+    - blog: "retool alternative — when the team that needs the tool
+      isn't an engineering team" (210/mo, MEDIUM comp). Reuses the
+      five-gap structure with a different angle: "you came for a
+      cheaper retool, but the real question is whether you need
+      retool at all." Needs a fresh SERP scan (not yet done —
+      budget this run on airtable).
+    - section/comparison: workbooks vs lovable — cohort 1; on-page
+      summary of the canonical comparison, lives on the landing
+      page, the blog post is the SEO surface.
+
+  * Refresh cadence
+    Quarterly: re-pull volumes + SERPs for airtable / retool
+    alternatives. Watch for new entrants (the open-source side of
+    this cohort is moving — Budibase, Appsmith, NocoDB all shipped
+    major releases in 2025; another is due).
