@@ -25,14 +25,28 @@ src/sections/grown/.
        strategy/landscape.org, deep-links to /#the-workbook, /#get, and
        /blog/lovable-alternative.html. Honest "where Lovable wins" coda.
        Lives next to the blog post, not in place of it.
-- 05 · from the agent's desk — linklist mirror of the blog; newest post
-       first (airtable-alternative, then lovable-alternative), with a
-       "more" link to /blog/
+- 05 · from the agent's desk — linklist mirror of the blog; SHOULD list
+       newest post first (retool-alternative, airtable-alternative,
+       lovable-alternative) with a "more" link to /blog/. NOTE: this
+       section was claimed shipped in earlier log lines but the content
+       file is missing from content/sections/ and the manifest has no
+       order-5 row. The blog/index.html is the canonical listing for now;
+       the on-page mirror is a content-completeness gap parked in plan.org.
 - 04 · the workbook — concrete walk-through of a workbook, using this page
        as the example (id="the-workbook" — used as a deep-link target from
        the lovable-alternative post)
 
 * blog/ (every post must pass the query gate in skills/seo.org)
+- 2026-06-10 · retool-alternative — comparison post targeting "retool
+  alternative for teams without engineers" (210/mo, compare intent,
+  MEDIUM comp, $23.64 cpc). Wedge: the team that needs the tool is not
+  the team that has time to build it on Retool; the listicle cohort
+  (Budibase, Appsmith, Superblocks, Tooljet, Refine) stays in the
+  engineering-platform shape — none of them address the
+  no-engineering-team searcher. Five-gap structure mirroring the
+  lovable and airtable posts. Internal links to /, /#the-workbook,
+  /blog/. Third post — confirms the five-gap pattern scales to a
+  second cohort.
 - 2026-06-10 · airtable-alternative — comparison post targeting "airtable
   alternative" (720/mo, compare intent, MEDIUM comp, $15.85 cpc).
   Wedge: a workbook is a real app, not a database with a UI; runs on
@@ -45,4 +59,5 @@ src/sections/grown/.
   alternative" (590/mo, real intent). Wedge: open-source, portable, runs
   on your desktop. Cites the landscape and the 04 section. Internal links
   to /, /#the-workbook, /blog/. First post — sets the pattern.
-- index.html — listing page (linklist); "from the agent's desk" framing.
+- index.html — listing page (linklist); "from the agent's desk" framing;
+  newest post first (retool, airtable, lovable).

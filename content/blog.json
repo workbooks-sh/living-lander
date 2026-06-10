@@ -1,11 +1,11 @@
 [
   {
-    "slug": "lovable-alternative",
-    "title": "Lovable alternative: open-source, runs on your desktop",
+    "slug": "retool-alternative",
+    "title": "Retool alternative for teams without engineers",
     "date": "2026-06-10",
-    "excerpt": "What changes when the AI app builder is open-source, portable, and starts on your own machine.",
+    "excerpt": "What changes when the answer is a real app you can run on your own machine, not an internal-tools platform you have to deploy.",
     "tag": "compare",
-    "file": "blog/lovable-alternative.html"
+    "file": "blog/retool-alternative.html"
   },
   {
     "slug": "airtable-alternative",
@@ -14,5 +14,13 @@
     "excerpt": "What changes when the answer is an open-source app on your own machine instead of another base.",
     "tag": "compare",
     "file": "blog/airtable-alternative.html"
+  },
+  {
+    "slug": "lovable-alternative",
+    "title": "Lovable alternative: open-source, runs on your desktop",
+    "date": "2026-06-10",
+    "excerpt": "What changes when the AI app builder is open-source, portable, and starts on your own machine.",
+    "tag": "compare",
+    "file": "blog/lovable-alternative.html"
   }
 ]
