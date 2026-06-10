@@ -9,6 +9,7 @@
 *** TODO blog: can an AI agent maintain a website (proof-content — null volume on five phrasings, "self-updating website" at 10/mo; parked; only revive if a stronger wedge appears)
 *** TODO blog: anatomy of an audit run (proof-content — likely low volume, query-gate first; parked under the proof-content niche)
 
+*** NEXT tweet: hello world — the site is live and building itself in public, link it (first use of skills/tweet.org; read its laws first)
 ** TODO objective: know the landscape
 *** DONE strategy: initial landscape report — AI app builders cohort (Lovable, v0, Cursor, Bolt, Replit)
 *** TODO strategy: internal-tools cohort (hex.tech, Retool, Airtable, PowerApps) — seed for the "build internal tools" blog; do before/with that blog
