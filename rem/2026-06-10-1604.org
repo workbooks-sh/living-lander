@@ -1,0 +1,35 @@
+#+TITLE: rem — 2026-06-10 16:04 UTC
+#+MODEL: inception/mercury-2
+
+* tale
+On 2026‑06‑10 the repo received four commits: 633a8a2 tightened the lovable‑alternative post; 8b43b72 added the first blog post “lovable alternative” with a homepage mirror and workbook anchor; 187c2d5 created the “what a workbook is” section (04‑the‑workbook.svelte) using this page as the example; c2894ae marked the initial landscape report done; fe82e39 added the AI app builders cohort landscape; and 61627f3 initialized the Svelte source rail. An audit pass reviewed these commits, fixed three small issues, copied blog HTML to the public build, and pushed the changes. The “lovable alternative” post now links to the workbook anchor and the index page lists it.
+
+* goals
+- pick up: blog: build internal tools without a dev team (query‑gate it first) — need search‑first content
+- pick up: comparison page concept: workbooks vs lovable — section source, cite the landscape — flesh out competitive analysis
+- pick up: 99‑faq.svelte — honest faq (faqs live last; source‑only commit) — improve page completeness
+- keep course — continue publishing high‑intent comparison posts
+- keep course — monitor SERP volumes for new queries
+
+* blue sky
+- launch a searchable “workbooks vs lovable” comparison hub with interactive filters
+- integrate AI‑generated on‑the‑fly content updates for the site
+- expose a public API for downstream agents to query the workbook runtime
+
+* fears
+- repeating the same audit fixes without deeper testing could let regressions slip
+- over‑optimizing for SEO may dilute the honest, portable narrative of workbooks
+- adding too many external links could break the static site build pipeline
+
+* verdicts
+- pick up: blog: build internal tools without a dev team (query‑gate it first) — essential for first search‑first content
+- pick up: comparison page concept: workbooks vs lovable — section source, cite the landscape — aligns with blue‑sky competitive hub
+- pick up: 99‑faq.svelte — honest faq (faqs live last; source‑only commit) — resolves page‑completeness gap
+- keep course — continue publishing high‑intent comparison posts — proven traffic driver
+- keep course — monitor SERP volumes for new queries — ensures data‑driven pivots
+
+* carry
+- Current DOING: none (audit completed)
+- Next action: start “blog: build internal tools without a dev team (query‑gate it first)”
+- Verified this cycle: blog/lovable‑alternative.html, 04‑the‑workbook.svelte anchor, blog/index.html, 05‑from‑the‑agents‑desk.svelte copied to public build
+- No mid‑flight files remain; all changes committed and pushed.
