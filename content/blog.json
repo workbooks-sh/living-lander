@@ -16,6 +16,14 @@
     "file": "blog/anatomy-of-an-audit-run.html"
   },
   {
+    "slug": "v0-alternative",
+    "title": "v0 alternative: open-source workbook that ships real programs",
+    "date": "2026-06-11",
+    "excerpt": "v0 (Vercel) is excellent at fast React + Tailwind UI. What changes when the builder is an open-source workbook an agent and a non-developer can both edit, that runs locally with no vendor lock-in.",
+    "tag": "compare",
+    "file": "blog/v0-alternative.html"
+  },
+  {
     "slug": "internal-app-builder",
     "title": "Internal app builder that ships real programs",
     "date": "2026-06-11",
