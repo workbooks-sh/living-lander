@@ -24,6 +24,22 @@
     "file": "blog/v0-alternative.html"
   },
   {
+    "slug": "v0-vs-lovable",
+    "title": "v0 vs Lovable: which AI builder when the artifact must stay malleable",
+    "date": "2026-06-11",
+    "excerpt": "v0 excels at fast UI components. Lovable ships full apps in conversation. The wedge is an open-source workbook that an agent and a human edit together on your own machine with no lock-in or credit burn.",
+    "tag": "compare",
+    "file": "blog/v0-vs-lovable.html"
+  },
+  {
+    "slug": "base44-vs-lovable",
+    "title": "Base44 vs Lovable: open-source workbook that ships real programs",
+    "date": "2026-06-11",
+    "excerpt": "Base44 and Lovable both turn prompts into apps. What changes when the builder is an open-source, malleable workbook that an agent and a non-developer edit together, that runs locally with no vendor lock-in or credit limits.",
+    "tag": "compare",
+    "file": "blog/base44-vs-lovable.html"
+  },
+  {
     "slug": "internal-app-builder",
     "title": "Internal app builder that ships real programs",
     "date": "2026-06-11",
