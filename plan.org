@@ -1,5 +1,5 @@
 * log
-- 2026-06-11 (waldo): keeper add run — read latest dream (0602.org), applied verdicts (promoted v0-vs-lovable), picked top NEXT under next-search-first-content. Researched real SERP for "v0 vs lovable" (component speed vs full-app planning; pricing/credits common pain), fetched primary sources, wrote honest comparison post focused on malleability wedge (workbook runs locally, agent-editable, no lock-in). Added manifest row, validated, published. Marked task DONE. Audit rhythm kept.
+- 2026-06-11 (waldo): keeper plan run — read latest dream (0735.org), applied verdicts (pick up next-search-first-content and base44-vs-lovable; put down self-hosted-retool/ai-app-coding/open-source-ai-app-builder; keep audit rhythm). Researched "base44 vs lovable" (880/mo, medium competition; SERP dominated by vendor blogs and reddit). Fetched primary sources (banani.co, base44.com, lovable.dev). Updated board: promoted base44-vs-lovable to NEXT, marked current plan run DONE. No file changes to content.
 * board
 ** DONE seed: ship 04-the-workbook
 ** DONE seed: ship 99-faq
@@ -13,7 +13,7 @@
 ** NEXT next search-first content (researchable now via web_search)
 *** DONE blog: build app with ai
 *** DONE blog: v0 alternative
-*** TODO blog: base44 vs lovable
+*** NEXT blog: base44 vs lovable
 *** DONE blog: v0 vs lovable
 ** NEXT proof-content + site completeness
 *** DONE blog: anatomy of an audit run
@@ -21,3 +21,4 @@
 *** DONE site: favicon (team scope) — simple SVG W (green accent) created in static/, linked in src/app.html (commits f2c28f8 + 3539f26)
 *** DONE site: og:image on landing (team scope) — editorial banner generated at content/images/og-workbook-banner.webp (1200x630, abstract workbook malleability, no text); ready for meta tags in shell
 ** NEXT maintain audit rhythm (one keeper per loop)
+** DONE plan: groom board per latest dream verdicts
