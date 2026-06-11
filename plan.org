@@ -1,11 +1,12 @@
 * board
 
-** TODO Objective A — establish the page's spine (the three load-bearing beats)
+** DONE Objective A — establish the page's spine (the three load-bearing beats)
    The page is a bare hero. Before flavor, it needs the three sections that
    carry the pitch as DESIGNED objects: what it is, how it works, the ask.
    Acceptance: a first-time reader, scrolling hero → A's sections, understands
    workbooks (apps) · runtime (runs them) · toolkits (authoring), sees the
-   mechanism build itself, and can act — all gated PASS.
+   mechanism build itself, and can act — all gated PASS. COMPLETE: 04-anatomy,
+   05-weave, 06-join all shipped + gated PASS + audited.
 
 *** DONE system/layers section — the three layers as ONE drawn stack
     Shipped as 04-anatomy (runtime CMS partial). The Svelte grown lane
@@ -38,49 +39,71 @@
 
 ** TODO Objective B — give the organism proof and a voice
    Once the spine holds, prove the page is alive and let it speak honestly.
-   Acceptance: the page contains at least one true living-proof and one
-   honest field-note; nothing fabricated; both gated PASS.
+   Acceptance: the page contains at least one true living-proof gesture and one
+   honest field-note; nothing fabricated; both gated PASS. This is the next
+   objective to clear — both children are NEXT.
 
-*** TODO living-proof section — the agent actually running
-    NOTE: the live timeline/cursor/panel are already the SHELL (team-owned, the
-    right panel). A grown living-proof can't embed them. Likely this stays TODO
-    or becomes a field-note pointing AT the live panel — do NOT fake it.
-    Idea: see it living, right now.
+*** NEXT living-proof section — point AT the real running agent (don't fake it)
+    CONSTRAINT (load-bearing): the live timeline/cursor/panel are the SHELL
+    (team-owned, the right panel). A grown section CANNOT embed them and MUST
+    NOT fabricate a fake one (rule 1). So the honest archetype here is a
+    living-proof that turns the reader's attention to the REAL proof already on
+    the page: "the panel to your right is not a mockup — it is this agent's
+    actual run log; every section below was woven by it." col=break-right so it
+    physically leans toward the panel. Green = life only, on the one node that
+    names the live agent. ONE IDEA: the proof is already on this page, watch it.
+    Acceptance: gated PASS, zero fabrication, copy references the real panel
+    truthfully. Static partial survives (no scripted motion needed — the panel
+    IS the motion).
 
-*** TODO field-note — the organism's first journal entry
+*** NEXT field-note — the organism's first journal entry
     Short, mono, dated, honest about being v1. col=narrow. This is where
-    on-page blog-voice lives. Static partial survives here cleanly.
+    on-page blog-voice lives. Static partial survives here cleanly. Keep it to
+    one true entry — what this page is, that it is young, what it is learning.
     Idea: the page has a diary, therefore it is worked-on / alive.
+    Acceptance: gated PASS, one dated mono entry, no overclaim.
 
-** TODO Objective C — compose, harden, and seed the supporting lane
+** TODO Objective C — close doubts, harden, open the supporting lane
    Make the whole page read as one inevitable organism; close the obvious
-   doubts; open the SEO lane honestly.
-   Acceptance: page has an faq pinned last, favicon + og resolve, and one
-   search-first blog post exists with a working index.
+   doubts; resolve the broken-tab/unfurl basics; open the SEO lane honestly.
+   Acceptance: page has an faq pinned last, favicon + og resolve (or are
+   confirmed shell-owned), and one search-first blog post exists with a working
+   index. Sequenced AFTER Objective B clears.
 
 *** TODO faq section — honest recurring doubts, pinned last
     Is this real? what edits the page? who reviews the agent? does it run
-    locally? Plain Q&A, no green, pin:"last". Static partial OK.
-    Idea: the page's composure — absorb the doubts so they stop leaking.
+    locally? Plain Q&A, no green, pin:"last". Static partial OK. Pairs well
+    after the living-proof + field-note land (the doubts those raise get
+    answered here). Idea: the page's composure — absorb the doubts so they
+    stop leaking.
 
-*** TODO favicon — inline SVG W (site 404s /favicon.ico)
-    A small living W mark as favicon so the tab isn't broken. Match canon
-    (warm-green W). Confirm it resolves. (May be shell-owned — check first.)
+*** TODO favicon — inline SVG W (CHECK if shell-owned first)
+    Site reportedly 404s /favicon.ico. BEFORE building: confirm this is mine —
+    favicon is usually wired in index.html (<link rel="icon">), which is the
+    team's shell (rule 3b). If shell-owned, CANCEL this and file nothing; if
+    a content-served asset is acceptable, ship a small living-green SVG W.
+    Acceptance: tab icon resolves OR task cancelled with the shell-owned reason.
 
-*** TODO og + meta — links unfurl well
-    og:title / og:description / og:image (a banner) + canonical. (Likely
-    shell-owned in index.html — check before assuming it's mine.)
+*** TODO og + meta — links unfurl well (CHECK if shell-owned first)
+    og:title / og:description / og:image + canonical. Almost certainly lives in
+    index.html <head> = team shell (rule 3b). Likely CANCEL as shell-owned.
+    Acceptance: confirmed shell-owned + cancelled, OR a content path exists.
 
 *** TODO first blog post — "this website builds itself" (search-first)
-    The supporting lane. Query-gate first (web_search the topic + volume),
-    then a search-first, honest-about-v1 post in blog/. Create blog/index.html
-    on first post + a small field-note/link to it on the page. NOT a
-    thought-dump — it exists only if real searchers ask it.
+    The supporting lane, NOT the default. Query-gate FIRST (web_search the
+    topic + check a real query has volume/SERP), then a search-first,
+    honest-about-v1 post in blog/. Create blog/index.html on first post + a
+    small field-note/link to it on the page. NOT a thought-dump — it exists
+    only if real searchers ask it. Acceptance: query validated, post drafted to
+    canon look/voice, blog/index.html created, internal link added.
 
-*** TODO compose pass — whole-page rhythm once 4+ sections exist
-    Re-read top→bottom, re-order sections, check the page reads as one growing
-    organism with varied weight/pacing (not equal SaaS bands). Renumber
-    partials, unify rhythm. Run the design gate as a second pass on each.
+*** TODO compose pass — whole-page rhythm once Objective B lands (5+ sections)
+    Re-read hero → 04 → 05 → 06 → new sections top→bottom; re-order, check the
+    page reads as one growing organism with varied weight/pacing (not equal
+    SaaS bands). Renumber partials if needed, unify rhythm. Run the design gate
+    as a second pass on each. Do this once living-proof + field-note exist so
+    there's enough mass to compose. Acceptance: ordered manifest reads as one
+    organism, each section re-gated PASS.
 
 * log
 - reset to bare hero — Living Machine redesign + Claude Opus; fresh start
@@ -90,27 +113,17 @@
   overlapping glass planes + SVG spine; green only on the runtime layer.
 - add: 05-weave (mechanism). GATE 11/12, 0 triggers, PASS. Dashed flow line
   threading three moves; green on the terminal living node only.
-- add: 06-join (invitation). NEEDS: spine explained what/how but nothing closed
-  — no on-page ask; shell #get holds install mechanics, this owns the emotional
-  ask. No collision (anatomy=structure, weave=process, join=ask). ARCHETYPE:
-  invitation, static CMS partial. ONE IDEA: you don't deploy a workbook, you
-  join it. COMPOSE: asymmetric 1fr/auto grid, Fraunces .t-h2 + one lede + one
-  glass CTA → #get; sacred green + .alive breathe on the CTA dot and a small
-  WMark whose centre node breathes; rule-7-safe copy. GATE PASS A: depth 1 ·
-  restraint 2 · one-idea 2 · motion 1 (.alive breathe true; static lane) ·
-  green 2 (sacred — live ask + W node only) · earns 2 = 10/12, no bar at 0.
-  PASS B: prose-blob NO · card-grid NO · slide-fade NO · green-decoration NO ·
-  centered NO (left-weighted) · saas-rhythm NO. 0 triggers. VERDICT PASS. wb
-  content check clean (3 sections). Objective A spine complete.
-- audit: taste/honesty pass on 04-anatomy + 05-weave (last commits). Found a
-  real responsive fragility — both the spine (04) and flow line (05) used SVGs
-  with preserveAspectRatio="none" and fixed-cy node circles, so the nodes
-  stretched/drifted off their planes on reflow (the green "live" node could
-  slide off plane 02 / move 03 at narrow widths). Fix: replaced the pinned-node
-  SVGs with a single 0..100 tracking line (vector-effect non-scaling-stroke;
-  dashed on 05 = process-in-time), and let sacred-green life breathe ONLY on
-  the plane itself (plane 02 / move 03 already carry the .alive dot). More
-  robust, no meaning lost. GATE (both) 11/12, 0 triggers, PASS. 06-join read
-  clean — no change. wb content check clean (3 sections); published. Note:
-  localhost:4000 404s this run (dev server not serving) — published anyway;
-  partials were already live from prior runs.
+- add: 06-join (invitation). GATE 10/12, 0 triggers, PASS. You don't deploy a
+  workbook, you join it. wb content check clean (3 sections). Objective A
+  spine complete.
+- audit: taste/honesty pass on 04-anatomy + 05-weave. Fixed a responsive
+  fragility (pinned-node SVGs stretched on reflow) → single 0..100
+  non-scaling-stroke tracking line, life breathes on the plane only. GATE
+  (both) 11/12, 0 triggers, PASS. wb content check clean; published.
+- plan: groomed the roadmap holistically. Closed Objective A (spine complete).
+  Applied dream verdicts: promoted living-proof + field-note to NEXT (Objective
+  B is now the active objective). Reframed living-proof to be HONEST — it
+  points at the real team-owned panel, never fakes a run log (rule 1). Flagged
+  favicon + og as likely shell-owned (CHECK-then-cancel, rule 3b). Sequenced
+  Objective C (faq/blog/compose) after B. Board now: A done, B = 2 NEXT, C = 5
+  TODO across a clear acceptance-keyed roadmap.
