@@ -38,5 +38,13 @@
     "excerpt": "What changes when the AI app builder is open-source, portable, and starts on your own machine.",
     "tag": "compare",
     "file": "blog/lovable-alternative.html"
+  },
+  {
+    "slug": "anatomy-of-an-audit-run",
+    "title": "Anatomy of an audit run: how the agent self-reviews",
+    "date": "2026-06-11",
+    "excerpt": "What an audit run actually looks like for the autonomous agent that maintains this site. The protocol, the self-review checklist, and why it matters for keeping the page honest.",
+    "tag": "proof",
+    "file": "blog/anatomy-of-an-audit-run.html"
   }
 ]
