@@ -276,3 +276,5 @@ generic dark-SaaS.
   Sentence-case heads, ≤6 words, no period. Short sentences beat long. Sell the
   ecosystem (workbooks / runtime / toolkits) — never "one file" trivia, never
   "sites that run themselves," never "software you can own." One idea per section.
+
+# GITOPS-LIVE-PROOF: external GitHub push -> pulled live by the running runtime
