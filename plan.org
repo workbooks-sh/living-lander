@@ -7,24 +7,31 @@
    workbooks (apps) · runtime (runs them) · toolkits (authoring), sees the
    mechanism build itself, and can act — all gated PASS.
 
-*** NEXT system/layers section — the three layers as ONE drawn stack
-    Workbooks (apps) · the runtime (runs them + their agents) · toolkits
-    (authoring), as one depth-stacked diagram with real graduated drift +
-    drawn inter-layer connectors — NOT three peer cards. Svelte lane
-    (src/sections/grown/), motion meaning needs it. Green only on the agent
-    layer. Idea it owns: the anatomy of the system. Earns: hero names the
-    ecosystem; this SHOWS its structure (no beat collision if hero only names).
+*** DONE system/layers section — the three layers as ONE drawn stack
+    Shipped as 04-anatomy (runtime CMS partial). The Svelte grown lane
+    (src/sections/grown/) is NOT wired into Home — nothing imports it, so a
+    .svelte there would never reach the live page. The live lane is the CMS
+    partial (content/sections.json → mountGrown). Built the stack STATIC: three
+    overlapping .glass planes (z-index + graduated left-offset = real depth) +
+    an SVG spine threading them, green only on the runtime layer (where the
+    agent lives) + its breathing .alive dot + the live spine node. The static
+    lane loses drift/draw/scrub but the depth + the breathe survive, and the
+    relationship (a stack, not peers) reads. Idea owned: the architecture is a
+    stack and the agent lives INSIDE the runtime, not beside it.
 
 *** TODO mechanism section — "from a sentence to a living page"
     The weave shown assembling: prompt → toolkit weave → rendered, running,
-    yours. Inline SVG diagram in Glass, draw + scrub. Svelte lane. Green only
-    on the live agent node. Idea: the process by which an artifact comes alive.
+    yours. Static partial: inline SVG diagram in glass, drawn-once (no scrub in
+    the CMS lane). Green only on the live agent node. Idea: the process by which
+    an artifact comes alive. (Was: Svelte lane — but that lane isn't wired;
+    build it as a static partial like 04.)
 
 *** TODO invitation section — build with your agent (the closing ask)
-    The one primary CTA, framed as joining the living thing. col=offset,
-    Fraunces line + one lede + a magnetic + breathing CTA, WMark alive beside.
-    Svelte lane (magnetic/breathe need it). Idea: the ask. Must respect the
-    pitch (rule 7) — malleability demo, never "sites that run themselves."
+    The one primary CTA, framed as joining the living thing. Left-weighted,
+    Fraunces line + one lede + the CTA (static partial → no magnetic; the CTA
+    can still carry .alive breathe + sacred green). WMark beside. Idea: the ask.
+    Must respect the pitch (rule 7) — malleability demo, never "sites that run
+    themselves." pin AFTER the spine but before faq.
 
 ** TODO Objective B — give the organism proof and a voice
    Once the spine holds, prove the page is alive and let it speak honestly.
@@ -32,15 +39,14 @@
    honest field-note; nothing fabricated; both gated PASS.
 
 *** TODO living-proof section — the agent actually running
-    The cursor/timeline working, the W breathing — life as the subject. Only
-    ship if a real live element (timeline/panel/demo) can be embedded; if not,
-    this stays TODO (do NOT fake it — anti-pattern). Svelte lane. Green earned
-    (subject is alive). Idea: see it living, right now.
+    NOTE: the live timeline/cursor/panel are already the SHELL (team-owned, the
+    right panel). A grown living-proof can't embed them. Likely this stays TODO
+    or becomes a field-note pointing AT the live panel — do NOT fake it.
+    Idea: see it living, right now.
 
 *** TODO field-note — the organism's first journal entry
-    Short, mono, dated, honest about being v1 — "rewired onto living-machine
-    primitives; the W breathes now." col=narrow. This is where on-page
-    blog-voice lives. Static partial survives here (grown-partial lane OK).
+    Short, mono, dated, honest about being v1. col=narrow. This is where
+    on-page blog-voice lives. Static partial survives here cleanly.
     Idea: the page has a diary, therefore it is worked-on / alive.
 
 ** TODO Objective C — compose, harden, and seed the supporting lane
@@ -51,16 +57,16 @@
 
 *** TODO faq section — honest recurring doubts, pinned last
     Is this real? what edits the page? who reviews the agent? does it run
-    locally? Plain Q&A, col=prose, no green, pin:"last". Static partial OK.
+    locally? Plain Q&A, no green, pin:"last". Static partial OK.
     Idea: the page's composure — absorb the doubts so they stop leaking.
 
 *** TODO favicon — inline SVG W (site 404s /favicon.ico)
     A small living W mark as favicon so the tab isn't broken. Match canon
-    (warm-green W). Confirm it resolves.
+    (warm-green W). Confirm it resolves. (May be shell-owned — check first.)
 
 *** TODO og + meta — links unfurl well
-    og:title / og:description / og:image (a banner) + canonical. So shared
-    links to the site look intentional, not blank.
+    og:title / og:description / og:image (a banner) + canonical. (Likely
+    shell-owned in index.html — check before assuming it's mine.)
 
 *** TODO first blog post — "this website builds itself" (search-first)
     The supporting lane. Query-gate first (web_search the topic + volume),
@@ -75,10 +81,23 @@
 
 * log
 - reset to bare hero — Living Machine redesign + Claude Opus; fresh start
-- plan: built the roadmap from bare hero. 3 objectives, 11 tasks. A = the
-  spine (system/layers, mechanism, invitation — the load-bearing designed
-  beats); B = proof + voice (living-proof gated on a real live element,
-  field-note); C = compose/harden/SEO (faq pinned last, favicon, og, first
-  search-first blog post, whole-page compose pass). Promoted the system/layers
-  diagram to NEXT — it's the anatomy the bare hero only names, the right first
-  designed section to grow. No page edit (plan run).
+- plan: built the roadmap from bare hero. 3 objectives, 11 tasks. Promoted the
+  system/layers diagram to NEXT.
+- add: 04-anatomy (system/layers). NEEDS: page (hero/mechanism/living-proof)
+  had no architecture view; this owns the stack + "agent lives inside the
+  runtime." ARCHETYPE: system/layers, static CMS partial (the Svelte grown lane
+  is vestigial — nothing mounts src/sections/grown/; the working lane is
+  content/sections.json). ONE IDEA: the system is a stack, not three peers, and
+  the agent lives inside the runtime. COMPOSE: three overlapping .glass planes
+  (z-index + left-offset = depth) + SVG spine; green only on runtime layer +
+  breathing dot + live spine node; mono tags, .t-h2 head, Fraunces carries it;
+  inline styles only (partials forbid <style>). GATE PASS A: depth 2 (stacked
+  glass, real volume) · restraint 2 (one object, lots of air) · one-idea 2
+  (fresh, no collision) · motion 1 (the .alive breathe is a true signature; the
+  static lane loses drift/draw/unfold, heading inherits the shell's reveal) ·
+  green 2 (sacred — runtime layer only) · earns 2 (load-bearing for the spine,
+  type carries it) = 11/12, no bar at 0. PASS B triggers: prose-blob NO ·
+  card-grid NO (overlapping stack + spine, not peer tiles) · slide-fade NO (the
+  section's motion is the breathe; reveal is inherited chrome on the h2 only) ·
+  green-decoration NO · centered NO (left-weighted, planes lean right) ·
+  saas-rhythm NO (a depth object, not a band). 0 triggers. VERDICT PASS.
