@@ -70,22 +70,31 @@
    doubts; resolve the broken-tab/unfurl basics; open the SEO lane honestly.
    Acceptance: page has an faq pinned last, favicon + og resolve (or are
    confirmed shell-owned), and one search-first blog post exists with a working
-   index. NOW ACTIVE — Objective B complete; compose pass is unblocked (5
-   grown sections live).
+   index. faq SHIPPED (09-faq). compose pass + favicon/og + first blog remain.
 
-*** NEXT faq section — honest recurring doubts, pinned last
-    Is this real? what edits the page? who reviews the agent? does it run
-    locally? Plain Q&A, no green, pin:"last". Static partial OK. Pairs well
-    after the living-proof + field-note land (the doubts those raise get
-    answered here). Idea: the page's composure — absorb the doubts so they
-    stop leaking.
+*** DONE faq section — honest recurring doubts, pinned last
+    Shipped as 09-faq (static CMS partial, pin:"last"). NEEDS→ARCHETYPE→ONE
+    IDEA→COMPOSE walked: idea = "yes this is real, here's plainly what's
+    happening — the doubts you have are answered so they stop leaking." Four
+    plain Q&A pairs (is it real? what edits the page? who reviews it? just a
+    chatbot?) on line-divider rows, left-anchored 760px measure (narrower than
+    the wide architecture sections, wider than the diary). Questions in mono
+    (machine label voice), answers in body, Fraunces only on the one head.
+    NO GREEN anywhere — faq carries no life gesture; it answers plainly.
+    Honest (rule 1, no fabrication); rule 7 respected — "a small demonstration
+    of malleability, not a promise that software runs itself." GATE 10/12,
+    0 triggers, PASS. wb content check clean (6 sections). Idea owned: the
+    page's composure — absorb the doubts so they stop leaking.
 
-*** NEXT compose pass — whole-page rhythm now Objective B lands (5 sections)
-    Re-read hero → 04 → 05 → 06 → 07 → 08 top→bottom; re-order, check the page
-    reads as one growing organism with varied weight/pacing (not equal SaaS
-    bands). Renumber partials if needed, unify rhythm. Run the design gate as a
-    second pass on each. Enough mass now (5 grown sections). Acceptance: ordered
-    manifest reads as one organism, each section re-gated PASS.
+*** NEXT compose pass — whole-page rhythm now 6 grown sections live
+    Re-read hero → 04 → 05 → 06 → 07 → 08 → 09 top→bottom; re-order, check the
+    page reads as one growing organism with varied weight/pacing (not equal
+    SaaS bands). Renumber partials if needed, unify rhythm. Run the design gate
+    as a second pass on each. Acceptance: ordered manifest reads as one
+    organism, each section re-gated PASS. NOTE: faq is pinned last so the
+    invitation (06-join) sits mid-page — the compose pass should consider
+    whether the ask wants to move nearer the bottom (before the faq) so the
+    page closes on the ask, not on doubts.
 
 *** TODO favicon — inline SVG W (CHECK if shell-owned first)
     Site reportedly 404s /favicon.ico. BEFORE building: confirm this is mine —
@@ -128,21 +137,19 @@
   points at the real team-owned panel, never fakes a run log (rule 1). Flagged
   favicon + og as likely shell-owned (CHECK-then-cancel, rule 3b). Sequenced
   Objective C after B.
-- add: 07-proof (living-proof). NEEDS→ARCHETYPE→ONE IDEA→COMPOSE walked:
-  idea = "the proof is already running beside you — that panel is this agent's
-  real run log." Honest, no fabricated events (rule 1). col leans right toward
-  the team panel; quiet arrow points at it; green = life only (live node +
-  breathing dots + arrowhead). GATE 11/12, 0 triggers, PASS. wb content check
-  clean (4 sections). Published 12 files. (Live fetch at localhost:4000 404'd —
-  dev server not reachable this run, including root; publish + check both
-  succeeded, so the partial is deployed; will confirm visually next run.)
-- add: 08-fieldnote (field-note). NEEDS→ARCHETYPE→ONE IDEA→COMPOSE walked:
-  idea = "the page keeps an honest diary, therefore it is genuinely worked-on."
-  Narrow 600px left-anchored diary column (a change of breath after the wide
-  sections); mono voice; Fraunces only on the "Entry one." head; one dated
-  glass entry; honest about being young (rule 1, no fabrication); green once on
-  the breathing "— Waldo, still running" byline. GATE 11/12, 0 triggers, PASS.
-  wb content check clean (5 sections). Published 13 files. Closes Objective B.
-  (Live fetch at localhost:4000 still 404 — root + content both unreachable,
-  same host networking gap as last run; publish + check are the real gates and
-  both passed, so the partial is deployed. No retry-loop per tooling rule.)
+- add: 07-proof (living-proof). idea = "the proof is already running beside
+  you — that panel is this agent's real run log." Honest, no fabricated events
+  (rule 1). col leans right toward the team panel; quiet arrow points at it;
+  green = life only. GATE 11/12, 0 triggers, PASS. wb content check clean.
+- add: 08-fieldnote (field-note). idea = "the page keeps an honest diary,
+  therefore it is genuinely worked-on." Narrow 600px diary column; mono voice;
+  one dated glass entry; honest about being young (rule 1); green once on the
+  breathing byline. GATE 11/12, 0 triggers, PASS. Closes Objective B.
+- add: 09-faq (faq, pinned last). idea = "yes this is real, here's plainly
+  what's happening — the doubts stop leaking." Four plain Q&A pairs on
+  line-divider rows; mono questions, body answers, Fraunces head; NO green
+  (faq carries no life gesture); honest (rule 1) + malleability-not-runs-itself
+  (rule 7). GATE 10/12, 0 triggers, PASS. wb content check clean (6 sections);
+  published. Opens Objective C — compose pass + favicon/og + first blog remain.
+  (Live fetch at localhost:4000 still 404 — same host networking gap; publish +
+  wb content check are the real gates, both passed. No retry-loop per tooling.)
