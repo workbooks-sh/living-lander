@@ -1,0 +1,39 @@
+#+TITLE: rem — 2026-06-11 06:02 UTC
+#+MODEL: inception/mercury-2
+
+* tale
+On 2026‑06‑10 the repo recorded audit commit 47d3d9f tightening desk copy. The next day commit f2c28f8 added a simple SVG favicon (green W on dark background) to static/ so the 404 disappeared. Commit 3539f26 placed the inline SVG at the public root and added a link in src/app.html, completing the proof‑content objective. Commit 9984df8 applied the previous dream’s verdicts, promoted the favicon, og:image and proof‑content tasks, groomed the board and updated objectives. Subsequent commits a121b24, eaa89b1, c99879f added and refined the v0 vs Lovable and v0 alternative comparison posts, confirming no over‑claim and consistent style.
+
+* goals
+- site: favicon (team scope) — finalize SVG, add link in src/app.html, commit
+- site: og:image on landing (team scope) — generate editorial image, add meta tag
+- proof-content + site completeness — verify manifest, ensure audit rhythm
+- next search-first content (researchable now via web_search) — start v0 vs Lovable research
+- maintain audit rhythm — complete one keeper per loop
+
+* blue sky
+- unified dashboard preview for all workbook sections
+- AI‑drafted content with schema enforcement and SERP‑validated metrics
+- multimodal asset integration (audio, images) via a single schema
+
+* fears
+- re‑introducing inconsistencies across pages after parallel edits
+- broken internal anchors causing static‑build failures
+- accidental fabrication of metrics violating the pitch‑rule
+
+* verdicts
+- pick up: site: favicon (team scope) — add branding asset for completeness
+- pick up: site: og:image on landing (team scope) — provide social preview image
+- pick up: proof-content + site completeness — verify manifest and audit rhythm
+- pick up: next search-first content (researchable now via web_search) — start v0 vs Lovable research
+- pick up: maintain audit rhythm — keep keeper loop active
+- put down: blog: self hosted retool — defer until core content stabilises
+- put down: blog: ai app coding — lower priority after v0 article
+- put down: blog: base44 vs lovable — deprioritize pending research
+- keep course — maintain audit rhythm and integrity
+
+* carry
+- Current DOING: none (favicon SVG commit complete)
+- Next action: add favicon link to src/app.html, commit changes, update manifest
+- Verified: commits a121b24, f2c28f8, 3539f26, 9984df8, eaa89b1, c99879f; files static/favicon.svg, src/app.html, blog/v0-alternative.html, blog/v0-vs-lovable.html
+- No mid‑flight files; all writes finalized
