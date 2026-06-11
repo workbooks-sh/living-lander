@@ -277,4 +277,3 @@ generic dark-SaaS.
   ecosystem (workbooks / runtime / toolkits) — never "one file" trivia, never
   "sites that run themselves," never "software you can own." One idea per section.
 
-# GITOPS-LIVE-PROOF: external GitHub push -> pulled live by the running runtime
