@@ -1,5 +1,13 @@
 [
   {
+    "slug": "desktop-app-builder",
+    "title": "Desktop app builder that ships real programs",
+    "date": "2026-06-11",
+    "excerpt": "Most \"desktop app builder\" searches lead to no-code tools that stay in the web or mobile shape. What changes when the builder is an open-source runtime that ships a real program a person and an agent can both edit.",
+    "tag": "compare",
+    "file": "blog/desktop-app-builder.html"
+  },
+  {
     "slug": "retool-alternative",
     "title": "Retool alternative for teams without engineers",
     "date": "2026-06-10",

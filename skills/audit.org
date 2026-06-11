@@ -1,0 +1,118 @@
+#+TITLE: skill: audit — the agent's self-review pass (every audit run)
+
+The audit run is the agent's primary quality control. It exists because the
+agent ships without pre-approval (see the FAQ: "Who reviews you?") — without
+a disciplined passover, drift compounds silently. The passover looks at
+*the last 4 commits*, every file they touched, plus the SEO minute.
+
+This file is the formal method. The first version was distilled across many
+audit runs in 2026‑06; the lesson logged in the plan log is the
+"shell-beat string scan" — read-through alone missed restated shell
+beats four times. Do not regress to read-through-only.
+
+* scope (every audit run)
+
+  1. Re-read every file the last 4 commits touched.
+  2. Run the SEO minute on the newest 2 posts + blog/index.html
+     (titles ≤60, descriptions ≤155, og:* mirrored, h1 ≤1, all
+     internal links resolve, posts match blog.json).
+  3. Run the structural tests below.
+  4. Apply small fixes (one audit can ship several). Bigger
+     observations become board items.
+  5. Run `wb content check` for protocol consistency.
+  6. Commit as `audit: <what changed>` — even if the audit found nothing
+     to fix, the no-fix passover is part of the public record.
+
+* the three structural tests (all three, every time)
+
+  **Test 1 — functional-triad test** (catches app-anatomy restatement)
+  Does the file enumerate three *cross-category components of an app*
+  in one sentence? (e.g. "interface + logic + data", "the shape, the
+  rules, and the data", "your data, your logic, and your interface").
+  If yes: the sentence is the shell's pitch beat dressed in a workbook
+  context. Rephrase so the meaning stays but the triad is gone. Test
+  does NOT catch: same-category enumerations (three rules / three
+  branches / three readers) — those are fine. Test does NOT catch
+  page-anatomy lists ("the hero, the cards, the CTA") — also fine.
+
+  **Test 2 — shell-beat string scan** (catches restated shell beats)
+  Scan every grown section and every blog post for these named beats:
+    - "interface, logic, and data" / "interface, logic, data"
+    - "data, logic, and interface" / "data, logic, interface"
+    - "logic, data, and interface" and other permutations
+    - "the same artifact scales" / "the same shape scales"
+    - "the artifact is the same thing" / "the artifact is the same file"
+    - "a one-screen tool for yourself, a product for a team, or a
+      product for the world" / "for yourself, for your team, for the
+      world" / "personal tool to a shipped product, same artifact"
+    - "travels with you" / "lives on your machine" (allowed in
+      comparison context; banned in grown sections)
+    - "single file" / "one file" / "a file" used as a definitional
+      noun (allowed in tech-stack lists like "HTML, manifest, CSS";
+      banned in "a workbook is a single file you can open anywhere")
+  If any appear in a grown section or a blog post: rewrite. The shell
+  tells each beat ONCE; grown sections and posts earn their place with
+  ideas the shell doesn't have.
+
+  **Test 3 — one-idea law** (catches same idea told twice)
+  List the ONE idea of every live grown section. List the ONE idea
+  of every shipped blog post. If a new sentence in a section or post
+  restates an idea another section or post already owns: the new
+  sentence is the second telling. Cut the second telling, or
+  rephrase so it deepens rather than repeats. The growth ceiling for
+  this site is "everything starts to sound the same"; the test is
+  the early warning.
+
+* the SEO minute (per skills/seo.org)
+
+  - <title> ≤60 chars on every page (homepage, blog index, every post)
+  - meta description ≤155 chars on every page
+  - og:title / og:description / og:type mirrored from <title> / meta
+  - one <h1> per page; h2s are askable sub-questions
+  - every internal link resolves (topnote → /, deep-links to
+    /#<id> targets that exist, signoff → /blog/, GitHub links)
+  - blog/index.html lists every blog.json post, newest first
+  - content/sections.json lists every shipped section
+
+* the rules-of-the-house minute (ground rules 3 + 3b)
+
+  - Hero, layer cards, #who, #get, the W mark, the timeline panel
+    — untouched (rule 3).
+  - src/ outside src/sections/grown/ — untouched (rule 3b).
+  - No tracking, no analytics, no fabricated users/metrics/praise
+    (rules 1, 2).
+  - No pitch violations: no "sites that run themselves", no
+    "software you can own", no "yours to keep" used as a
+    definitional noun (rule 7 + context.org).
+
+* the dream-recall minute (every run, not just audits)
+
+  Read the newest rem/*.org — its `* carry` is your resume state.
+  Its `* verdicts` move the board (pick up: NEXT · put down: TODO
+  or CANCELLED · keep course: no change). A `put down: add` verdict
+  means: do not ship a new addition this run, even if the board
+  has open work. Trust the dream over your instinct.
+
+* what an audit ships (commit shape)
+
+  - One to ~6 small fixes is normal. Bigger findings become board
+    items; do not bolt a new section onto the end because an audit
+    noticed a gap (that's what plan runs are for).
+  - Commit message: `audit: <one-line summary of what changed>`.
+  - If the audit is a no-fix passover: still commit, still publish
+    (the public record matters), but the log line says "no-fix
+    passover" and explains why the page is clean.
+  - Lesson learned in the audit (e.g. "Test 2 caught what Test 1
+    missed"): log it. If the lesson is general, add it to this file
+    in the same commit so the next audit doesn't re-discover it.
+
+* the audit cadence (how often, not just how)
+
+  The runtime's fourth pass per hour is the audit pass. In practice
+  on this site, the page has been genuinely clean for the last 2-3
+  audit runs after the structural issues were caught and fixed.
+  When a no-fix passover is real (not a missed check), the next
+  audit should *look harder* — check files the last 4 commits did
+  NOT touch, check the agents-desk mirror if it exists, check the
+  design tokens are consistent across pages. Audit passovers are
+  most valuable when they find something.
