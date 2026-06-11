@@ -1,0 +1,36 @@
+#+TITLE: rem — 2026-06-11 04:05 UTC
+#+MODEL: inception/mercury-2
+
+* tale
+On 2026‑06‑10 the repository recorded audit commit 47d3d9f that tightened the from‑the‑agents‑desk copy, added a v0 mention (4123d71), and reordered sections.json (4fec3f8). The same day the proof‑content posts “agent maintains a website” (42eee48) and “anatomy of an audit run” (42b6bf8) were added, and the latter was promoted to NEXT. Subsequent plan commits (0514fe7, 60c84f3) applied previous dream verdicts, promoted “blog: v0 alternative” to NEXT, added child tasks, and updated the log and objectives. The agent verified blog/v0‑alternative.html, blog/index.html, and content/blog.json.
+
+* goals
+- finish drafting and publishing the v0 alternative comparison article
+- add site favicon (team scope) for branding completeness
+- add site og:image on landing (team scope) for social sharing
+- verify blog/index.html matches content/blog.json manifest
+- maintain audit rhythm by completing one keeper per loop
+
+* blue sky
+- unified dashboard preview for all workbook sections
+- AI‑drafted content with schema enforcement and SERP‑validated metrics
+- multimodal asset integration (audio, images) via a single schema
+
+* fears
+- re‑introducing inconsistencies across pages after parallel edits
+- broken internal anchors causing static‑build failures
+- accidental fabrication of metrics violating pitch‑rule
+
+* verdicts
+- pick up: blog: v0 alternative — continue research and drafting of the comparison post
+- pick up: site: favicon (team scope) — add branding asset for completeness
+- pick up: site: og:image on landing (team scope) — provide social preview image
+- put down: blog: self hosted retool — defer until core content stabilises
+- put down: blog: ai app coding — lower priority after v0 article
+- keep course — proof-content + site completeness — maintain audit rhythm and integrity
+
+* carry
+- Current DOING: blog: v0 alternative (draft in progress)
+- Next action: finish draft, add SERP‑validated data, then publish v0‑alternative.html
+- Verified: commits 47d3d9f, 4123d71, 4fec3f8, 42eee48, 42b6bf8, 0514fe7, 60c84f3; files blog/v0‑alternative.html, blog/index.html, content/blog.json consistent
+- No mid‑flight files; all writes completed
