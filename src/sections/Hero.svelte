@@ -8,9 +8,14 @@
   import AtmosphereField from '../lib/AtmosphereField.svelte';
   import { WMark, Kicker, Glass } from '../lib/ui';
   import { registerRef, onFeed, describeCommit, relTime } from '../lib/stores.js';
-  import { glyph, glyphAsync } from '../lib/glyphs.js';
   import { field, magnetic, typeBloom, reduce } from '../lib/motion.js';
   import { onMount } from 'svelte';
+  // the real coding-agent PRODUCT marks (LobeHub), rendered in a light tint so
+  // they read on the dark canvas — not the generic black brand icons.
+  import claudecodeSvg from '../lib/agent-logos/claudecode.svg?raw';
+  import codexSvg from '../lib/agent-logos/codex.svg?raw';
+  import cursorSvg from '../lib/agent-logos/cursor.svg?raw';
+  import copilotSvg from '../lib/agent-logos/copilot.svg?raw';
 
   let h1textEl, caretEl, eyebrowEl, fogEl;
   $effect(() => {
@@ -55,23 +60,12 @@
     '`.claude/skills` (and your Codex/Cursor skill dirs). Then load the `getting-started` skill and ' +
     'follow it to set up the project.';
 
-  const SLOTS = [
-    { key: 'claude',  async: 'brand:claude ai',       sync: 'brand:anthropic', label: 'Claude' },
-    { key: 'codex',   async: 'brand:codex',           sync: 'brand:openai',    label: 'Codex' },
-    { key: 'cursor',  async: 'brand:cursor',          sync: null,              label: 'Cursor' },
-    { key: 'copilot', async: 'brand:github copilot',  sync: 'brand:github',    label: 'Copilot' },
-    { key: 'gemini',  async: 'brand:gemini',          sync: 'brand:google',    label: 'Gemini' },
+  const LOGOS = [
+    { svg: claudecodeSvg, label: 'Claude Code' },
+    { svg: codexSvg, label: 'Codex' },
+    { svg: cursorSvg, label: 'Cursor' },
+    { svg: copilotSvg, label: 'Copilot' },
   ];
-  let marks = $state({});
-  $effect(() => {
-    for (const s of SLOTS) {
-      const fallback = s.sync ? glyph(s.sync, { size: '1.25em', title: s.label }) : null;
-      if (fallback) marks = { ...marks, [s.key]: fallback };
-      glyphAsync(s.async, { size: '1.25em', title: s.label }).then((svg) => {
-        if (svg) marks = { ...marks, [s.key]: svg };
-      });
-    }
-  });
 
   async function copy(text, e) {
     try { await navigator.clipboard.writeText(text); } catch { /* clipboard blocked */ }
@@ -133,9 +127,9 @@
         <Kicker variant="note">works with your agent</Kicker>
         <p class="agents-line">Point Claude, Cursor, Codex, or Copilot at your
           project — it learns Workbooks from the skills.</p>
-        <div class="agents-marks" aria-hidden="true">
-          {#each SLOTS as s (s.key)}
-            {#if marks[s.key]}<span class="mark" title={s.label}>{@html marks[s.key]}</span>{/if}
+        <div class="agents-marks">
+          {#each LOGOS as l (l.label)}
+            <span class="mark" title={l.label} aria-label={l.label}>{@html l.svg}</span>
           {/each}
         </div>
         <div class="agents-btns">
@@ -276,12 +270,17 @@
     font: 400 clamp(13.5px, 1.1vw, 15px)/1.5 var(--sans); max-width: 30ch;
   }
   .agents-marks {
-    display: flex; align-items: center; gap: 16px; opacity: 0.75; font-size: 20px;
+    display: flex; align-items: center; gap: 18px; font-size: 22px;
     margin: 2px 0 6px;
   }
-  .agents-marks .mark { display: inline-flex; line-height: 0; }
-  .agents-marks :global(svg) { height: 1.25em; width: auto; }
-  .agents-marks :global(.glyph--mono) { color: var(--dim); }
+  /* the LobeHub product marks are currentColor mono → render in a light bone tint
+     so they read on the dark canvas; lift to full ink on hover. */
+  .agents-marks .mark {
+    display: inline-flex; line-height: 0; color: var(--dim);
+    transition: color 0.18s ease, transform 0.18s ease;
+  }
+  .agents-marks .mark:hover { color: var(--ink); transform: translateY(-1px); }
+  .agents-marks :global(svg) { height: 1.15em; width: auto; display: block; }
   .agents-btns { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
   /* brand rule: green fill, INK text — never white on green */
   .btn.primary.live { background: var(--live); color: var(--live-ink); border-color: transparent; }
