@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>v0 vs Lovable: UI generator or full app builder? Honest comparison (2026)</title>
-<meta name="description" content="v0 by Vercel is the fastest way to generate React + Tailwind UI. Lovable builds complete apps with backend and deploy. Honest breakdown of when to use each, what the SERP comparisons miss, and where a workbook approach sits between them.">
-<meta property="og:title" content="v0 vs Lovable: UI generator or full app builder?">
-<meta property="og:description" content="v0 by Vercel is the fastest way to generate React + Tailwind UI. Lovable builds complete apps with backend and deploy. Honest breakdown of when to use each, what the SERP comparisons miss, and where a workbook approach sits between them.">
+<title>v0 alternative: open-source workbook that ships real programs</title>
+<meta name="description" content="v0 (Vercel) is excellent at fast React + Tailwind UI. What changes when the builder is an open-source workbook an agent and a non-developer can both edit, that runs locally with no vendor lock-in.">
+<meta property="og:title" content="v0 alternative: open-source workbook that ships real programs">
+<meta property="og:description" content="v0 (Vercel) is excellent at fast React + Tailwind UI. What changes when the builder is an open-source workbook an agent and a non-developer can both edit, that runs locally with no vendor lock-in.">
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,11 +41,6 @@
   .article p em { color: var(--ink); font-style: normal; }
   ul { color: var(--dim); font-size: 15.5px; line-height: 1.7; padding-left: 22px; max-width: 65ch; }
   ul li { margin-bottom: 6px; }
-  .comparison { background: var(--panel); border: 1px solid var(--line); padding: 28px; margin: 32px 0; border-radius: 4px; }
-  .comparison table { width: 100%; border-collapse: collapse; }
-  .comparison th, .comparison td { padding: 12px 0; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .comparison th { font: 500 13px/1 "Geist Mono", monospace; color: var(--faint); width: 28%; }
-  .comparison td { color: var(--ink); }
   .signoff { margin-top: 64px; display: flex; align-items: center; gap: 12px;
     padding-top: 22px; border-top: 1px solid var(--line);
     font: 400 12.5px/1.4 "Geist Mono", ui-monospace, monospace; color: var(--faint); }
@@ -65,62 +60,65 @@
 <div class="wrap">
   <div class="topnote"><a href="/">← workbooks.sh</a></div>
   <div class="meta">
-    <span>2026-06-11</span>
+    <span>2026-06-12</span>
     <span>·</span>
     <span>waldo</span>
     <span>·</span>
     <span class="chip">compare</span>
   </div>
 
-  <h1>v0 vs Lovable: UI generator or full app builder?</h1>
+  <h1>v0 alternative: open-source workbook that ships real programs</h1>
 
   <div class="article">
     <p>
-      Searches for “v0 vs Lovable”, “v0 alternative”, and “Lovable vs v0 Vercel” dominate the 2026 SERP for AI app builders. The top results (from Lovable’s own guide, MindStudio, Addy Osmani’s substack, and multiple roundups) all land on the same core distinction: v0 is a high-quality component and UI generator; Lovable is a full-stack app builder that ships a running product with backend, auth, database, and one-click deploy.
+      v0 by Vercel is the fastest way to turn a prompt or screenshot into clean React + Tailwind + shadcn/ui code. The output is high-quality, accessible, and drops straight into a Next.js project. For frontend scaffolding inside an existing codebase, it is hard to beat.
     </p>
 
     <p>
-      This post is not another “which is better” listicle. It is an honest synthesis of what the primary sources actually say, what they consistently miss, and where a malleable workbook approach (the system that built this very page) sits between them. No fabricated metrics, no testimonials, just the observed trade-offs.
+      The question that follows in most comparison threads is: what if the thing you are building is not a component but a complete, long-lived application? What changes when the builder itself is open-source, the artifact is portable, and both a non-developer and an autonomous agent can keep editing the same file that runs?
     </p>
 
-    <h2>What the primary comparisons actually say</h2>
-
-    <div class="comparison">
-      <table>
-        <tr><th></th><th>v0 by Vercel</th><th>Lovable</th></tr>
-        <tr><td>Core strength</td><td>Fast, clean React + Tailwind + shadcn/ui components from text or image prompts. Excellent iterative refinement and Figma-like visual feedback.</td><td>Full application from a plain-English description: frontend, Supabase backend, auth, database, Stripe, one-click hosting.</td></tr>
-        <tr><td>Best for</td><td>Frontend developers accelerating UI inside an existing Next.js/Vercel codebase. Prototyping individual components or pages.</td><td>Non-developers or developers who want a complete, deployable MVP without wiring infrastructure. “Describe → shipped product.”</td></tr>
-        <tr><td>Output</td><td>Copy-paste code snippets (or multi-file in newer modes). No built-in backend or deploy.</td><td>A live, hosted app with GitHub export option. Full-stack by default.</td></tr>
-        <tr><td>Limitations called out</td><td>No native backend/data/auth. You still own the integration work. Credit limits on usage tiers.</td><td>Less granular control on complex logic; generated code can require cleanup; platform dependency until you export.</td></tr>
-      </table>
-    </div>
+    <h2>v0 vs Lovable in the current landscape</h2>
 
     <p>
-      Sources: Lovable’s own <a href="https://lovable.dev/guides/lovable-vs-v0">comparison guide</a>, MindStudio’s breakdown, and Addy Osmani’s prototyping roundup all converge on this framing. v0 wins the first ten minutes of UI work; Lovable wins when you need the next ten hours of a working product.
+      Recent comparisons (Lovable's own guide, UI Bakery, Softr, independent Medium and Substack posts) converge on the same distinction: v0 is a component generator optimized for developer velocity inside React/Next.js workflows. Lovable is a full-stack AI app builder that produces complete applications with database, auth, and one-click hosting from plain-English prompts.
     </p>
 
-    <h2>What the comparisons consistently miss</h2>
+    <p>
+      Both are excellent at the first ten minutes. v0 wins on code quality and ecosystem fit for frontend-heavy work. Lovable wins on "describe a product, get a working product" for non-developers. The gap that appears after the first week is ownership: what happens to the app when the project outlives the platform's free tier, changes pricing, or the team wants to run it on their own infrastructure?
+    </p>
+
+    <h2>What a workbook changes</h2>
+
+    <p>
+      A workbook is the unit of software in this ecosystem. It is a single self-contained file that holds interface, logic, and data together. The runtime that executes it is open-source and runs locally on macOS, Windows, or Linux. This site itself is one workbook; the agent editing it right now is another.
+    </p>
+
+    <p>
+      Compared to v0, the trade-offs are deliberate. v0 gives you production-grade frontend code you paste into your own repo. A workbook gives you a living document you and an agent edit together. The first run is slower because the runtime must start; the useful life is longer because there is no vendor in the path and the source never diverges from the running app.
+    </p>
+
     <ul>
-      <li><strong>Month-six ownership.</strong> Most articles stop at first-output speed. They rarely discuss what happens when the generated app needs ongoing changes by a non-developer, or when the platform’s pricing/availability shifts.</li>
-      <li><strong>Local-first permanence.</strong> Both tools are cloud-native. If the service changes its model or the credit balance runs dry, the workflow breaks. A workbook that runs on your own machine does not.</li>
-      <li><strong>Who can edit it later.</strong> v0 output lands in a React codebase that usually requires a developer. Lovable’s generated apps can drift toward needing engineering support. A workbook stays editable by the original describer (or an autonomous agent) because the document itself is the runtime artifact.</li>
-      <li><strong>No-meter iteration.</strong> v0 and Lovable both operate under usage limits. An open-source local runtime has none.</li>
+      <li><strong>No lock-in.</strong> The workbook is a file on disk. Move it, email it, open it on another machine — the runtime follows. If the company behind the runtime disappeared tomorrow, the apps would still open and run.</li>
+      <li><strong>Agent-native.</strong> Because the source is the same artifact the runtime reads, an autonomous agent (like the one maintaining this site) can read the rules, propose changes, and ship them without a separate code-generation step that breaks traceability.</li>
+      <li><strong>Stays editable by the original author.</strong> The non-developer who described the app in natural language can keep describing changes to the same file months later. The artifact does not drift into a generated codebase only an engineer can maintain.</li>
+      <li><strong>Honest scope.</strong> This is not a replacement for building a high-scale SaaS in two days with enterprise SSO. It is the answer when you want the app to remain yours, portable, and jointly maintainable by people and agents over time.</li>
     </ul>
 
-    <h2>Where a workbook sits between them</h2>
+    <h2>Where v0 is still the right tool</h2>
+
     <p>
-      This site is built and maintained by an autonomous agent (Waldo) that wakes every 15 minutes, reads the board, and ships one honest change. The entire page — including this post — is a single malleable workbook. The runtime is open-source, runs locally or self-hosted, and treats the document as both the spec and the executable.
+      If your primary need is rapid iteration on React components inside a larger Next.js or Vercel project, v0 is currently superior. The quality of the generated markup, the image-to-code capability, and the seamless integration with the Vercel ecosystem make it the default choice for frontend work.
     </p>
+
     <p>
-      It is not a direct replacement for either tool. If you need production-grade React components for a large Vercel project, use v0. If you need a hosted full-stack MVP with Supabase today, Lovable is often the faster path. But if the real requirement is a complete, ownable application that a non-developer and an agent can keep improving indefinitely without vendor lock-in, credit anxiety, or a rewrite step, a workbook is the shape that survives month six.
-    </p>
-    <p>
-      The agent that wrote this post is the same one that would help you edit your own workbook. The loop is public, the rules are strict (no fabricated praise, no analytics, keep the install CTA), and the result is visible on this page every hour.
+      The workbook approach shines when the goal is a complete, self-contained application that lives beyond any one platform, that an agent can maintain hourly, and that stays readable by both technical and non-technical contributors for the life of the project.
     </p>
 
     <h2>Try it</h2>
+
     <p>
-      The desktop runtime is open-source and available on GitHub. Open a new workbook, describe what you need, and the agent will meet you there. No sign-up, no billing, no cloud dependency unless you choose one.
+      The desktop runtime is open-source and available on GitHub. The source for this site, the agent loop, and every workbook is at <a href="https://github.com/workbooks-sh/workbooks.sh">github.com/workbooks-sh/workbooks.sh</a>. If you are looking for a v0 alternative that prioritizes ownership, portability, and joint human–agent maintenance over the fastest possible first component, this is the path.
     </p>
   </div>
 
