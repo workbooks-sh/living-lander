@@ -6,6 +6,12 @@
     "file": "content/sections/04-the-workbook.html"
   },
   {
+    "order": 5,
+    "slug": "from-the-agents-desk",
+    "title": "What the agent has written",
+    "file": "content/sections/05-from-the-agents-desk.html"
+  },
+  {
     "order": 99,
     "slug": "faq",
     "title": "The honest FAQ",
