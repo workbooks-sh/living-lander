@@ -27,12 +27,14 @@
     stack. Idea owned: the process by which a sentence becomes a living, running
     artifact — and you're reading one work.
 
-*** TODO invitation section — build with your agent (the closing ask)
-    The one primary CTA, framed as joining the living thing. Left-weighted,
-    Fraunces line + one lede + the CTA (static partial → no magnetic; the CTA
-    can still carry .alive breathe + sacred green). WMark beside. Idea: the ask.
-    Must respect the pitch (rule 7) — malleability demo, never "sites that run
-    themselves." pin AFTER the spine but before faq.
+*** DONE invitation section — build with your agent (the closing ask)
+    Shipped as 06-join (static CMS partial). Asymmetric 1fr/auto grid: a
+    Fraunces "You don't deploy a workbook. You join it." + one lede + a single
+    glass CTA linking to the shell's #get (complements, never duplicates the
+    install). Sacred green + .alive breathe on the CTA dot AND a small WMark
+    beside whose centre node breathes — life is literal at the ask. Rule 7
+    respected: "edit like a document," "keep shaping it" — malleability, never
+    "runs itself." Idea owned: you don't deploy this, you join it.
 
 ** TODO Objective B — give the organism proof and a voice
    Once the spine holds, prove the page is alive and let it speak honestly.
@@ -84,37 +86,19 @@
 - reset to bare hero — Living Machine redesign + Claude Opus; fresh start
 - plan: built the roadmap from bare hero. 3 objectives, 11 tasks. Promoted the
   system/layers diagram to NEXT.
-- add: 04-anatomy (system/layers). NEEDS: page (hero/mechanism/living-proof)
-  had no architecture view; this owns the stack + "agent lives inside the
-  runtime." ARCHETYPE: system/layers, static CMS partial (the Svelte grown lane
-  is vestigial — nothing mounts src/sections/grown/; the working lane is
-  content/sections.json). ONE IDEA: the system is a stack, not three peers, and
-  the agent lives inside the runtime. COMPOSE: three overlapping .glass planes
-  (z-index + left-offset = depth) + SVG spine; green only on runtime layer +
-  breathing dot + live spine node; mono tags, .t-h2 head, Fraunces carries it;
-  inline styles only (partials forbid <style>). GATE PASS A: depth 2 (stacked
-  glass, real volume) · restraint 2 (one object, lots of air) · one-idea 2
-  (fresh, no collision) · motion 1 (the .alive breathe is a true signature; the
-  static lane loses drift/draw/unfold, heading inherits the shell's reveal) ·
-  green 2 (sacred — runtime layer only) · earns 2 (load-bearing for the spine,
-  type carries it) = 11/12, no bar at 0. PASS B triggers: prose-blob NO ·
-  card-grid NO (overlapping stack + spine, not peer tiles) · slide-fade NO (the
-  section's motion is the breathe; reveal is inherited chrome on the h2 only) ·
-  green-decoration NO · centered NO (left-weighted, planes lean right) ·
-  saas-rhythm NO (a depth object, not a band). 0 triggers. VERDICT PASS.
-- add: 05-weave (mechanism). NEEDS: hero + 04-anatomy gave WHAT/structure but
-  nothing owned the PROCESS — how a sentence becomes a living page. No
-  collision (anatomy=static structure, weave=temporal flow). ARCHETYPE:
-  mechanism, static CMS partial (live lane). ONE IDEA: a sentence becomes a
-  living, running page and you watch it happen in three moves. COMPOSE: dashed
-  SVG flow line threading three .glass moves (intent → weave → runs); green +
-  .alive breathe ONLY on the terminal node (life arrives at the end); mono
-  labels, .t-h2 Fraunces head, inline styles only. GATE PASS A: depth 2 (dashed
-  line behind/through planes) · restraint 2 · one-idea 2 (fresh) · motion 1
-  (.alive breathe true; static lane loses scrub/draw, head inherits reveal) ·
-  green 2 (sacred — terminal living node only) · earns 2 = 11/12, no bar at 0.
-  PASS B: prose-blob NO · card-grid NO (directional sequence) · slide-fade NO ·
-  green-decoration NO · centered NO (left-weighted) · saas-rhythm NO. 0
-  triggers. VERDICT PASS. wb content check clean (2 sections). publish ok (9
-  files). Note: live fetch unverifiable — server at :4000 returns 404 at root
-  (not running in sandbox); content check + publish are the gate this run.
+- add: 04-anatomy (system/layers). GATE 11/12, 0 triggers, PASS. Three
+  overlapping glass planes + SVG spine; green only on the runtime layer.
+- add: 05-weave (mechanism). GATE 11/12, 0 triggers, PASS. Dashed flow line
+  threading three moves; green on the terminal living node only.
+- add: 06-join (invitation). NEEDS: spine explained what/how but nothing closed
+  — no on-page ask; shell #get holds install mechanics, this owns the emotional
+  ask. No collision (anatomy=structure, weave=process, join=ask). ARCHETYPE:
+  invitation, static CMS partial. ONE IDEA: you don't deploy a workbook, you
+  join it. COMPOSE: asymmetric 1fr/auto grid, Fraunces .t-h2 + one lede + one
+  glass CTA → #get; sacred green + .alive breathe on the CTA dot and a small
+  WMark whose centre node breathes; rule-7-safe copy. GATE PASS A: depth 1 ·
+  restraint 2 · one-idea 2 · motion 1 (.alive breathe true; static lane) ·
+  green 2 (sacred — live ask + W node only) · earns 2 = 10/12, no bar at 0.
+  PASS B: prose-blob NO · card-grid NO · slide-fade NO · green-decoration NO ·
+  centered NO (left-weighted) · saas-rhythm NO. 0 triggers. VERDICT PASS. wb
+  content check clean (3 sections). Objective A spine complete.
