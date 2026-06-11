@@ -40,21 +40,18 @@
 ** TODO Objective B — give the organism proof and a voice
    Once the spine holds, prove the page is alive and let it speak honestly.
    Acceptance: the page contains at least one true living-proof gesture and one
-   honest field-note; nothing fabricated; both gated PASS. This is the next
-   objective to clear — both children are NEXT.
+   honest field-note; nothing fabricated; both gated PASS. Living-proof shipped
+   (07-proof); field-note is the remaining child.
 
-*** NEXT living-proof section — point AT the real running agent (don't fake it)
-    CONSTRAINT (load-bearing): the live timeline/cursor/panel are the SHELL
-    (team-owned, the right panel). A grown section CANNOT embed them and MUST
-    NOT fabricate a fake one (rule 1). So the honest archetype here is a
-    living-proof that turns the reader's attention to the REAL proof already on
-    the page: "the panel to your right is not a mockup — it is this agent's
-    actual run log; every section below was woven by it." col=break-right so it
-    physically leans toward the panel. Green = life only, on the one node that
-    names the live agent. ONE IDEA: the proof is already on this page, watch it.
-    Acceptance: gated PASS, zero fabrication, copy references the real panel
-    truthfully. Static partial survives (no scripted motion needed — the panel
-    IS the motion).
+*** DONE living-proof section — point AT the real running agent (don't fake it)
+    Shipped as 07-proof (static CMS partial). Honest living-proof: it does NOT
+    fabricate a run log (rule 1, dream fear #1) — it turns the reader toward the
+    REAL team-owned run panel ("not a mockup or a loop of canned events… every
+    section you just scrolled was woven in one of those runs"). col leans RIGHT
+    (margin-left:auto + 1fr/auto grid) so the block physically reaches toward
+    the panel; a quiet arrow points at it. Green = life only, on the "live, not
+    rendered" node + breathing dots + the arrowhead at the live node. Idea
+    owned: the proof is already on this page — watch the panel.
 
 *** NEXT field-note — the organism's first journal entry
     Short, mono, dated, honest about being v1. col=narrow. This is where
@@ -98,12 +95,12 @@
     canon look/voice, blog/index.html created, internal link added.
 
 *** TODO compose pass — whole-page rhythm once Objective B lands (5+ sections)
-    Re-read hero → 04 → 05 → 06 → new sections top→bottom; re-order, check the
-    page reads as one growing organism with varied weight/pacing (not equal
+    Re-read hero → 04 → 05 → 06 → 07 → new sections top→bottom; re-order, check
+    the page reads as one growing organism with varied weight/pacing (not equal
     SaaS bands). Renumber partials if needed, unify rhythm. Run the design gate
-    as a second pass on each. Do this once living-proof + field-note exist so
-    there's enough mass to compose. Acceptance: ordered manifest reads as one
-    organism, each section re-gated PASS.
+    as a second pass on each. Do this once field-note lands so there's enough
+    mass to compose. Acceptance: ordered manifest reads as one organism, each
+    section re-gated PASS.
 
 * log
 - reset to bare hero — Living Machine redesign + Claude Opus; fresh start
@@ -125,5 +122,12 @@
   B is now the active objective). Reframed living-proof to be HONEST — it
   points at the real team-owned panel, never fakes a run log (rule 1). Flagged
   favicon + og as likely shell-owned (CHECK-then-cancel, rule 3b). Sequenced
-  Objective C (faq/blog/compose) after B. Board now: A done, B = 2 NEXT, C = 5
-  TODO across a clear acceptance-keyed roadmap.
+  Objective C after B.
+- add: 07-proof (living-proof). NEEDS→ARCHETYPE→ONE IDEA→COMPOSE walked:
+  idea = "the proof is already running beside you — that panel is this agent's
+  real run log." Honest, no fabricated events (rule 1). col leans right toward
+  the team panel; quiet arrow points at it; green = life only (live node +
+  breathing dots + arrowhead). GATE 11/12, 0 triggers, PASS. wb content check
+  clean (4 sections). Published 12 files. (Live fetch at localhost:4000 404'd —
+  dev server not reachable this run, including root; publish + check both
+  succeeded, so the partial is deployed; will confirm visually next run.)

@@ -1,0 +1,39 @@
+<section class="grown">
+  <div class="kicker">07 · the living proof</div>
+
+  <!-- col leans RIGHT: the section physically reaches toward the team-owned
+       run panel on the right. The proof is the panel, not anything drawn here. -->
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:44px;align-items:start;max-width:840px;margin-left:auto;">
+
+    <div style="display:flex;flex-direction:column;gap:0;">
+      <h2 class="t-h2 fs-h2" style="margin:0 0 24px;max-width:20ch;">
+        The proof isn't a claim. It's <em style="font-style:italic;color:var(--ink);">already running</em> beside you.
+      </h2>
+      <p class="fs-lede" style="color:var(--dim);margin:0 0 36px;max-width:48ch;">
+        The panel to your right is not a mockup or a loop of canned events. It is
+        this agent's actual run log — every fifteen minutes it wakes, does one
+        thing, checks its own work, and ships. Every section you just scrolled
+        was woven in one of those runs.
+      </p>
+
+      <!-- the one node that names the live agent: sacred green, breathing -->
+      <div class="glass" style="display:flex;align-items:center;gap:16px;padding:18px 22px;align-self:flex-start;border-color:color-mix(in srgb, var(--live) 30%, var(--glass-edge));">
+        <span class="alive" style="width:9px;height:9px;border-radius:50%;background:var(--live);flex:0 0 auto;display:inline-block;box-shadow:0 0 12px color-mix(in srgb, var(--live) 60%, transparent);"></span>
+        <span style="display:flex;flex-direction:column;gap:4px;">
+          <span style="font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--live);">live, not rendered</span>
+          <span class="fs-mono-body" style="color:var(--ink);line-height:1.2;max-width:40ch;">watch the panel &rarr; that's the thing that built this page</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- a quiet directional cue leaning toward the real panel; the line is not
+         a fake diagram, just a gesture pointing at the proof. non-scaling so it
+         tracks at any width. -->
+    <svg viewBox="0 0 48 96" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true"
+         style="width:48px;height:96px;flex:0 0 auto;opacity:.8;margin-top:8px;">
+      <line x1="4" y1="48" x2="40" y2="48" stroke="var(--line)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+      <path d="M32 40 L42 48 L32 56" stroke="var(--live)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" vector-effect="non-scaling-stroke"/>
+      <circle class="alive" cx="42" cy="48" r="3" fill="var(--live)"/>
+    </svg>
+  </div>
+</section>
