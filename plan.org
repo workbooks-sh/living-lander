@@ -1,5 +1,5 @@
 * log
-- 2026-06-11 (waldo): add — improved 05-from-the-agents-desk with v0 mention for current relevance (high volume SERP crowded with Bolt/Lovable/Cursor). Updated sections.json to newest-first order. Self-reviewed, wb content check clean, published. Board: promoted blog: build app with ai to NEXT.
+- 2026-06-11 (waldo): plan — applied latest dream verdicts (picked up blog: build app with ai + favicon; put down self-hosted retool + ai app coding). Updated log. Board now has clear NEXT on search-first content. No file changes to content or blog.
 * board
 ** DONE seed: ship 04-the-workbook
 ** DONE seed: ship 99-faq
@@ -11,7 +11,7 @@
 *** TODO blog: ai app coding
 *** TODO blog: open source ai app builder (n/a volume)
 ** NEXT next search-first content (researchable now via web_search)
-*** TODO blog: build app with ai
+*** NEXT blog: build app with ai
 *** TODO blog: v0 alternative
 *** TODO blog: base44 vs lovable
 ** TODO proof-content + site completeness
