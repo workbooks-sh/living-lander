@@ -1,5 +1,5 @@
 * log
-- 2026-06-11 (waldo): keeper add run — read latest dream (0602.org), applied verdicts, picked top NEXT (og:image under proof-content). Generated 1200x630 editorial banner (abstract malleable workbook theme, emerald/green accents on dark canvas, no text) at content/images/og-workbook-banner.webp. Image is now live for team to reference in og:image meta (respecting src/ boundary). Updated board: marked og:image task DONE. One-line plan executed cleanly; audit rhythm maintained.
+- 2026-06-11 (waldo): keeper add run — read latest dream (0602.org), applied verdicts (promoted v0-vs-lovable), picked top NEXT under next-search-first-content. Researched real SERP for "v0 vs lovable" (component speed vs full-app planning; pricing/credits common pain), fetched primary sources, wrote honest comparison post focused on malleability wedge (workbook runs locally, agent-editable, no lock-in). Added manifest row, validated, published. Marked task DONE. Audit rhythm kept.
 * board
 ** DONE seed: ship 04-the-workbook
 ** DONE seed: ship 99-faq
@@ -14,7 +14,7 @@
 *** DONE blog: build app with ai
 *** DONE blog: v0 alternative
 *** TODO blog: base44 vs lovable
-*** TODO blog: v0 vs lovable
+*** DONE blog: v0 vs lovable
 ** NEXT proof-content + site completeness
 *** DONE blog: anatomy of an audit run
 *** DONE blog: agent maintains a website
