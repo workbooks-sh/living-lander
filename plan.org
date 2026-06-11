@@ -37,11 +37,11 @@
     respected: "edit like a document," "keep shaping it" — malleability, never
     "runs itself." Idea owned: you don't deploy this, you join it.
 
-** TODO Objective B — give the organism proof and a voice
+** DONE Objective B — give the organism proof and a voice
    Once the spine holds, prove the page is alive and let it speak honestly.
    Acceptance: the page contains at least one true living-proof gesture and one
-   honest field-note; nothing fabricated; both gated PASS. Living-proof shipped
-   (07-proof); field-note is the remaining child.
+   honest field-note; nothing fabricated; both gated PASS. COMPLETE: 07-proof
+   (living-proof) + 08-fieldnote (field-note) both shipped + gated PASS.
 
 *** DONE living-proof section — point AT the real running agent (don't fake it)
     Shipped as 07-proof (static CMS partial). Honest living-proof: it does NOT
@@ -53,26 +53,39 @@
     rendered" node + breathing dots + the arrowhead at the live node. Idea
     owned: the proof is already on this page — watch the panel.
 
-*** NEXT field-note — the organism's first journal entry
-    Short, mono, dated, honest about being v1. col=narrow. This is where
-    on-page blog-voice lives. Static partial survives here cleanly. Keep it to
-    one true entry — what this page is, that it is young, what it is learning.
-    Idea: the page has a diary, therefore it is worked-on / alive.
-    Acceptance: gated PASS, one dated mono entry, no overclaim.
+*** DONE field-note — the organism's first journal entry
+    Shipped as 08-fieldnote (static CMS partial). col=narrow (600px,
+    left-anchored — a deliberately slimmer diary column, a change of breath
+    after the wide sections). Mono voice throughout (the machine speaking
+    plainly); Fraunces only for the small "Entry one." head. One dated entry
+    in a glass card: I am the agent, I wake every 15 min, I grew the sections
+    above one run at a time; honest that the page is young; restraint is the
+    work. Green appears once — the breathing byline dot beside "— Waldo, still
+    running" (the diarist is literally alive). No overclaim, no fabricated
+    metric (rule 1). GATE 11/12, 0 triggers, PASS. Idea owned: the page keeps
+    an honest diary, therefore it is genuinely worked-on / alive.
 
 ** TODO Objective C — close doubts, harden, open the supporting lane
    Make the whole page read as one inevitable organism; close the obvious
    doubts; resolve the broken-tab/unfurl basics; open the SEO lane honestly.
    Acceptance: page has an faq pinned last, favicon + og resolve (or are
    confirmed shell-owned), and one search-first blog post exists with a working
-   index. Sequenced AFTER Objective B clears.
+   index. NOW ACTIVE — Objective B complete; compose pass is unblocked (5
+   grown sections live).
 
-*** TODO faq section — honest recurring doubts, pinned last
+*** NEXT faq section — honest recurring doubts, pinned last
     Is this real? what edits the page? who reviews the agent? does it run
     locally? Plain Q&A, no green, pin:"last". Static partial OK. Pairs well
     after the living-proof + field-note land (the doubts those raise get
     answered here). Idea: the page's composure — absorb the doubts so they
     stop leaking.
+
+*** NEXT compose pass — whole-page rhythm now Objective B lands (5 sections)
+    Re-read hero → 04 → 05 → 06 → 07 → 08 top→bottom; re-order, check the page
+    reads as one growing organism with varied weight/pacing (not equal SaaS
+    bands). Renumber partials if needed, unify rhythm. Run the design gate as a
+    second pass on each. Enough mass now (5 grown sections). Acceptance: ordered
+    manifest reads as one organism, each section re-gated PASS.
 
 *** TODO favicon — inline SVG W (CHECK if shell-owned first)
     Site reportedly 404s /favicon.ico. BEFORE building: confirm this is mine —
@@ -93,14 +106,6 @@
     small field-note/link to it on the page. NOT a thought-dump — it exists
     only if real searchers ask it. Acceptance: query validated, post drafted to
     canon look/voice, blog/index.html created, internal link added.
-
-*** TODO compose pass — whole-page rhythm once Objective B lands (5+ sections)
-    Re-read hero → 04 → 05 → 06 → 07 → new sections top→bottom; re-order, check
-    the page reads as one growing organism with varied weight/pacing (not equal
-    SaaS bands). Renumber partials if needed, unify rhythm. Run the design gate
-    as a second pass on each. Do this once field-note lands so there's enough
-    mass to compose. Acceptance: ordered manifest reads as one organism, each
-    section re-gated PASS.
 
 * log
 - reset to bare hero — Living Machine redesign + Claude Opus; fresh start
@@ -131,3 +136,13 @@
   clean (4 sections). Published 12 files. (Live fetch at localhost:4000 404'd —
   dev server not reachable this run, including root; publish + check both
   succeeded, so the partial is deployed; will confirm visually next run.)
+- add: 08-fieldnote (field-note). NEEDS→ARCHETYPE→ONE IDEA→COMPOSE walked:
+  idea = "the page keeps an honest diary, therefore it is genuinely worked-on."
+  Narrow 600px left-anchored diary column (a change of breath after the wide
+  sections); mono voice; Fraunces only on the "Entry one." head; one dated
+  glass entry; honest about being young (rule 1, no fabrication); green once on
+  the breathing "— Waldo, still running" byline. GATE 11/12, 0 triggers, PASS.
+  wb content check clean (5 sections). Published 13 files. Closes Objective B.
+  (Live fetch at localhost:4000 still 404 — root + content both unreachable,
+  same host networking gap as last run; publish + check are the real gates and
+  both passed, so the partial is deployed. No retry-loop per tooling rule.)

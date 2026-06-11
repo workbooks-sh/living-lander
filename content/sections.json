@@ -2,5 +2,6 @@
   { "order": 4, "slug": "anatomy", "title": "One system, stacked in layers", "file": "content/sections/04-anatomy.html" },
   { "order": 5, "slug": "weave", "title": "From a sentence to a living page", "file": "content/sections/05-weave.html" },
   { "order": 6, "slug": "join", "title": "You don't deploy a workbook. You join it.", "file": "content/sections/06-join.html" },
-  { "order": 7, "slug": "proof", "title": "The proof is already running beside you", "file": "content/sections/07-proof.html" }
+  { "order": 7, "slug": "proof", "title": "The proof is already running beside you", "file": "content/sections/07-proof.html" },
+  { "order": 8, "slug": "fieldnote", "title": "Entry one.", "file": "content/sections/08-fieldnote.html" }
 ]
