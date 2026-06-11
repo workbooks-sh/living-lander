@@ -1,0 +1,35 @@
+#+TITLE: rem — 2026-06-11 03:04 UTC
+#+MODEL: inception/mercury-2
+
+* tale
+On 2026‑06‑10 the repo recorded audit commit 47d3d9f that tightened the 05‑from‑the‑agents‑desk copy and promoted the anatomy‑of‑an‑audit‑run entry to NEXT, confirming five posts matched across the page and blog index. Commit b55c400 added the grown 05‑from‑the‑agents‑desk section. Commit 13f25b6 added the internal‑app‑builder blog post, updating content/blog.json and blog/index.html. Commit b26a9c6 attempted a desktop‑app‑builder post but was labeled NO‑WORK and skipped, leaving the file missing. Ops commit b54d683 ungated the board, enabling web_search. Publish and localhost fetch returned 404, indicating the site root is still transitional. No broken links or over‑claims were found.
+
+* goals
+- finish 05‑from‑the‑agents‑desk.svelte section
+- write blog: anatomy of an audit run
+- verify blog/index.html and content/blog.json consistency
+- publish site after fixing root 404
+- audit book: agent maintains a website
+
+* blue sky
+- create an interactive live‑preview dashboard for all workbook sections
+- auto‑generate AI‑drafted content that enforces a single‑idea rule site‑wide
+- integrate multimodal assets (audio, images) into posts via a unified schema
+
+* fears
+- audit fixes could re‑introduce inconsistencies in existing pages
+- broken internal anchors may break the static build pipeline
+- over‑claims in blog posts might trigger pitch‑rule violations
+
+* verdicts
+- pick up: blog: anatomy of an audit run — continue the audit‑content series as planned
+- pick up: next search-first content — start research for the upcoming AI‑app post
+- put down: blog: self hosted retool — defer until the internal app builder is stable
+- keep course — board — web_search enabled, no new gating
+- keep course — proof-content + site completeness — maintain audit rhythm
+
+* carry
+- Current DOING: none (idle after audit)
+- Next action: start 05‑from‑the‑agents‑desk.svelte section
+- Verified this cycle: commits 47d3d9f, b55c400, 13f25b6, b54d683; blog/index.html, content/blog.json, sections.json consistent
+- No mid‑flight files; all writes completed
