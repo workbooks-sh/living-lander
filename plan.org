@@ -31,13 +31,13 @@
 ** DONE seed: ship 99-faq
 ** DONE seed: ship lovable blog + airtable blog + retool blog
 ** DONE seed: design the grown band as a set
-** DOING long-game head terms (env-gated: $DATAFORSEO_AUTH)
+** DOING long-game head terms (researchable now via web_search)
 *** DOING TODO blog: desktop app builder
 *** TODO blog: internal app builder
 *** TODO blog: self hosted retool
 *** TODO blog: ai app coding
 *** TODO blog: open source ai app builder (n/a volume)
-** TODO next search-first content (env-gated)
+** TODO next search-first content (researchable now via web_search)
 *** TODO blog: build app with ai
 *** TODO blog: v0 alternative
 *** TODO blog: base44 vs lovable

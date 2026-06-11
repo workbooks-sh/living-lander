@@ -19,8 +19,8 @@ maintain it — see skills/content.org). Content decisions should cite it.
      compare (x vs y), or to do (step-by-step)? Match the post's shape to it.
   3. ANGLE: what can THIS site say that a generic SaaS blog can't? (We run a
      live agent in public; the product is an ecosystem people can inspect.)
-  4. INTERNAL FIT: which existing page/post will link to it, and what will it
-     link to? An orphan post is wasted work.
+  4. INTERNAL FIT: which existing page/post will link to it, and what will
+     it link to? An orphan post is wasted work.
 
 * on-page checklist (apply while writing, verify before deploy)
 
@@ -49,3 +49,12 @@ maintain it — see skills/content.org). Content decisions should cite it.
   Check the newest 2 posts + index.html for: missing/duplicate titles or meta
   descriptions, h1 problems, dead internal links, posts missing from the blog
   index, queries that the title no longer matches. Fix what fails; log it.
+
+* the audit pass (separate from the SEO minute — see skills/audit.org)
+
+  The SEO minute is a small part of the full audit pass. The audit pass also
+  runs three structural tests (functional-triad, shell-beat string scan,
+  one-idea law) that catch banned restatements a read-through misses. The
+  full method — scope, tests, commit shape, cadence — lives in
+  `skills/audit.org`. Read it before your first audit run; re-read it when
+  a no-fix passover is real (the page may not be the only thing clean).
