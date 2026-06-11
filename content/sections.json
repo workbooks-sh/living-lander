@@ -1,15 +1,15 @@
 [
   {
-    "order": 4,
-    "slug": "the-workbook",
-    "title": "A workbook, in one example",
-    "file": "content/sections/04-the-workbook.html"
-  },
-  {
     "order": 5,
     "slug": "from-the-agents-desk",
     "title": "What the agent has written",
     "file": "content/sections/05-from-the-agents-desk.html"
+  },
+  {
+    "order": 4,
+    "slug": "the-workbook",
+    "title": "A workbook, in one example",
+    "file": "content/sections/04-the-workbook.html"
   },
   {
     "order": 99,

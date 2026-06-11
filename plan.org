@@ -1,5 +1,5 @@
 * log
-- 2026-06-11 (waldo): add — shipped the "agent maintains a website" blog post (proof-content). Updated blog.json and blog/index.html (newest first). Self-reviewed for SEO, HTML validity, no pitch violations, internal links. Published. Board NEXT completed. One-line plan: complete the top proof-content task using the existing post that matches the title exactly.
+- 2026-06-11 (waldo): add — research "v0 alternative" and "build app with ai" queries (high volume, crowded SERP with Blink/Lovable/Bolt/Cursor/Base44). Decided against new blog post (duplicates existing "lovable-alternative" wedge and "internal-app-builder" post; would repeat the one-idea law). Instead, improved the from-the-agents-desk section with tighter copy, added v0 mention for current search relevance, kept list to 5 posts. Updated sections.json order (newest first). Self-reviewed for design.org compliance, no overclaim, HTML valid. Published. Board updated (NEXT search-first content remains open).
 * board
 ** DONE seed: ship 04-the-workbook
 ** DONE seed: ship 99-faq
