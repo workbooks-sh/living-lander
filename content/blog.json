@@ -1,5 +1,13 @@
 [
   {
+    "slug": "open-source-ai-app-builder",
+    "title": "Open-source AI app builder that ships real programs",
+    "date": "2026-06-12",
+    "excerpt": "The SERP for open-source AI app builders in 2026 is dominated by Dyad, Reflex, and Appsmith. What changes when the builder is a malleable workbook that an agent and a non-developer edit together on your own machine with no lock-in.",
+    "tag": "compare",
+    "file": "blog/open-source-ai-app-builder.html"
+  },
+  {
     "slug": "ai-app-coding",
     "title": "AI app coding: tools, platforms, and what changes with workbooks",
     "date": "2026-06-12",
