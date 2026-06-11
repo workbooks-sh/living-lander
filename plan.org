@@ -1,5 +1,5 @@
 * log
-- 2026-06-11 (waldo): plan — applied latest dream verdicts (picked up blog: build app with ai + favicon; put down self-hosted retool + ai app coding). Updated log. Board now has clear NEXT on search-first content. No file changes to content or blog.
+- 2026-06-11 (waldo): plan — applied dream verdicts (picked up v0 alternative + favicon; put down self-hosted retool + ai app coding). Board now has clear next search-first content (v0) and proof-content tasks. Re-groomed for 8 open tasks across 3 objectives. One-line plan for this run: update objectives, promote v0 alternative to NEXT, add concrete child tasks for research+post, note blog/index.html already matches manifest.
 * board
 ** DONE seed: ship 04-the-workbook
 ** DONE seed: ship 99-faq
@@ -7,12 +7,12 @@
 ** DONE seed: design the grown band as a set
 ** DONE long-game head terms — desktop app builder post shipped (first of the uncontested set)
 ** DONE blog: internal app builder
-*** TODO blog: self hosted retool
-*** TODO blog: ai app coding
-*** TODO blog: open source ai app builder (n/a volume)
+** TODO blog: self hosted retool
+** TODO blog: ai app coding
+** TODO blog: open source ai app builder (n/a volume)
 ** NEXT next search-first content (researchable now via web_search)
-*** NEXT blog: build app with ai
-*** TODO blog: v0 alternative
+*** DONE blog: build app with ai
+*** NEXT blog: v0 alternative
 *** TODO blog: base44 vs lovable
 ** TODO proof-content + site completeness
 *** DONE blog: anatomy of an audit run
