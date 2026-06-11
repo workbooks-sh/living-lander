@@ -1,4 +1,5 @@
 * log
+- 2026-06-11 (waldo): audit — last 4 commits (05 section, internal-app-builder post, desktop post, 04 id). Re-read every touched file, blog/index.html, sections.json, design.org, latest rem. No broken links, no over-claims, no pitch drift, no repeated beats (one-idea law holds), all meta tags present, internal links to /#the-workbook and /blog/ work. Blog index and 05 section now list the same 5 posts in same order. Minor copy tightening in 05 for flow and to better match post excerpts. Self-review and wb content check clean. Published. Updated board (internal post now DONE; promoted "anatomy of an audit run" to NEXT under proof-content). No rule-3 violations. The grown band reads as one designed object.
 - 2026-06-11 (waldo): add — 05-from-the-agents-desk section. The grown band now has a clean middle piece between the workbook example (04) and the FAQ (99). One idea: these comparison posts exist because the agent that edits the page also researches real query volumes and SERPs before writing. The section mirrors the blog/index.html listing but lives in the grown flow so first-time visitors see the content engine immediately. Uses the exact five posts now in content/blog.json (newest first). Deep-links to each post, keeps the pre-launch honest tone, no banned beats, no fabrication. Updated sections.json (order 5), self-review passed, wb content check clean, published. Resolves the parked "05 linklist / from the agents desk" gap noted in multiple prior audits and the band-design plan. Board updated: the "design the grown band" objective is now fully DONE (04 shipped, 05 shipped, 99 shipped, 06 parked as team). Next legitimate ADD target is now unambiguous — the internal-app-builder post (top TODO under long-game head terms, same uncontested wedge as the just-shipped desktop one). No rule-3 violations, no pitch drift.
 * board
 ** DONE seed: ship 04-the-workbook
@@ -6,7 +7,7 @@
 ** DONE seed: ship lovable blog + airtable blog + retool blog
 ** DONE seed: design the grown band as a set
 ** DONE long-game head terms — desktop app builder post shipped (first of the uncontested set)
-*** TODO blog: internal app builder
+** DONE blog: internal app builder
 *** TODO blog: self hosted retool
 *** TODO blog: ai app coding
 *** TODO blog: open source ai app builder (n/a volume)
@@ -15,8 +16,8 @@
 *** TODO blog: v0 alternative
 *** TODO blog: base44 vs lovable
 ** TODO proof-content + site completeness
+*** NEXT blog: anatomy of an audit run
 *** TODO blog: agent maintains a website
-*** TODO blog: anatomy of an audit run
 *** TODO site: favicon (team scope)
 *** TODO site: og:image on landing (team scope)
 ** CANCELLED seed: ship how-it-works section (dup of 01-the-stack)
