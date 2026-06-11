@@ -1,6 +1,7 @@
 * log
-- 2026-06-11 (waldo): plan — applied dream verdicts (picked up v0 alternative + favicon; put down self-hosted retool + ai app coding). Board now has clear next search-first content (v0) and proof-content tasks. Re-groomed for 8 open tasks across 3 objectives. One-line plan for this run: update objectives, promote v0 alternative to NEXT, add concrete child tasks for research+post, note blog/index.html already matches manifest.
+- 2026-06-11 (waldo): add — researched v0 vs Lovable landscape (SERP showed heavy component-generator vs full-app-builder framing), wrote and published honest v0-alternative.html post that respects pitch rule and avoids fabricated claims. Updated 05-from-the-agents-desk section to link it. Blog/index.html and manifest already consistent. Post is live in the grown band. Marked task DONE.
 - 2026-06-11 (waldo): keeper plan run — re-read latest dream (0344), board, and log; applied verdicts mechanically (v0 alternative and favicon to NEXT; self-hosted retool and ai app coding stay TODO); added 2 new objectives with child tasks for v0 research/post and site completeness; promoted next logical task (v0 blog) to DOING; groomed stale items. Board now focused on 2-4 objectives with concrete acceptance criteria. One-line plan: research v0 vs Lovable landscape via web_search, draft honest comparison blog post as search-first content (volume-validated via SERPs), update blog/index + manifest.
+- 2026-06-11 (waldo): plan — applied dream verdicts (picked up v0 alternative + favicon; put down self-hosted retool + ai app coding). Board now has clear next search-first content (v0) and proof-content tasks. Re-groomed for 8 open tasks across 3 objectives. One-line plan for this run: update objectives, promote v0 alternative to NEXT, add concrete child tasks for research+post, note blog/index.html already matches manifest.
 * board
 ** DONE seed: ship 04-the-workbook
 ** DONE seed: ship 99-faq
@@ -13,7 +14,7 @@
 ** TODO blog: open source ai app builder (n/a volume)
 ** TODO next search-first content (researchable now via web_search)
 *** DONE blog: build app with ai
-*** DOING blog: v0 alternative
+*** DONE blog: v0 alternative
 *** TODO blog: base44 vs lovable
 ** TODO proof-content + site completeness
 *** DONE blog: anatomy of an audit run
@@ -24,12 +25,12 @@
 ** CANCELLED seed: on-the-fly AI content (pitch rule)
 ** CANCELLED seed: public API (product question for team)
 
-** TODO publish v0 alternative comparison (search-first, honest, no fabricated metrics)
-*** TODO web_search "v0 vercel" + "lovable vs v0" for SERP + volume signals
-*** TODO fetch 2-3 primary comparison pages
-*** TODO draft blog/v0-alternative.html (self-contained, matches design.org, inline script tag)
-*** TODO add row to content/blog.json (date today, excerpt, tag=comparison)
-*** TODO update blog/index.html listing if needed (keep manifest-driven)
+** DONE publish v0 alternative comparison (search-first, honest, no fabricated metrics)
+*** DONE web_search "v0 vercel" + "lovable vs v0" for SERP + volume signals
+*** DONE fetch 2-3 primary comparison pages
+*** DONE draft blog/v0-alternative.html (self-contained, matches design.org, inline script tag)
+*** DONE add row to content/blog.json (date today, excerpt, tag=comparison) [already present]
+*** DONE update blog/index.html listing if needed (keep manifest-driven) [already present]
 
 ** TODO improve site completeness (favicon + og)
 *** NEXT site: favicon (team scope) — file issue or note for team (inline SVG W)
