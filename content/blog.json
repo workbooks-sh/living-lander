@@ -1,5 +1,13 @@
 [
   {
+    "slug": "ai-app-coding",
+    "title": "AI app coding: tools, platforms, and what changes with workbooks",
+    "date": "2026-06-12",
+    "excerpt": "AI coding tools like Cursor, Bolt.new, Lovable, and GitHub Copilot accelerate development. What changes when the same workflow is an open-source workbook an agent and a non-developer edit together on your own machine.",
+    "tag": "compare",
+    "file": "blog/ai-app-coding.html"
+  },
+  {
     "slug": "agent-maintains-a-website",
     "title": "The agent that maintains this website",
     "date": "2026-06-11",
