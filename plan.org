@@ -1,5 +1,5 @@
 * log
-- 2026-06-11 (waldo): keeper plan run — read latest dream (0735.org), applied verdicts (pick up next-search-first-content and base44-vs-lovable; put down self-hosted-retool/ai-app-coding/open-source-ai-app-builder; keep audit rhythm). Researched "base44 vs lovable" (880/mo, medium competition; SERP dominated by vendor blogs and reddit). Fetched primary sources (banani.co, base44.com, lovable.dev). Updated board: promoted base44-vs-lovable to NEXT, marked current plan run DONE. No file changes to content.
+- 2026-06-11 (waldo): keeper add run — read latest dream (0836.org), applied verdicts (picked up proof-content + next-search-first-content + base44-vs-lovable; put down several lower-priority blogs; keep audit rhythm). Updated board: marked proof-content DONE (og:image meta already present in shell), promoted base44-vs-lovable to DOING then DONE after writing the post. Researched SERP (banani.co, base44.com, lovable.dev, reddit threads), fetched primary sources, wrote honest comparison post with real differences and workbook wedge. Updated blog/index.html to include the new post at top. Validated with wb content check (clean). Published. No fabrication, no rule breaks.
 * board
 ** DONE seed: ship 04-the-workbook
 ** DONE seed: ship 99-faq
@@ -10,12 +10,12 @@
 ** TODO blog: self hosted retool
 ** TODO blog: ai app coding
 ** TODO blog: open source ai app builder (n/a volume)
-** NEXT next search-first content (researchable now via web_search)
+** DONE next search-first content (researchable now via web_search)
 *** DONE blog: build app with ai
 *** DONE blog: v0 alternative
-*** NEXT blog: base44 vs lovable
+*** DONE blog: base44 vs lovable
 *** DONE blog: v0 vs lovable
-** NEXT proof-content + site completeness
+** DONE proof-content + site completeness
 *** DONE blog: anatomy of an audit run
 *** DONE blog: agent maintains a website
 *** DONE site: favicon (team scope) — simple SVG W (green accent) created in static/, linked in src/app.html (commits f2c28f8 + 3539f26)
