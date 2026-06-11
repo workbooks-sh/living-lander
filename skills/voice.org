@@ -1,0 +1,160 @@
+#+TITLE: voice — the structural pre-flight for grown sections + blog posts
+
+This is the agent's pre-flight check before shipping a new grown section, a
+new blog post, or any prose change that touches a page section or post file.
+It codifies the design.org one-idea law as a 5-call grep test, not a careful
+re-read. Every prior audit caught the same class of violation
+("restated shell beat, in different words") by re-reading; the re-read
+missed it almost every time because the test was qualitative. This file
+turns the test into a 5-line cheap pass.
+
+* when to run this file
+
+  - **before any `add:` run** that ships prose in `content/sections/` or
+    `blog/` — the new prose must pass all 5 grep tests below.
+  - **at the start of every `audit:` run** — re-run the 5 tests against
+    the files the last 4 commits touched. The tests are the cheap pass;
+    a careful re-read is the second pass; the cases in this file are
+    the prior violations the audit compares against.
+
+* the 5 banned beats (each: shell phrasing, structural test, prior cases)
+
+** 1. The triad — "interface, logic, and data travel as one unit"
+
+   Shell owns this in 01 · the stack. Grown sections and blog posts MUST
+   NOT enumerate three+ components of what an app has, in any words, in
+   the same breath, with the sense that they "travel together" / "are all
+   in one place" / "all in the same X". Same-category enumerations
+   (three rules, three events, three components of one category) are FINE.
+
+   Cheap pre-flight (string test, run via `search`):
+   #+BEGIN_EXAMPLE
+     search "interface"  in <file>    → if it appears next to "logic" or
+     search "logic"      in <file>      "data" in the SAME sentence
+     search "data"       in <file>      or paragraph: triad present, ban.
+   #+END_EXAMPLE
+   The strict functional test is broader than the string test (any
+   three cross-category components of an app = triad, in any words);
+   the string test catches the loudest cases cheaply, the functional
+   test catches the synonym-swap cases the string test misses.
+
+   Prior violations shipped and fixed:
+   - "the interface, the logic, and the data, all in one place" (airtable §3)
+   - "your data, your logic, and your interface all live in a tab" (airtable gap5)
+   - "the artifact, the rules, and the data, all in one place" (synonym swap; same functional triad)
+   - "the thing you build, the data behind it, and the place you edit it" (synonym)
+   - "role-based views, conditionals, the 'this changes depending on who is looking'" (retool — presentation/conditional/event cross-category)
+   - "role-based view, conditional, the rule that fires when a row changes" (retool v2 — still cross-category)
+   - "role-based views, 'this changes', approval flows" (airtable — presentation/conditional/workflow cross-category)
+
+   A synonym swap on the triad is NOT a fix. The shell's beat is the
+   *functional claim* (three cross-category components of an app
+   travel together), not the specific nouns. Future fixes need to
+   change the structure (the subject, the verb, the demo), not the
+   vocabulary.
+
+** 2. The ladder — "for yourself, for your team, for the world"
+
+   Shell owns this in 02 · in the wild. Grown sections and blog posts
+   MUST NOT walk the audience-scale ladder (yourself / your team /
+   your company / the world / everyone) in any order, in any words.
+
+   Cheap pre-flight (string test, run via `search`):
+   #+BEGIN_EXAMPLE
+     search "yourself" in <file>  → if all three ("yourself" + "team" +
+     search "team"     in <file>    "world" or "everyone") appear
+     search "world"    in <file>    in the same section/post, ladder
+                                    present, ban.
+   #+END_EXAMPLE
+
+   Prior violations shipped and fixed:
+   - "a one-screen tool for yourself, a product for a team, or a product for the world" (faq "what is a workbook")
+
+** 3. The same-artifact scaling — "the same artifact scales"
+
+   Shell owns this in 02 · in the wild AND the hero pitch. Grown
+   sections and blog posts MUST NOT claim the workbook/artifact
+   "scales" or "is the same" or "doesn't change" from one scope to
+   another.
+
+   Cheap pre-flight (string test, run via `search`):
+   #+BEGIN_EXAMPLE
+     search "same shape scales"    in <file>  → any hit is a violation
+     search "same artifact"        in <file>
+     search "the artifact is the"  in <file>
+   #+END_EXAMPLE
+
+   Prior violations shipped and fixed:
+   - "The same shape scales: a workbook can be a one-screen tool for yourself, ..." (faq)
+   - "The artifact is the same thing." (faq)
+   - "The artifact is the same file." (faq — same beat, file framing)
+
+** 4. The file-ness — "one file" / "single file" as a definitional claim
+
+   The shell's pitch is the three layers, NOT the file-ness. "One file"
+   or "single file" as a HEADLINE or as the CLAIM of a definitional
+   sentence in a grown section or blog post is BANNED. File-ness is
+   ALLOWED in portability demonstrations (open / edit / hand the file)
+   and in literal technical descriptions (the workbook is the file the
+   runtime loads).
+
+   Cheap pre-flight (string test, run via `search`):
+   #+BEGIN_EXAMPLE
+     search "single file"  in <file>  → check the surrounding sentence:
+     search "one file"     in <file>    definition / scaling claim = ban;
+                                        portability demo / literal
+                                        reference = allow.
+   #+END_EXAMPLE
+
+   Prior violations shipped and fixed:
+   - "packaged into a single file you can open anywhere, keep forever, and edit like a document" (faq — definitional)
+   - "The artifact is the same file." (faq — scaling claim)
+   - "run the same workbook files, on the same open-source runtime" (faq — file-as-subject, not portability demo)
+
+** 5. The ownership framing — "yours to keep" / "own your software"
+
+   Per context.org: "BANNED COPY: 'software you can own' / 'own your
+   software' and any ownership-as-the-point framing." Ownership as a
+   side-effect of portability is FINE; ownership as the CLAIM that
+   makes the product worth using is BANNED. Phrasings banned in any
+   form: "yours to keep", "own your software", "yours forever", any
+   framing where "owning" is the verb the product enables.
+
+   Cheap pre-flight (string test, run via `search`):
+   #+BEGIN_EXAMPLE
+     search "yours to keep"  in <file>  → any hit is a violation
+     search "own your"       in <file>
+     search "yours forever"  in <file>
+   #+END_EXAMPLE
+
+* the pre-flight protocol (use this exact sequence)
+
+  1. `search` the 5 cheap tests above against every file the run is
+     shipping (add:) or every file the last 4 commits touched (audit:).
+  2. If any cheap test hits, run the functional test on the hit
+     sentence: does it actually do the banned thing? (the cheap test
+     has false positives — e.g. "data" alone in a portability claim is
+     fine; "data" + "logic" + "interface" in one sentence is the
+     triad).
+  3. If the functional test confirms a violation, the sentence MUST
+     be rewritten before ship. Apply the structural fix: change the
+     subject / verb / demo, not the nouns. See cases above.
+  4. If the cheap test misses and the functional test catches a
+     violation (a synonym-swap case), the case goes into THIS file
+     under the relevant beat so the cheap test can be tightened for
+     the next run.
+
+* what this file is NOT
+
+  - Not a substitute for the careful re-read. The re-read catches
+    things the grep test doesn't: bad grammar, off-voice, factually
+    wrong claims, broken internal links. Cheap pass + functional
+    test + re-read, in that order, in every run.
+  - Not a substitute for skills/seo.org or skills/content.org. The
+    query gate (skills/seo.org) and the content shape
+    (skills/content.org) are separate pre-flights. This file is the
+    VOICE pre-flight — the structural test for shell-beat restatement.
+  - Not a complete list of banned copy. context.org's pitch rules
+    name others ("AI-powered", "changes when you ask", "sites that
+    run themselves"). Those don't need a structural test because
+    they're literal phrasings — `search` for the exact strings.
