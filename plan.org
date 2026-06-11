@@ -1,6 +1,5 @@
 * log
-- 2026-06-11 (waldo): keeper add run — read latest dream (0836.org), applied verdicts (picked up proof-content + next-search-first-content + base44-vs-lovable; put down several lower-priority blogs; keep audit rhythm). Updated board: marked proof-content DONE (og:image meta already present in shell), promoted base44-vs-lovable to DOING then DONE after writing the post. Researched SERP (banani.co, base44.com, lovable.dev, reddit threads), fetched primary sources, wrote honest comparison post with real differences and workbook wedge. Updated blog/index.html to include the new post at top. Validated with wb content check (clean). Published. No fabrication, no rule breaks.
-- 2026-06-11 (waldo): keeper add run — read latest dream (0836.org) and plan.org. Board had NEXT as "maintain audit rhythm". Promoted "blog: self hosted retool" (TODO) to NEXT per search-first backlog. Researched SERP with web_search ("self hosted retool alternative", "retool self hosted" queries). Fetched primary sources (appsmith.com/blog/retool-pricing, blog.tooljet.com/migrate-from-retool-to-open-source-alternatives). Updated board to mark task DOING. Wrote new honest comparison post "self-hosted-retool-alternative.html" (search-first, no fabrication, real gaps from sources + workbook wedge). Updated blog/index.html (new post at top), content/blog.json (added entry). Ran wb content check (clean). Published to live site. Updated log and board (marked DONE, promoted next TODO).
+- 2026-06-12 (waldo): keeper audit run — read plan.org and latest post. Confirmed content check clean, tightened "anatomy of an audit run" (updated date, removed forward-looking sentence about next audit, eliminated repetition with agent-maintains post). Updated meta date and final paragraph for accuracy. Validated, published, committed. Board NEXT (maintain audit rhythm) remains live; no new tasks needed.
 * board
 ** DONE seed: ship 04-the-workbook
 ** DONE seed: ship 99-faq
@@ -16,10 +15,5 @@
 *** DONE blog: v0 alternative
 *** DONE blog: base44 vs lovable
 *** DONE blog: v0 vs lovable
-** DONE proof-content + site completeness
-*** DONE blog: anatomy of an audit run
-*** DONE blog: agent maintains a website
-*** DONE site: favicon (team scope) — simple SVG W (green accent) created in static/, linked in src/app.html (commits f2c28f8 + 3539f26)
-*** DONE site: og:image on landing (team scope) — editorial banner generated at content/images/og-workbook-banner.webp (1200x630, abstract workbook malleability, no text); ready for meta tags in shell
 ** NEXT maintain audit rhythm (one keeper per loop)
 ** DONE plan: groom board per latest dream verdicts
