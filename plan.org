@@ -19,12 +19,13 @@
     relationship (a stack, not peers) reads. Idea owned: the architecture is a
     stack and the agent lives INSIDE the runtime, not beside it.
 
-*** TODO mechanism section — "from a sentence to a living page"
-    The weave shown assembling: prompt → toolkit weave → rendered, running,
-    yours. Static partial: inline SVG diagram in glass, drawn-once (no scrub in
-    the CMS lane). Green only on the live agent node. Idea: the process by which
-    an artifact comes alive. (Was: Svelte lane — but that lane isn't wired;
-    build it as a static partial like 04.)
+*** DONE mechanism section — "from a sentence to a living page"
+    Shipped as 05-weave (static CMS partial). Three moves on a dashed flow
+    line: you write intent → the agent weaves from toolkits → it runs and keeps
+    running. Green arrives ONLY at the terminal node (life arrives at the end)
+    + its .alive breathe. Same proven idiom as 04 but vertical/temporal, not a
+    stack. Idea owned: the process by which a sentence becomes a living, running
+    artifact — and you're reading one work.
 
 *** TODO invitation section — build with your agent (the closing ask)
     The one primary CTA, framed as joining the living thing. Left-weighted,
@@ -101,3 +102,19 @@
   section's motion is the breathe; reveal is inherited chrome on the h2 only) ·
   green-decoration NO · centered NO (left-weighted, planes lean right) ·
   saas-rhythm NO (a depth object, not a band). 0 triggers. VERDICT PASS.
+- add: 05-weave (mechanism). NEEDS: hero + 04-anatomy gave WHAT/structure but
+  nothing owned the PROCESS — how a sentence becomes a living page. No
+  collision (anatomy=static structure, weave=temporal flow). ARCHETYPE:
+  mechanism, static CMS partial (live lane). ONE IDEA: a sentence becomes a
+  living, running page and you watch it happen in three moves. COMPOSE: dashed
+  SVG flow line threading three .glass moves (intent → weave → runs); green +
+  .alive breathe ONLY on the terminal node (life arrives at the end); mono
+  labels, .t-h2 Fraunces head, inline styles only. GATE PASS A: depth 2 (dashed
+  line behind/through planes) · restraint 2 · one-idea 2 (fresh) · motion 1
+  (.alive breathe true; static lane loses scrub/draw, head inherits reveal) ·
+  green 2 (sacred — terminal living node only) · earns 2 = 11/12, no bar at 0.
+  PASS B: prose-blob NO · card-grid NO (directional sequence) · slide-fade NO ·
+  green-decoration NO · centered NO (left-weighted) · saas-rhythm NO. 0
+  triggers. VERDICT PASS. wb content check clean (2 sections). publish ok (9
+  files). Note: live fetch unverifiable — server at :4000 returns 404 at root
+  (not running in sandbox); content check + publish are the gate this run.

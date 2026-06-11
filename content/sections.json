@@ -1,3 +1,4 @@
 [
-  { "order": 4, "slug": "anatomy", "title": "One system, stacked in layers", "file": "content/sections/04-anatomy.html" }
+  { "order": 4, "slug": "anatomy", "title": "One system, stacked in layers", "file": "content/sections/04-anatomy.html" },
+  { "order": 5, "slug": "weave", "title": "From a sentence to a living page", "file": "content/sections/05-weave.html" }
 ]
