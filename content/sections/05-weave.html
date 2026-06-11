@@ -7,13 +7,11 @@
   </p>
 
   <div style="position:relative;display:grid;gap:18px;max-width:680px;">
-    <!-- the flow line threading the three moves; the final node is green (life arrives) -->
-    <svg viewBox="0 0 32 320" fill="none" preserveAspectRatio="none" aria-hidden="true"
-         style="position:absolute;left:11px;top:8px;width:24px;height:calc(100% - 16px);pointer-events:none;">
-      <path d="M16 6 V314" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 5"/>
-      <circle cx="16" cy="6"   r="2.5" fill="var(--line)"/>
-      <circle cx="16" cy="160" r="2.5" fill="var(--line)"/>
-      <circle cx="16" cy="314" r="3.5" fill="var(--live)"/>
+    <!-- the flow line threading the three moves — dashed, because this is a process
+         in time. A single tracking line, not pinned nodes; life breathes on move 03. -->
+    <svg viewBox="0 0 4 100" fill="none" preserveAspectRatio="none" aria-hidden="true"
+         style="position:absolute;left:11px;top:24px;bottom:24px;width:4px;height:calc(100% - 48px);pointer-events:none;">
+      <line x1="2" y1="0" x2="2" y2="100" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 5" vector-effect="non-scaling-stroke"/>
     </svg>
 
     <!-- move 01 · the sentence -->

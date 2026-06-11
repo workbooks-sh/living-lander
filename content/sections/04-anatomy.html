@@ -7,13 +7,11 @@
   </p>
 
   <div style="position:relative;display:grid;gap:0;padding-left:56px;max-width:720px;">
-    <!-- the connective spine between planes; the live node is green -->
-    <svg viewBox="0 0 40 360" fill="none" preserveAspectRatio="none" aria-hidden="true"
-         style="position:absolute;left:14px;top:0;bottom:0;width:28px;height:100%;pointer-events:none;">
-      <path d="M20 22 V338" stroke="var(--line)" stroke-width="1.5"/>
-      <circle cx="20" cy="62"  r="2.5" fill="var(--line)"/>
-      <circle cx="20" cy="190" r="3"   fill="var(--live)"/>
-      <circle cx="20" cy="318" r="2.5" fill="var(--line)"/>
+    <!-- the connective spine threading the planes; a single line, not pinned nodes,
+         so it tracks the stack at any width. Life breathes on plane 02 itself. -->
+    <svg viewBox="0 0 4 100" fill="none" preserveAspectRatio="none" aria-hidden="true"
+         style="position:absolute;left:14px;top:14px;bottom:14px;width:4px;height:calc(100% - 28px);pointer-events:none;">
+      <line x1="2" y1="0" x2="2" y2="100" stroke="var(--line)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
     </svg>
 
     <!-- plane 01 · workbooks (apps) -->

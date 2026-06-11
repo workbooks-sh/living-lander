@@ -102,3 +102,15 @@
   PASS B: prose-blob NO · card-grid NO · slide-fade NO · green-decoration NO ·
   centered NO (left-weighted) · saas-rhythm NO. 0 triggers. VERDICT PASS. wb
   content check clean (3 sections). Objective A spine complete.
+- audit: taste/honesty pass on 04-anatomy + 05-weave (last commits). Found a
+  real responsive fragility — both the spine (04) and flow line (05) used SVGs
+  with preserveAspectRatio="none" and fixed-cy node circles, so the nodes
+  stretched/drifted off their planes on reflow (the green "live" node could
+  slide off plane 02 / move 03 at narrow widths). Fix: replaced the pinned-node
+  SVGs with a single 0..100 tracking line (vector-effect non-scaling-stroke;
+  dashed on 05 = process-in-time), and let sacred-green life breathe ONLY on
+  the plane itself (plane 02 / move 03 already carry the .alive dot). More
+  robust, no meaning lost. GATE (both) 11/12, 0 triggers, PASS. 06-join read
+  clean — no change. wb content check clean (3 sections); published. Note:
+  localhost:4000 404s this run (dev server not serving) — published anyway;
+  partials were already live from prior runs.
