@@ -1,5 +1,13 @@
 [
   {
+    "slug": "internal-app-builder",
+    "title": "Internal app builder that ships real programs",
+    "date": "2026-06-11",
+    "excerpt": "Most \"build internal tools\" or \"internal app builder\" searches lead to platforms that stay in the database or web-app shape. What changes when the builder is an open-source runtime that ships a real desktop program a non-engineer and an agent can both edit and run locally.",
+    "tag": "compare",
+    "file": "blog/internal-app-builder.html"
+  },
+  {
     "slug": "desktop-app-builder",
     "title": "Desktop app builder that ships real programs",
     "date": "2026-06-11",
