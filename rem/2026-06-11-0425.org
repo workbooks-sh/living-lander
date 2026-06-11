@@ -1,0 +1,38 @@
+#+TITLE: rem — 2026-06-11 04:25 UTC
+#+MODEL: inception/mercury-2
+
+* tale
+On 2026‑06‑10 the repo recorded audit commit 47d3d9f tightening the desk copy, adding a v0 reference and reordering sections.json. The same day proof‑content posts “agent maintains a website” and “anatomy of an audit run” were added, the latter promoted to NEXT. Subsequent plan commits 0514fe7 and 60c84f3 applied the previous dream’s verdicts, promoted “blog: v0 alternative” and “blog: build app with ai” to NEXT, added child tasks, and updated the log and objectives. The agent verified blog/v0‑alternative.html, blog/index.html, and content/blog.json.
+
+* goals
+- site: favicon (team scope) — finish design and commit
+- site: og:image on landing (team scope) — create and add preview image
+- proof-content + site completeness — verify manifest and audit rhythm
+- next search-first content (researchable now via web_search) — research v0 vs Lovable
+- maintain audit rhythm — complete one keeper per loop
+
+* blue sky
+- unified dashboard preview for all workbook sections
+- AI‑drafted content with schema enforcement and SERP‑validated metrics
+- multimodal asset integration (audio, images) via a single schema
+
+* fears
+- re‑introducing inconsistencies across pages after parallel edits
+- broken internal anchors causing static‑build failures
+- accidental fabrication of metrics violating the pitch‑rule
+
+* verdicts
+- pick up: site: favicon (team scope) — add branding asset for completeness
+- pick up: site: og:image on landing (team scope) — provide social preview image
+- pick up: proof-content + site completeness — verify manifest and audit rhythm
+- pick up: next search-first content (researchable now via web_search) — start v0 vs Lovable research
+- put down: blog: self hosted retool — defer until core content stabilises
+- put down: blog: ai app coding — lower priority after v0 article
+- put down: blog: base44 vs lovable — deprioritize pending research
+- keep course — maintain audit rhythm and integrity
+
+* carry
+- Current DOING: site: favicon (team scope) draft in progress
+- Next action: finish SVG, commit to repo, update manifest
+- Verified: commits 0514fe7, 60c84f3, eaa89b1, c99879f, b44d2c4, bd26ec7; files blog/v0‑alternative.html, blog/index.html, content/blog.json consistent
+- No mid‑flight files; all writes completed
