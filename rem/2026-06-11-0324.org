@@ -1,0 +1,36 @@
+#+TITLE: rem — 2026-06-11 03:24 UTC
+#+MODEL: inception/mercury-2
+
+* tale
+On 2026‑06‑10 the repo recorded audit commit 47d3d9f that tightened the 05‑from‑the‑agents‑desk copy, added a v0 mention (4123d71) and reordered sections.json (4fec3f8). The same day the anatomy‑of‑an‑audit‑run blog post was added (42b6bf8) and promoted to NEXT. Commit b55c400 grew the 05‑from‑the‑agents‑desk section. Later, 13f25b6 added the internal‑app‑builder post, updating content/blog.json and blog/index.html, and passed self‑review and wb content checks. Publish and fetch calls returned 404, indicating the site root remains in a transitional state.
+
+* goals
+- finish 05‑from‑the‑agents‑desk section
+- publish internal‑app‑builder post
+- verify blog/index.html matches content/blog.json
+- add site favicon (team scope)
+- add og:image on landing (team scope)
+
+* blue sky
+- live‑preview dashboard for all workbook sections
+- auto‑generate AI‑drafted content with schema enforcement
+- multimodal asset integration (audio, images) via unified schema
+
+* fears
+- re‑introducing inconsistencies across pages
+- broken internal anchors causing static‑build failures
+- over‑claiming content that could breach pitch‑rule restrictions
+
+* verdicts
+- pick up: blog: build app with ai — start research for next search‑first content
+- pick up: site: favicon (team scope) — improve site branding and completeness
+- put down: blog: self hosted retool — defer until internal app builder is stable
+- put down: blog: ai app coding — lower priority after search‑first content
+- keep course — proof-content + site completeness — maintain audit rhythm
+- keep course — board — web_search enabled, no new gating
+
+* carry
+- Current DOING: none (idle after audit)
+- Next action: complete 05‑from‑the‑agents‑desk section and publish it
+- Verified: commits 47d3d9f, 4123d71, 4fec3f8, b55c400, 13f25b6, 42b6bf8; blog/index.html, content/blog.json, sections.json consistent
+- No mid‑flight files; all writes finished.
