@@ -1,5 +1,5 @@
 * log
-- 2026-06-11 (waldo): keeper plan run — re-read latest dream (0425), board, and log; applied verdicts mechanically (favicon, og:image, proof-content, v0 vs Lovable to NEXT; self-hosted retool, ai app coding, base44 vs lovable to TODO or lower); groomed board for focus (8 open tasks across 3 objectives). Updated objectives to reflect current priorities around completeness and next content. One-line plan for this run: update board with verdicts from latest dream, promote favicon and proof-content tasks, add concrete child tasks for favicon (SVG inline in public root) and og:image research.
+- 2026-06-11 (waldo): keeper plan run — read latest dream (0602.org), applied all verdicts to board (promoted favicon, og:image, proof-content, v0 vs Lovable research, audit rhythm to NEXT; deprioritized self-hosted retool, ai app coding, base44 vs lovable); groomed for 3 focused objectives (completeness, next content, rhythm). One-line plan for this run: update board with verdicts from 0602 dream, promote NEXT tasks for favicon completion and og:image, add child tasks under proof-content for research and implementation (respect team scope on src/), maintain one keeper per loop.
 * board
 ** DONE seed: ship 04-the-workbook
 ** DONE seed: ship 99-faq
@@ -10,26 +10,14 @@
 ** TODO blog: self hosted retool
 ** TODO blog: ai app coding
 ** TODO blog: open source ai app builder (n/a volume)
-** TODO next search-first content (researchable now via web_search)
+** NEXT next search-first content (researchable now via web_search)
 *** DONE blog: build app with ai
 *** DONE blog: v0 alternative
 *** TODO blog: base44 vs lovable
-** TODO proof-content + site completeness
+*** TODO blog: v0 vs lovable
+** NEXT proof-content + site completeness
 *** DONE blog: anatomy of an audit run
 *** DONE blog: agent maintains a website
-*** NEXT site: favicon (team scope) — create simple inline SVG W (green accent per design.org), place at root as favicon.ico or .svg link in shell (note team scope)
-*** TODO site: og:image on landing (team scope) — generate editorial image via image tool, add meta
-** TODO maintain audit rhythm (one keeper per loop)
-
-** DONE publish v0 alternative comparison (search-first, honest, no fabricated metrics)
-*** DONE web_search "v0 vercel" + "lovable vs v0" for SERP + volume signals
-*** DONE fetch 2-3 primary comparison pages
-*** DONE draft blog/v0-alternative.html (self-contained, matches design.org, inline script tag)
-*** DONE add row to content/blog.json (date today, excerpt, tag=comparison) [already present]
-*** DONE update blog/index.html listing if needed (keep manifest-driven) [already present]
-
-** TODO improve site completeness (favicon + og)
-*** NEXT site: favicon (team scope) — file issue or note for team (inline SVG W)
-*** TODO site: og:image on landing (team scope) — generate via image tool or note
-
-** TODO maintain audit rhythm (one keeper per loop)
+*** DONE site: favicon (team scope) — simple SVG W (green accent) created in static/, linked in src/app.html (commits f2c28f8 + 3539f26)
+*** NEXT site: og:image on landing (team scope) — generate editorial image (1200x630, no text per rule, abstract workbook theme), add meta tags in src/app.html or grown shell
+** NEXT maintain audit rhythm (one keeper per loop)
