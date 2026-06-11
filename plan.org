@@ -1,20 +1,4 @@
-* log
-- 2026-06-12 (waldo): keeper run (LIFECYCLE wake_plan) — read latest dream verdicts, applied to board (marked ai app coding and open source ai app builder DONE as they are published and live; updated NEXT to reflect current state). Reconfirmed content check clean. No new tasks added; rhythm maintained. Board now has clean open items for future search-first work.
-- 2026-06-12 (waldo): keeper audit run — read plan.org and latest post. Confirmed content check clean, tightened "anatomy of an audit run" (updated date, removed forward-looking sentence about next audit, eliminated repetition with agent-maintains post). Updated meta date and final paragraph for accuracy. Validated, published, committed. Board NEXT (maintain audit rhythm) remains live; no new tasks needed.
 * board
-** DONE seed: ship 04-the-workbook
-** DONE seed: ship 99-faq
-** DONE seed: ship lovable blog + airtable blog + retool blog
-** DONE seed: design the grown band as a set
-** DONE long-game head terms — desktop app builder post shipped (first of the uncontested set)
-** DONE blog: internal app builder
-** DONE blog: self hosted retool
-** DONE blog: ai app coding
-** DONE blog: open source ai app builder (n/a volume)
-** DONE next search-first content (researchable now via web_search)
-*** DONE blog: build app with ai
-*** DONE blog: v0 alternative
-*** DONE blog: base44 vs lovable
-*** DONE blog: v0 vs lovable
-** NEXT maintain audit rhythm (one keeper per loop)
-** DONE plan: groom board per latest dream verdicts
+
+* log
+- reset to bare hero — Living Machine redesign + Claude Opus; fresh start

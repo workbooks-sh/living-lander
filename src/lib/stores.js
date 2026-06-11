@@ -5,8 +5,15 @@
    preserves the shared closures (cursor ⇄ build ⇄ watch ⇄ follow) that the
    choreography depends on. */
 
+import { push as routerPush } from './router.svelte.js';
+
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const sleep = (ms) => new Promise((r) => setTimeout(r, reduced ? 0 : ms));
+
+// the engine only enacts the build/edit choreography when the homepage content
+// is actually mounted in #route (its #b-* and #grown nodes exist). On the blog
+// routes those nodes are absent, so guard against driving a torn-down page.
+const onHome = () => location.pathname === '/' || location.pathname === '';
 
 const H1 = 'A website that builds itself.';
 
@@ -29,6 +36,31 @@ const refs = {
 };
 export const registerRef = (name, el) => { refs[name] = el; };
 
+/* ── feed subscribers: the hero build-ticker (and any future live readout)
+   shares the ONE engine truth — the watch() loop's commits + agent status —
+   instead of opening a second poller. Register a callback; it fires on every
+   watch tick with the same data the panel renders, plus immediately with the
+   last snapshot so a late-mounting ticker isn't blank until the next poll. ── */
+const feedSubs = new Set();
+let lastFeedSnapshot = null;            // { changes, agent } from the most recent tick
+export function onFeed(fn) {
+  feedSubs.add(fn);
+  if (lastFeedSnapshot) { try { fn(lastFeedSnapshot); } catch { /* ignore */ } }
+  return () => feedSubs.delete(fn);
+}
+function emitFeed(snapshot) {
+  lastFeedSnapshot = snapshot;
+  for (const fn of feedSubs) { try { fn(snapshot); } catch { /* one bad sub never breaks the loop */ } }
+}
+// classify a commit for external readouts (the ticker): { who, tag, color, text }.
+// Reuses the engine's own classify() so the ticker can't drift from the panel.
+export function describeCommit(c) {
+  const k = classify(c);
+  return { who: k.who, tag: k.tag, color: k.color,
+           text: (c.msg || '').replace(/^[a-z]+:\s*/i, ''), sha: c.sha, ts: c.ts };
+}
+export const relTime = (ts) => rel(ts);
+
 /* ── reveal-on-scroll: a Svelte action, ports the IntersectionObserver ── */
 export function reveal(node) {
   if (reduced) { node.classList.add('on'); return; }
@@ -40,6 +72,132 @@ export function reveal(node) {
   );
   io.observe(node);
   return { destroy() { io.disconnect(); } };
+}
+// apply reveal to an already-injected element (the action above is for Svelte
+// markup; injected partials are plain DOM, so wire the same observer by hand).
+function revealEl(node) {
+  if (reduced) { node.classList.add('on'); return; }
+  const io = new IntersectionObserver(
+    (es) => es.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+    }),
+    { threshold: 0.18 }
+  );
+  io.observe(node);
+}
+
+/* ── the content CMS: runtime-loaded agent sections ───────────────
+   Agent-grown sections are no longer compiled in. They live as a manifest
+   (/content/sections.json) + HTML partials (/content/sections/NN-slug.html),
+   fetched at RUNTIME and injected into #grown — exactly like the blog ships as
+   static HTML. Adding a section is a manifest row + a partial file; it appears
+   on the next load with zero build. Empty/missing manifest → nothing rendered,
+   no errors; fetch failures degrade silently. Partials are first-party content
+   the agent committed to this same-origin repo, so raw-HTML injection is safe
+   (no third-party/user input → no sanitizer). ─────────────────────── */
+
+// fetch a JSON manifest from the site root; [] on any failure (degrade silent).
+async function loadManifest(path) {
+  try {
+    const res = await fetch(path, { signal: AbortSignal.timeout(8000) });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
+  } catch { return []; }
+}
+// ordering law: order asc, but any entry pinned "last" (the faq) sorts after
+// every un-pinned one regardless of its number.
+const sortSections = (list) => [...list].sort((a, b) => {
+  const pa = a.pin === 'last' ? 1 : 0, pb = b.pin === 'last' ? 1 : 0;
+  return pa - pb || (a.order || 0) - (b.order || 0);
+});
+const pad2 = (n) => String(n).padStart(2, '0');
+// the data-grown hook the follow resolver looks for: NN-slug (NN from the
+// manifest order, so it's always correct even if files are renamed/reordered).
+const grownHook = (entry) => `${pad2(entry.order)}-${entry.slug}`;
+
+// fetch one partial and wrap it as a .grown-host (the diff/streaming code keys
+// off this exact wrapper shape). Stamps data-grown + renumbers the kicker so the
+// "NN · …" prefix always reflects the manifest position. null on failure.
+async function fetchSection(entry, position) {
+  let html = '';
+  try {
+    const res = await fetch('/' + entry.file, { signal: AbortSignal.timeout(8000) });
+    if (!res.ok) return null;
+    html = await res.text();
+  } catch { return null; }
+  const host = document.createElement('div');
+  host.className = 'grown-host';
+  host.style.display = 'contents';
+  host.innerHTML = html;
+  const sec = host.querySelector('section');
+  if (!sec) return null;                       // partial must be a <section>
+  const hook = grownHook(entry);
+  host.setAttribute('data-grown', hook);
+  sec.setAttribute('data-grown', hook);
+  // renumber the kicker from the page position (manifest order), keeping any
+  // trailing label the agent wrote after the "·".
+  const kick = sec.querySelector('.kicker');
+  if (kick) {
+    const rest = kick.textContent.replace(/^\s*\d+\s*·?\s*/, '');
+    kick.textContent = `${pad2(position)} · ${rest}`.trim();
+    kick.classList.add('reveal');
+  }
+  // reveal-on-scroll: tag the heading + paragraphs so they animate in like the
+  // human-curated sections (which use the `reveal` action).
+  sec.querySelectorAll('h2, p').forEach((n) => n.classList.add('reveal'));
+  return host;
+}
+
+// build the full grown list (manifest order) into a detached container. Shared
+// by the initial mount and the live diff (refreshGrown) so both render identically.
+async function buildGrownContainer() {
+  const frag = document.createElement('div');
+  const list = sortSections(await loadManifest('/content/sections.json'));
+  // numbering follows position, not the raw order field — so 04,07,12 still
+  // print 04,05,06 down the page.
+  const hosts = await Promise.all(list.map((e, i) => fetchSection(e, i + 4)));
+  for (const h of hosts) if (h) frag.appendChild(h);
+  return frag;
+}
+
+// initial mount: fetch the manifest, inject sections, wire reveal. Runs once
+// when #grown is in the DOM (called from Grown.svelte's $effect).
+export async function mountGrown(host) {
+  // per-host idempotence (NOT a session flag): the host node is recreated on
+  // every route return, and each fresh host needs its content injected again.
+  if (!host || host.childElementCount > 0) return;
+  const frag = await buildGrownContainer();
+  host.append(...frag.children);
+  // the "agent's desk" blog listing is the LAST section INSIDE #grown (not a
+  // sibling) so it inherits the #grown width/spacing — outside it, .grown has
+  // no width constraint and goes full-bleed.
+  const desk = await buildDesk();
+  if (desk) host.append(desk);
+  host.querySelectorAll('.reveal').forEach(revealEl);
+}
+
+/* ── "from the agent's desk": the on-page blog listing ────────────
+   Manifest-driven from /content/blog.json — the SAME source the blog index
+   reads — so a new post can't be present on the index yet missing here. Empty
+   manifest → the section stays hidden (no empty shell). ──────────── */
+async function buildDesk() {
+  const posts = await loadManifest('/content/blog.json');
+  if (!posts.length) return null;              // nothing to show → render nothing
+  const slug = (p) => (p.slug || (p.file || '').replace(/^blog\//, '').replace(/\.html$/, ''));
+  const rows = posts.map((p) => `
+    <a class="deskrow reveal" href="/blog/${escH(slug(p))}">
+      <span class="deskmeta">${escH(p.tag || 'post')} · ${escH(p.date || '')}</span>
+      <span class="deskttl">${escH(p.title || slug(p))}</span>
+      <span class="deskex">${escH(p.excerpt || '')}</span>
+    </a>`).join('');
+  const sec = document.createElement('section');
+  sec.className = 'grown'; sec.id = 'desk';
+  sec.innerHTML = `
+    <div class="kicker reveal">from the agent's desk</div>
+    <h2 class="reveal">Notes, posts, and proof</h2>
+    <div class="desklist">${rows}</div>`;
+  return sec;
 }
 
 /* ── panel visibility ─────────────────────────────────────────── */
@@ -60,6 +218,24 @@ const moveTo = async (el, ms = 950) => {
   await sleep(ms + 60);
 };
 const work = (on) => refs.cursor.classList.toggle('working', on);
+// behavior-driven placement on the MAIN page cursor: position it at `el` using
+// the semantic offset for `step` (reading scan / writing descent / tick). Unlike
+// moveTo (random scatter, used for the first fly-in), this is DETERMINISTIC from
+// the feed — the offset comes from readScanOffset(step). `ms` short → a live nudge
+// (same target, advancing), long → a travel (new target). Every position here is
+// step.tool + step.target + behaviorPolls; nothing ambient.
+const placeBehavior = async (el, step, ms = 600) => {
+  const cursor = refs.cursor;
+  let rect; try { rect = el.getBoundingClientRect(); } catch { return; }
+  if (!rect || (!rect.width && !rect.height)) return;
+  const { fx, fy } = readScanOffset(step, el, rect);
+  const x = rect.left + rect.width * (0.5 + fx);
+  const y = rect.top + rect.height * (0.5 + fy);
+  cursor.classList.toggle('flip', x > innerWidth - 280);
+  cursor.style.transitionDuration = reduced ? '0ms' : ms + 'ms';
+  cursor.style.transform = `translate(${scrollX + x}px, ${scrollY + y}px)`;
+  await sleep(reduced ? 0 : Math.min(ms + 40, 700));
+};
 const trimWords = (t, max = 90) =>
   !t || t.length <= max ? t : t.slice(0, max).replace(/\s+\S*$/, '') + ' …';
 const think = (text) => {
@@ -135,68 +311,206 @@ const escH = (s) => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').repla
 const VERB = { vfs_read: 'reading', vfs_write: 'writing', fetch: 'reading',
                run: 'running', http: 'reading' };
 const verbFor = (tool, fallback) => VERB[tool] || fallback || 'reading';
-// known never-frameable hosts (X-Frame-Options/CSP deny) — skip straight to the card
-const NO_FRAME = /(^|\.)(github\.com|google\.com|twitter\.com|x\.com|youtube\.com|reddit\.com)$/i;
-
-function viewerHead(verb, target, thought) {
-  if (refs.viewerVerb) refs.viewerVerb.textContent = `${verb} ${trimWords(target, 38)}`;
-  if (refs.viewerThought) refs.viewerThought.textContent = trimWords(thought || '', 60);
+// PRIVATE/EXTERNAL calls never show their args or response — a tool call is
+// rendered as a clean label only (no URLs with query params, no API keys, no
+// SEO/LLM data). Map a step to a human label; everything unknown → "working".
+const CALL_LABELS = [
+  [/dataforseo|serpapi|semrush|ahrefs|search[_-]?volume|keywords?_data/i, 'checking search data'],
+  [/openrouter|api\.x\.ai|anthropic|openai|llm|inference|completion/i, 'thinking'],
+  [/api\.x\.com|\/2\/tweets|oauth2\/token/i, 'posting an update'],
+  [/raw\.githubusercontent|api\.github/i, 'reading the repo'],
+];
+// Any external API host is private by default — show the host's nature, not the URL.
+const PRIVATE_API = /(^|\.)(api\.|.*\.amazonaws\.com|.*\.googleapis\.com)/i;
+function callLabel(target, tool) {
+  for (const [re, label] of CALL_LABELS) if (re.test(target)) return label;
+  if (tool === 'search') return 'searching its notes';
+  if (tool === 'run') return 'running a command';
+  if (tool === 'fetch') return 'reading the web';
+  return 'working';
 }
 
-function urlCard(u) {
-  // styled fallback when an iframe won't load: favicon + domain + url + "reading"
+/* ── semantic motion: behavior = the actual tool ───────────────────────
+   Every motion below traces to a feed datum: the step's `tool` chooses the
+   behavior, the step's `target` (resolved to an element) is the anchor, and
+   `polls` (count of follow ticks the SAME target has persisted) advances it.
+   No global keyframes — the offset is recomputed each poll from these.
+
+   reading (vfs_read / fetch): eyes scanning a line — a slow horizontal sweep
+     left→right across the element's width, ~4s per pass, then wraps. fx ∈ [-.5,.5].
+   writing (vfs_write / publish): typing posture — descend the element's text
+     blocks (h2, then each <p>) one block per poll, anchoring fy to that block's
+     centre within the element (precise: where in the content it's writing).
+   shell/wb/git: a tight tool tick — a tiny settle jitter, no real travel.
+   anything else: centred, still. */
+const READ_TOOLS = new Set(['vfs_read', 'fetch', 'http']);
+const WRITE_TOOLS = new Set(['vfs_write', 'publish']);
+const TICK_TOOLS = new Set(['shell', 'wb', 'git', 'run']);
+// poll bookkeeping: how many follow ticks the current resolved target has lived.
+let behaviorKey = null, behaviorPolls = 0;
+// call once per poll BEFORE reading offsets, with the current target's stable key.
+// Resets the counter when the target changes; advances it when it persists (this
+// is what makes the cursor keep living on an unchanged-but-fresh step).
+function tickBehavior(key) {
+  if (key !== behaviorKey) { behaviorKey = key; behaviorPolls = 0; }
+  else behaviorPolls++;
+}
+// fractional offset within the anchored element for the current step+tool. `el`
+// + `rect` let the write behavior target real child text-blocks. fx/fy ∈ [-.5,.5].
+function readScanOffset(step, el, rect) {
+  const tool = step && step.tool;
+  if (READ_TOOLS.has(tool)) {
+    // horizontal scan: a 4s pass at our ~2.5s poll cadence advances ~0.62/poll of
+    // phase; ease it across the width so it reads like a gaze, not a metronome.
+    const phase = (behaviorPolls % 4) / 4 + 0.05;        // 0..1 across ~4 polls
+    return { fx: (phase - 0.5) * 0.74, fy: (Math.sin(behaviorPolls) * 0.04) };
+  }
+  if (WRITE_TOOLS.has(tool)) {
+    // typing descent: walk the element's text blocks (h2 then p's); one per poll.
+    const blocks = writeBlocks(el);
+    if (blocks.length && rect && rect.height) {
+      const b = blocks[Math.min(behaviorPolls, blocks.length - 1)];
+      let br; try { br = b.getBoundingClientRect(); } catch { br = null; }
+      if (br && br.height) {
+        // block centre as a fraction of the element box (its own coordinate space)
+        const fy = ((br.top + br.height / 2) - (rect.top + rect.height / 2)) / rect.height;
+        return { fx: -0.18, fy: Math.max(-0.5, Math.min(0.5, fy)) };  // left margin, like a caret
+      }
+    }
+    // no child blocks resolvable → small downward creep so it still advances
+    return { fx: -0.18, fy: Math.min(0.42, behaviorPolls * 0.12 - 0.2) };
+  }
+  if (TICK_TOOLS.has(tool)) {
+    // tool tick: a tiny pause-and-settle, no travel (work happens, cursor doesn't roam)
+    const j = behaviorPolls % 2 ? 0.03 : -0.03;
+    return { fx: j, fy: 0 };
+  }
+  return { fx: 0, fy: 0 };
+}
+// the text blocks a write descends through: heading then paragraphs, in order.
+// Deterministic from the element's children (WALDO partials are h2 + p's).
+const writeBlocks = (el) => {
+  try { return [...el.querySelectorAll('h2, p')]; } catch { return []; }
+};
+
+function viewerHead(verb, target, thought) {
+  // verb line is "<verb> <short-target>" — the card's whole headline. The
+  // thought gets its own clamped block (it IS the personality of the card).
+  if (refs.viewerVerb) refs.viewerVerb.textContent = `${verb} ${trimWords(target, 26)}`;
+  if (refs.viewerThought) refs.viewerThought.textContent = trimWords(thought || '', 70);
+}
+
+// url → one favicon-and-domain row. No iframe: the compact card shows WHERE
+// it's reading, not the page itself (and external pages mostly refuse frames).
+function showUrl(u) {
   let host = u; try { host = new URL(u).host; } catch { /* keep raw */ }
-  const fav = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(host)}&sz=64`;
-  return `<div class="vcard">
-    <img class="vfav" src="${escH(fav)}" alt="" width="32" height="32"
-         onerror="this.style.visibility='hidden'">
-    <div class="vdom">${escH(host)}</div>
-    <div class="vurl">${escH(trimWords(u, 90))}</div>
-    <div class="vtag">reading</div>
+  const fav = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(host)}&sz=32`;
+  refs.viewerBody.innerHTML = `<div class="vrow">
+    <img class="vfav" src="${escH(fav)}" alt="" onerror="this.style.visibility='hidden'">
+    <span class="vdom">${escH(host)}</span>
   </div>`;
 }
 
-function showUrl(u) {
-  const body = refs.viewerBody;
-  let host = ''; try { host = new URL(u).host; } catch { /* unframeable below */ }
-  if (!host || NO_FRAME.test(host)) { body.innerHTML = urlCard(u); return; }
-  // try an iframe; if it errors or never loads, fall back to the card
-  body.innerHTML =
-    `<iframe class="vframe" sandbox="allow-scripts allow-same-origin"
-       referrerpolicy="no-referrer" src="${escH(u)}"></iframe>`;
-  const fr = body.querySelector('iframe');
-  let settled = false;
-  const fail = () => { if (settled) return; settled = true; body.innerHTML = urlCard(u); };
-  fr.addEventListener('error', fail);
-  fr.addEventListener('load', () => { settled = true; });    // it framed — keep it
-  setTimeout(fail, 3200);                                     // many denials are silent
-}
-
-// code → numbered monospace lines; .org headings (lines starting with *) tinted
-const codeHtml = (text, isOrg) => {
-  const lines = text.split('\n');
-  return `<pre class="vcode"><table>${lines.map((ln, i) => {
-    const head = isOrg && /^\*+\s/.test(ln);
-    return `<tr><td class="vln">${i + 1}</td><td class="vsrc${head ? ' vorg' : ''}">${escH(ln) || ' '}</td></tr>`;
-  }).join('')}</table></pre>`;
-};
-
+// file → a faint few-line excerpt (a glimpse of what it's reading, fading out
+// under the CSS mask — never a full document). Committed bytes from the mirror.
 async function showFile(path, verb) {
   const body = refs.viewerBody;
-  body.innerHTML = `<div class="vload">${escH(path)}</div>`;
+  body.innerHTML = `<pre class="vex">${escH(path)}</pre>`;
   let res = null;
   try { res = await fetch(RAW + path, { signal: AbortSignal.timeout(7000) }); }
-  catch { /* offline → 404 card below */ }
+  catch { /* offline → name-only below */ }
   if (!res || !res.ok) {
-    // not yet committed: be honest — it's a draft only Waldo can see right now
-    body.innerHTML = `<div class="vcard">
-      <div class="vdom">${escH(path)}</div>
-      <div class="vurl">${escH(verb)} ${escH(path.split('/').pop())} — first draft, not yet committed</div>
-      <div class="vtag">${escH(verb)}</div>
-    </div>`;
+    body.innerHTML = `<div class="vrow"><span class="vpulse"></span><span class="vdom">${escH(verb)} ${escH(path.split('/').pop())} — draft, not yet committed</span></div>`;
     return;
   }
-  body.innerHTML = codeHtml(await res.text(), /\.org$/.test(path));
+  const lines = (await res.text()).split('\n').filter((l) => l.trim()).slice(0, 7);
+  const isOrg = /\.org$/.test(path);
+  body.innerHTML = `<pre class="vex">${lines.map((l) =>
+    isOrg && /^\*+\s/.test(l) ? `<span class="vorg">${escH(l)}</span>` : escH(l)
+  ).join('\n')}</pre>`;
+}
+
+// another page of THIS site: a live scaled embed (the real page, ?embed=1 so its
+// shell chrome hides) with an activity dot anchored to the REAL element the agent's
+// current step touches inside the embed (see anchorEmbed). The CARD is a link —
+// clicking jumps there; the page NEVER navigates on its own (no redirects).
+function showPage(page) {
+  refs.viewer.classList.add('haslink');
+  refs.viewer.dataset.jump = page;
+  embedPage = page;                 // the route the embed is showing (for stepTarget pathname)
+  embedReady = false;               // contentDocument not loaded yet — anchorEmbed guards
+  refs.viewerBody.innerHTML = `<div class="vpagewrap">
+    <iframe class="vpage" src="${escH(page)}?embed=1" loading="lazy" title="live view"></iframe>
+    <span class="vcur" aria-hidden="true"></span>
+  </div><div class="vjump">click to open ${escH(page)} →</div>`;
+}
+
+/* ── true embed anchoring: the dot IS a coordinate, not a keyframe ──────
+   The embed iframe is same-origin, so the parent can read its contentDocument.
+   Every poll while a page is embedded we resolve the agent's CURRENT step against
+   that document and, if it hits a real element, place `.vcur` at that element's
+   centre — scaled by the iframe's CSS transform (the embed is rendered at logical
+   size then `transform: scale(s)`, so a child rect read from contentDocument is in
+   logical px and must be multiplied by `s` to land in wrapper px). Nothing resolves
+   → hide the dot (the card header still narrates). Every datum here traces to the
+   live feed: the dot's position = stepTarget(currentStep, embedDoc).el.rect × scale. */
+let embedPage = null;     // route currently in the embed (set by showPage)
+let embedReady = false;   // becomes true once contentDocument + body exist
+// read the embed's CSS scale from the live transform matrix; fall back to the
+// .vpage constant (0.227) if the matrix can't be parsed (e.g. before layout).
+function embedScale(iframe) {
+  try {
+    const m = new DOMMatrixReadOnly(getComputedStyle(iframe).transform);
+    if (m.a && isFinite(m.a)) return m.a;     // uniform scale → matrix.a
+  } catch { /* fall through */ }
+  return 0.227;
+}
+// place the embed dot for the current step. Returns true if it anchored to a real
+// element (so callers know the embed is "alive"), false if nothing resolved.
+function anchorEmbed(step) {
+  const wrap = refs.viewerBody?.querySelector('.vpagewrap');
+  const iframe = wrap?.querySelector('.vpage');
+  const dot = wrap?.querySelector('.vcur');
+  if (!wrap || !iframe || !dot) return false;
+  let edoc = null;
+  try { edoc = iframe.contentDocument; } catch { edoc = null; }  // null until load
+  // the embed's SPA mounts async (CMS fetch): body may be empty for a few polls.
+  if (!edoc || !edoc.body || !edoc.body.firstChild) { embedReady = false; return false; }
+  embedReady = true;
+  // resolve THIS step against the embed's own document + route, not the host's.
+  const epath = (() => { try { return new URL(iframe.src).pathname; } catch { return embedPage || '/'; } })();
+  let t = {};
+  try { t = stepTarget(step, edoc, epath); } catch { t = {}; }
+  if (!t.el) { dot.classList.remove('show'); clearTouch(edoc); return false; }
+  let rect;
+  try { rect = t.el.getBoundingClientRect(); } catch { return false; }
+  if (!rect || (!rect.width && !rect.height)) { dot.classList.remove('show'); return false; }
+  const s = embedScale(iframe);
+  // element centre in the embed's logical coordinate space → wrapper px via scale.
+  const scan = readScanOffset(step, t.el, rect);   // semantic motion (reading drift)
+  const x = (rect.left + rect.width * (0.5 + scan.fx)) * s;
+  const y = (rect.top + rect.height * (0.5 + scan.fy)) * s;
+  dot.style.left = x + 'px';
+  dot.style.top = y + 'px';
+  dot.classList.add('show');
+  // brief highlight on the embed element itself — the embed loads our CSS so the
+  // `.touch` ring exists inside its document. Only (re)apply on target change.
+  if (anchorKey !== embedTargetKey(t.el)) {
+    anchorKey = embedTargetKey(t.el);
+    clearTouch(edoc);
+    try { t.el.classList.add('touch'); setTimeout(() => { try { t.el.classList.remove('touch'); } catch {} }, 1600); } catch {}
+  }
+  return true;
+}
+let anchorKey = null;
+const embedTargetKey = (el) => el.dataset?.grown || el.id || (el.tagName + ':' + (el.textContent || '').slice(0, 24));
+function clearTouch(edoc) {
+  try { edoc.querySelectorAll('.touch').forEach((n) => n.classList.remove('touch')); } catch {}
+}
+
+// a private/external call: NEVER the args or response — a labelled pulse only.
+function showCall(label) {
+  refs.viewerBody.innerHTML = `<div class="vrow"><span class="vpulse"></span><span class="vdom">${escH(label)}</span></div>`;
 }
 
 function isViewerOpen() { return refs.viewer && refs.viewer.classList.contains('open'); }
@@ -205,6 +519,7 @@ function closeViewer() {
   if (!win || !win.classList.contains('open')) return;
   win.classList.remove('open');
   viewerKey = null;
+  embedPage = null; embedReady = false; anchorKey = null;   // forget the embed state
   if (refs.viewerBody) refs.viewerBody.innerHTML = '';   // drop the iframe so it stops loading
 }
 // open (or re-point) the viewer for an off-page target. `t` is the resolved
@@ -213,15 +528,24 @@ function openViewer(t) {
   const win = refs.viewer;
   if (!win || !following) return false;
   if (innerWidth <= 640) return false;                   // no room — handled by caller
-  const key = t.url ? 'u:' + t.url : 'f:' + t.file;
+  const head = t.pageEmbed || t.url || t.file || t.call;
+  const key = t.pageEmbed ? 'pg:' + t.pageEmbed :
+    t.url ? 'u:' + t.url : t.file ? 'f:' + t.file : 'c:' + t.call;
   if (key === viewerKey && win.classList.contains('open')) {
-    viewerHead(t.verb, t.url || t.file, t.thought);      // same target, refresh header only
+    viewerHead(t.verb, head, t.thought);                 // same target, refresh header only
     return true;
   }
   viewerKey = key;
   win.classList.add('open');
-  viewerHead(t.verb, t.url || t.file, t.thought);
-  if (t.url) showUrl(t.url); else showFile(t.file, t.verb);
+  viewerHead(t.verb, head, t.thought);
+  if (!t.pageEmbed) {
+    refs.viewer.classList.remove('haslink'); delete refs.viewer.dataset.jump;
+    embedPage = null; embedReady = false; anchorKey = null;   // leaving embed mode
+  }
+  if (t.pageEmbed) showPage(t.pageEmbed);
+  else if (t.url) showUrl(t.url);
+  else if (t.file) showFile(t.file, t.verb);
+  else showCall(t.call);                                 // sanitized — label only, no data
   return true;
 }
 
@@ -250,6 +574,7 @@ async function build() {
   think('morning. building the page');
   await place('#b-nav', 380, 'pinning the nav up top');
   await place('#b-mark', 380, 'the W goes here');
+  await place('#b-eyebrow', 300, 'one file, served live');
   const h1 = document.querySelector('#b-h1');
   think('typing the headline');
   await moveTo(h1); work(true);
@@ -258,6 +583,8 @@ async function build() {
   work(false);
   await place('#b-sub', 380, 'one honest paragraph');
   await place('#b-ctas', 380, 'wiring the buttons');
+  await place('#b-agents', 380, 'works with your agent');
+  await place('#b-ticker', 380, 'and here is the live pulse');
   think('all yours — back on the clock');
   await sleep(900);
   think(null);
@@ -452,20 +779,22 @@ async function mergeGrown(here, next) {
   return firstNew;
 }
 
-/* a fresh add: commit may mean a new section — pull it into the open page */
+/* a fresh add: commit may mean a new section — pull it into the open page.
+   The page is now a runtime CMS, so we don't re-fetch / (it no longer SSRs the
+   grown sections); we rebuild the grown list from the manifest and diff it into
+   the live #grown, preserving the type-in streaming below. */
 async function refreshGrown() {
   try {
-    const res = await fetch('/', { signal: AbortSignal.timeout(8000) });
-    if (!res.ok) return null;
-    const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
-    const next = doc.querySelector('#grown');
+    const next = await buildGrownContainer();          // freshly fetched manifest
     const here = document.querySelector('#grown');
-    if (next && next.innerHTML.trim() !== here.innerHTML.trim()) {
+    if (next.children.length && next.innerHTML.trim() !== here.innerHTML.trim()) {
       const firstNew = await mergeGrown(here, next);
+      // reveal any sections the merge inserted but that scrolled into view
+      here.querySelectorAll('.reveal:not(.on)').forEach(revealEl);
       const secs = document.querySelectorAll('#grown section');
-      return firstNew || secs[0] || null;     // newest lands first (agent prepends)
+      return firstNew || secs[secs.length - 1] || null;
     }
-  } catch { /* same-origin only — fine on localhost */ }
+  } catch { /* degrade silently — changes still land on next load */ }
   return null;
 }
 
@@ -511,11 +840,18 @@ async function fetchActivity() {
 //   { page }          — another lander page: redirect (follow + not already there)
 //   { url } / { file }— off-page: the viewer window shows it
 //   {}                — nothing specific: HOLD position (never default to the headline)
-const stepTarget = (step) => {
+// `doc` is the DOM the element must live in. For the main page that's `document`;
+// when resolving a step FOR the portal's live embed it's `iframe.contentDocument`
+// — so {el} hits point inside the embed and we can anchor the embed dot to a REAL
+// node (no more fake roaming). `pathname` is the route that `doc` is showing (the
+// embed's route, not the host's) so the "am I already on this page" checks below
+// compare against the right page. Both default to the host document/route.
+const stepTarget = (step, doc = document, pathname = location.pathname) => {
   const t = (step && step.target) || '';
   const tool = step && step.tool;
   const verb = verbFor(tool);
-  // git history work → inspect the actual commit node in the panel
+  // git history work → inspect the actual commit node in the panel. The panel is
+  // host-only chrome (hidden in the embed) so always resolve it against `document`.
   if (/git\s+(log|show|diff)|^git\b/.test(t)) {
     const sha = /\b([0-9a-f]{7,40})\b/.exec(t);
     let node = null;
@@ -526,34 +862,56 @@ const stepTarget = (step) => {
     const el = node || document.querySelector('#tlList .node');
     return el ? { git: true, el } : {};
   }
-  // a grown section: map to its on-page element when rendered; else the file view
-  const grown = /src\/sections\/grown\/(\d{2}-[\w-]+)\.svelte/.exec(t);
+  // a CMS section partial: map to its on-page element when rendered; else file view
+  const grown = /content\/sections\/(\d{2}-[\w-]+)\.html/.exec(t);
   if (grown) {
-    const el = document.querySelector(`[data-grown="${grown[1]}"]`);
+    const hook = grown[1];
+    const el = doc.querySelector(`[data-grown="${hook}"]`);
     if (el) return { el };
-    return { file: `src/sections/grown/${grown[1]}.svelte`, verb };
+    return { file: `content/sections/${hook}.html`, verb };
   }
-  // any other tracked source file → the viewer reads the committed bytes
-  const file = /((?:src\/[\w./-]+\.svelte)|(?:(?:strategy|skills|rem)\/[\w./-]+\.org)|plan\.org|(?:blog\/[\w-]+\.html))/.exec(t);
+  // a private/external API or tool call → a SANITIZED label card, never the URL
+  const bareUrl = /(https?:\/\/[^\s"'<>]+)/.exec(t);
+  if (bareUrl && PRIVATE_API.test(new URL(bareUrl[1]).host.replace(/^/, 'api.') ) || /dataforseo|serpapi|openrouter|oauth2\/token|\/2\/tweets/i.test(t)) {
+    return { call: callLabel(t, tool), verb };
+  }
+  // any other tracked content/source file → the viewer reads the committed bytes
+  const file = /((?:content\/sections\/[\w./-]+\.html)|(?:src\/[\w./-]+\.svelte)|(?:(?:strategy|skills|rem|content)\/[\w./-]+\.(?:org|json))|plan\.org|(?:blog\/[\w-]+\.html))/.exec(t);
   if (file) {
     const f = file[1];
     if (f.startsWith('blog/')) {
-      // a blog page: redirect only when following + not already there; else view it
-      const page = '/' + f;
+      // a blog page: follow it there in-shell; ON the page (host OR embed showing
+      // that route), the cursor works over the article itself; otherwise glimpse
+      // the file in the viewer. Route compare uses `pathname` (embed's when resolving
+      // for the embed) so the article resolves inside the embedded blog page too.
+      const page = '/' + f.replace(/\.html$/, '');
+      if (pathname === page || pathname === '/' + f) {
+        const el = doc.querySelector('.blogpost article');
+        if (el) return { el };
+      }
       if (following && location.pathname !== page) return { page };
       return { file: f, verb };
     }
     return { file: f, verb };
   }
   if (/index\.html/.test(t)) {
-    const sec = document.querySelectorAll('#grown section');
-    const el = sec[0] || document.querySelector('#grown');
+    const sec = doc.querySelectorAll('#grown section');
+    const el = sec[0] || doc.querySelector('#grown');
     return el ? { el } : {};
   }
   // a bare http(s) url (fetch tool / reading the web) → the viewer frames it
   const url = /(https?:\/\/[^\s"'<>]+)/.exec(t);
-  if (url) return { url: url[1], verb };
-  // nothing we can place — hold. (Do NOT fall back to the headline.)
+  if (url) {
+    let host = ''; try { host = new URL(url[1]).host; } catch {}
+    // an API host (or query string carrying params) is private → label only
+    if (/^api\.|\?/.test(url[1].replace(/^https?:\/\//, '')) || /^api\./.test(host)) {
+      return { call: callLabel(t, tool), verb };
+    }
+    return { url: url[1], verb };
+  }
+  // a bare tool action with no path we can place → a sanitized label, not nothing
+  if (tool === 'search' || tool === 'run' || tool === 'fetch') return { call: callLabel(t, tool), verb };
+  // nothing to place — hold. (Do NOT fall back to the headline.)
   return {};
 };
 // the follow button reflects engine state: a toggle, not a one-shot. The panel
@@ -562,7 +920,9 @@ const setFollowBtn = (on) => {
   const b = document.querySelector('#followBtn');
   if (!b) return;
   b.classList.toggle('on', on);
-  b.textContent = on ? 'following ✓ — click to stop' : 'follow along — it\'s working now';
+  b.setAttribute('aria-pressed', String(on));
+  const sub = b.querySelector('#followSub');
+  if (sub) sub.textContent = on ? 'watching the cursor work' : "it's working right now";
 };
 // last resolved target — the cursor only MOVES when this changes, so repeated
 // same-target steps don't make it twitch around the page.
@@ -570,7 +930,8 @@ let lastKey = null;
 const targetKey = (t) =>
   t.page ? 'p:' + t.page : t.url ? 'u:' + t.url : t.file ? 'f:' + t.file :
   t.git ? 'g:' + (t.el ? [...t.el.parentNode.children].indexOf(t.el) : '?') :
-  t.el ? 'e:' + (t.el.dataset.grown || t.el.id || t.el.tagName) : '';
+  t.el ? 'e:' + (t.el.dataset.grown || t.el.id || t.el.tagName) :
+  t.call ? 'c:' + t.call : '';
 
 async function stopFollow() {
   if (!following) return;
@@ -582,62 +943,126 @@ async function stopFollow() {
   lastKey = null;
 }
 
+/* ── "where is the agent" — one state machine, one truth ──────────
+   The agent is always in exactly ONE of three places, derived every poll
+   from the live feed (not from edge-triggered "new step" events):
+
+     on-page   — its CURRENT step targets something on THIS route's DOM
+                 → the cursor is out, at that element, thought in the bubble.
+     off-page  — its current step is a file / url / api call
+                 → the cursor lives absorbed in the portal card, which names
+                   the action; thought rides the card.
+     thinking  — the latest step is stale (the model is generating between
+                 tool calls — most of an agent's wall time)
+                 → portal card says "thinking", live thought, no cursor.
+
+   Honest-by-derivation: everything shown comes from the feed (steps + the
+   narrated thought). When the feed can't place it, we say "thinking" — which
+   is what the agent is actually doing between steps. ~90% real beats 100%
+   theatrical. */
+const STEP_FRESH_MS = 25_000;     // a step older than this → it's thinking again
+
 async function follow() {
   following = true;
   setFollowBtn(true);
   document.querySelector('#followBtn').hidden = false;
-  await cursorEnter();
-  think('let me show you what I\'m doing');
-  work(true);
   let misses = 0;
+
   while (following) {
     const act = await fetchActivity();
-    if (!act && ++misses === 3) think('(its live feed is warming up — changes still land below)');
+    if (!act && ++misses === 3 && refs.viewerThought)
+      refs.viewerThought.textContent = 'live feed warming up — changes still land below';
+
     if (act) {
       misses = 0;
-      if (!act.agent || !act.agent.running) {       // run ended → auto-stop
-        think('done — shipping it');
-        await sleep(1600);
+      if (!act.agent || !act.agent.running) {        // run ended → auto-stop
+        if (!absorbed && cursorIn) think('done — shipping it');
+        await sleep(1400);
         await stopFollow();
         break;
       }
-      // header thought always tracks; bubble only when the cursor is out (not absorbed)
-      if (act.thought && !absorbed) think(act.thought);
-      if (act.thought && isViewerOpen()) viewerHead(
-        refs.viewerVerb?.textContent?.split(' ')[0] || 'reading',
-        viewerKey ? viewerKey.slice(2) : '', act.thought);
 
       const last = (act.steps || [])[act.steps.length - 1];
-      if (last && last.ts > lastStepTs) {
-        lastStepTs = last.ts;
-        const t = stepTarget(last);
-        t.thought = act.thought;
-        const key = targetKey(t);
-        if (!key || key === lastKey) { await sleep(2500); continue; }  // unchanged → hold
-        lastKey = key;
+      const fresh = last && (Date.now() / 1000 - last.ts) * 1000 < STEP_FRESH_MS;
+      const t = fresh ? stepTarget(last) : {};
+      t.thought = act.thought;
+      const key = fresh ? targetKey(t) : null;
 
-        if (t.page) {                                // another lander page — go there
-          think('working over here — come on');
-          await sleep(1400);
-          if (following) location.assign(t.page);
-          return;
+      if (t.page) {
+        // another lander page: NEVER redirect the visitor — show a live embed in
+        // the portal. On target change (re)open it; the cursor is absorbed away.
+        if (key !== lastKey) {
+          lastKey = key;
+          if (openViewer({ pageEmbed: t.page, verb: 'working on', thought: t.thought })) {
+            if (!absorbed && cursorIn) await absorbCursor();
+          }
+          if (refs.cursor && (absorbed || !cursorIn)) refs.cursor.style.opacity = '0';
+        } else if (act.thought && isViewerOpen()) {
+          viewerHead('working on', t.page, act.thought);   // keep narrating live
         }
-        if (t.url || t.file) {                        // off-page → the viewer window
-          if (openViewer(t)) { if (!absorbed) await absorbCursor(); }
-          else { refs.cursor.style.opacity = '0'; }   // ≤640px: no viewer, just hide
-        } else if (t.git && !document.body.classList.contains('panel-open')) {
-          if (isViewerOpen()) { await popCursor(null); closeViewer(); }
-          refs.cursor.style.opacity = '0';            // reading history out of sight
-        } else if (t.el) {                            // on-page → cursor returns here
+        // EVERY poll: anchor the embed dot to the real element the CURRENT step
+        // touches inside the embed (its position IS stepTarget(last, embedDoc).el).
+        // tickBehavior advances the scan/descent even when the target is unchanged,
+        // so the dot visibly lives instead of freezing. anchorEmbed reads its own
+        // resolved target's key into the same behavior counter via the step+page.
+        tickBehavior('pg:' + t.page + ':' + (last.tool || '') + ':' + (last.target || ''));
+        anchorEmbed(last);     // guarded: false (dot hidden) until the embed loads
+        await sleep(2500);
+        continue;
+      }
+
+      if (fresh && t.el) {
+        // ON-PAGE: the cursor manifests at the element. tickBehavior tracks how
+        // long this exact target has persisted so the behavior (read scan / write
+        // descent) advances each poll — the cursor lives even on an unchanged step.
+        tickBehavior('on:' + key + ':' + (last.tool || ''));
+        if (key !== lastKey) {
+          lastKey = key;
           if (isViewerOpen()) { closeViewer(); await popCursor(t.el); }
           else {
+            if (!cursorIn) await cursorEnter();
             refs.cursor.style.opacity = '1';
-            t.el.scrollIntoView?.({ behavior: 'smooth', block: 'center' });
-            await sleep(350);
+            // no scrollIntoView: the page never moves under the visitor —
+            // the cursor works where the work is; you can scroll and find it.
             await moveTo(t.el);
           }
           t.el.classList.add('touch');
-          setTimeout(() => t.el.classList.remove('touch'), 1600);
+          setTimeout(() => { try { t.el.classList.remove('touch'); } catch {} }, 1600);
+        } else {
+          // SAME target, still fresh: don't re-fly — advance the behavior in place.
+          // reading drifts across the line; writing descends the text blocks; a
+          // tool tick barely settles. Each is a deterministic offset from the feed.
+          await placeBehavior(t.el, last, 600);
+        }
+        // writing posture: the working pulse runs while a write persists (the
+        // step.tool says so); cleared otherwise so reading doesn't look like typing.
+        work(WRITE_TOOLS.has(last.tool));
+        if (act.thought && !absorbed) think(act.thought);
+      } else if (fresh && (t.url || t.file || t.call)) {
+        // OFF-PAGE: the portal owns it; the page cursor is absorbed away
+        if (key !== lastKey) {
+          lastKey = key;
+          if (openViewer(t)) { if (!absorbed && cursorIn) await absorbCursor(); }
+          if (refs.cursor && (absorbed || !cursorIn)) refs.cursor.style.opacity = '0';
+        } else if (act.thought && isViewerOpen()) {
+          viewerHead(refs.viewerVerb?.textContent?.split(' ')[0] || 'reading',
+            viewerKey ? viewerKey.slice(2) : '', act.thought);
+        }
+      } else if (fresh && t.git) {
+        // history work → the panel tells it; no cursor theater
+        if (key !== lastKey) { lastKey = key; }
+        if (!document.body.classList.contains('panel-open') && refs.cursor && !absorbed)
+          refs.cursor.style.opacity = '0';
+      } else {
+        // THINKING: no fresh placeable step — the portal says so, honestly
+        if (lastKey !== 'thinking') {
+          lastKey = 'thinking';
+          if (openViewer({ call: 'thinking', verb: '…', thought: act.thought })) {
+            if (!absorbed && cursorIn) await absorbCursor();
+          }
+          if (refs.cursor && (absorbed || !cursorIn)) refs.cursor.style.opacity = '0';
+        } else if (act.thought && isViewerOpen()) {
+          viewerHead('…', 'thinking', act.thought);
         }
       }
     }
@@ -646,6 +1071,21 @@ async function follow() {
 }
 // the button toggles: start when idle, stop when following
 export const toggleFollow = () => { following ? stopFollow() : follow(); };
+
+// the portal card is a LINK when it embeds another page — jumping is always
+// the visitor's click, never an automatic redirect.
+export function viewerJump() {
+  const page = refs.viewer && refs.viewer.dataset.jump;
+  if (page) { closeViewer(); routerPush(page); }
+}
+
+// Cursor placement is PER-ROUTE: when the route changes, the old target's DOM
+// is gone — hide the cursor (the viewer card, global chrome, may stay) and
+// drop the dedup key so the next step re-resolves against the new page.
+addEventListener('wb:route', () => {
+  lastKey = null;
+  if (following && !absorbed && refs.cursor) refs.cursor.style.opacity = '0';
+});
 
 /* ── the watch loop ───────────────────────────────────────────── */
 let seen = null, wasRunning = false;
@@ -669,6 +1109,7 @@ async function watch() {
       if (running) work(true);
       wasRunning = running;
       renderStatus();
+      emitFeed({ changes: list, agent: agentInfo });   // share the truth with the hero ticker
     }
     await sleep(15000 + Math.random() * 5000);
   }
@@ -722,12 +1163,23 @@ export function boot() {
   const markIntro = () => { try { localStorage.setItem('wb_intro', '1'); } catch { /* private mode */ } };
 
   if (reduced || seenIntro) {
-    document.querySelectorAll('.blk').forEach((b) => b.classList.add('on'));
-    refs.h1text.textContent = H1;
+    revealHome();
     if (matchMedia('(min-width: 961px)').matches) openPanel();
     else document.body.classList.add('panel-was-open');
   } else {
     build().then(markIntro);
   }
   watch();
+}
+
+// Reveal the homepage in its FINAL (post-intro) state. Home's nodes are
+// recreated on every route return — the intro only ever plays once, so every
+// remount must reveal instantly or the page comes back blank. Idempotent;
+// Home.svelte calls this on mount whenever the intro has already been seen.
+export function revealHome() {
+  const seen = reduced || (() => { try { return localStorage.getItem('wb_intro') === '1'; } catch { return true; } })();
+  if (!seen) return;                       // first visit: build() owns the reveal
+  document.querySelectorAll('.blk').forEach((b) => b.classList.add('on'));
+  if (refs.h1text && !refs.h1text.textContent) refs.h1text.textContent = H1;
+  if (refs.cursor && !following) refs.cursor.style.opacity = '0';
 }

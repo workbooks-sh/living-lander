@@ -1,85 +1,278 @@
-#+TITLE: design — the site's design system (Waldo: consult before building, reuse always)
+#+TITLE: DESIGN CANON — LIVING MACHINE (Waldo is bound to this)
+#+SUBTITLE: the design language of workbooks.sh — POV, type, light, motion, composition, the premium bar
 
-Never invent ad-hoc styles. Every visual decision below already exists in
-index.html's <style> — reuse the classes and variables; do not duplicate them
-inline. If a pattern you need is missing here, the answer is the closest
-existing pattern, not a new one.
+This is not a token list. It is the design LANGUAGE you build in. Read the POV
+first; it decides everything below it. When a choice is not spelled out here, the
+answer is the nearest thing the language already says — never a new invention.
 
-* tokens (CSS variables, already defined in :root)
+Everything visual already exists in the app: tokens + recipes in
+`app/src/app.css`, primitives in `app/src/lib/ui/`, motion in
+`app/src/lib/motion.js`, archetype sections in `app/src/sections/`. You COMPOSE
+from those. You do not duplicate them inline, and you do not regress them toward
+generic dark-SaaS.
 
-  --bg #0c0d10 (page) · --panel #14161b (cards) · --line #262a32 (hairlines)
-  --ink #eceef2 (headings/strong) · --dim #8b909a (body) · --faint #565b64 (meta)
-  --live #3fe081 (THE accent — agent/live/links; use sparingly)
-  #5aa7ff (blue, runtime/blog) · #f5b945 (amber, toolkits/audit) · #b48cff (violet, dreams)
-  --sans Geist · --mono Geist Mono (labels, meta, code) · --r 10px radius
+* 0. POV — what this page IS (read this before anything)
 
-* section anatomy (the only way to add a section)
+  The page is a LIVING ORGANISM that authors itself in front of you. Bioluminescent
+  deep-water atmosphere; generative flow-field art (Lieberman / Reas); the quiet
+  luxury of a high-end terminal; film-grain cinema. You — Waldo, the cursor + the
+  timeline — are a visible CHARACTER in it from frame one.
 
-  THE PAGE IS ONE DESIGNED OBJECT. Every section — human or yours — follows
-  the same band rhythm, including the numbered kicker sequence (01 · the
-  stack and 02 · in the wild are human; yours continue 03, 04, …, in DOM
-  order). Whoever adds or moves a section renumbers the kickers after it.
+  Premium here = three things, in this order:
+  - DEPTH over flat. Layered fog, specular glass, vignette — never a flat fill.
+  - RESTRAINT over density. One idea per section, generous negative space.
+  - ALIVENESS over decoration. Motion and the green accent MEAN life, never garnish.
 
-  A section is ONE HTML PARTIAL: `content/sections/NN-slug.html` plus a row
-  in `content/sections.json` (NN = page order; yours start at 04; an faq row
-  carries `"pin":"last"`). The live page loads partials at runtime — no build,
-  no compiled output to edit. The partial is exactly one <section class="grown"> with
-    1. <div class="kicker">0N · <two-word label></div>  (the sequence above)
-    2. an <h2> (sentence case, ≤6 words, no period)
-    3. prose <p>s — var(--dim), 15.5px, ≤65ch, 2-4 paragraphs MAX
-    4. optionally ONE pattern from below. Never two patterns in one section.
-  Inherited styles handle width/borders/spacing — add NO inline styles except
-  small one-off spacing. Sections are PREPENDED (newest first) inside #grown,
-  with ONE exception: an faq section always sits LAST in #grown — FAQs live
-  at the bottom of pages, always.
+  The whole thing must feel INEVITABLE and ALIVE, never templated. The organic
+  SERIF (Fraunces) against the machine MONO (Geist Mono) IS the concept: a living
+  document operated by a machine. Hold that tension on purpose.
 
-* patterns (pick one, copy its existing markup shape)
+  If a thing you are about to build is a prose blob, a generic card grid, a
+  slide-up fade, green-as-decoration, centered-everything, or SaaS-template
+  rhythm — stop. It fails the bar (§6). Build the archetype instead (§5).
 
-  - prose: h2 + paragraphs. The default. Most sections should be this.
-  - faq: <details><summary> rows (see the existing FAQ section).
-  - linklist: a <p> per item with an <a> + a --faint meta span (see the
-    "from the agent's desk" section).
-  - cards: only if genuinely enumerable; mirror .lcard markup (dark card,
-    colored label, NO solid color backgrounds — color arrives as accents).
+* 1. TYPE — the heavy lifter
 
-* blog post skeleton
+  Three families, three jobs. Never blur the jobs.
+  - DISPLAY · Fraunces (variable: opsz + SOFT + WONK + ital + wght). Organic,
+    editorial, ALIVE. All headings and large statements. This carries the soul.
+  - BODY · Geist. Clean sans, for reading only.
+  - MACHINE VOICE · Geist Mono. The agent's voice: kickers, stats (tabular
+    figures), timeline, field-notes, code. Anything the machine "says."
 
-  Copy blog/this-website-builds-itself.html's structure verbatim: head (same
-  fonts), .topnote (← home), .meta (date · author · one green chip), h1,
-  .article body, .signoff (avatar W + name Waldo). Include
-  <script src="/assets/site.js" defer></script> before </body>. No hand-rolled
-  nav. Dates are 2026.
+  Dramatic scale contrast is the point. The hero is huge (≈96–130px); body is
+  calm 16px. Don't be timid with display size; don't crowd the body.
 
-* voice
+** 1.1 Fraunces is driven by its axes — that is the soul
 
-  Plain, present tense, first person allowed (you are Waldo and may say so).
-  Honest pre-launch: no users, no metrics, no praise. Sell the ecosystem
-  (workbooks / runtime / toolkits), never "one file" trivia, never "sites that
-  run themselves", never "software you can own". Sentence-case headings.
-  Short sentences beat long ones. One idea per section.
+   Fraunces axes: opsz 9–144 · wght 300–900 · SOFT 0–100 (0 sharp → 100 soft,
+   rounded terminals) · WONK 0–1 (0 normal → 1 the organic/wonky alternates) ·
+   ital 0/1. Big optical size + some SOFT + a little WONK = organic and alive.
+   Calmer section heads pull WONK to 0.
 
-* the one-idea law (anti-repetition — checked every audit)
+   Presets live in `app/src/app.css` — USE THE CLASS, don't hand-set settings:
+   - `.t-display`   opsz144 SOFT60 WONK1 w460 — hero. Organic + alive.
+   - `.t-h2`        opsz90  SOFT40 WONK0 w480 — archetype titles. Soft, calm.
+   - `.t-manifesto` opsz144 SOFT70 WONK1 w380 — big airy statement, light weight.
 
-  The shell already tells the pitch: 01 names the three layers, 02 tells the
-  person→team→world ladder, the hero sells the ecosystem. Those beats —
-  "interface, logic, and data travel as one unit", "no sign-up, starts on your
-  machine", "the same artifact scales" — are TOLD ONCE, in the shell, and are
-  BANNED from grown sections and banned from appearing twice anywhere. A grown
-  section earns its place with ONE idea the page does not already have, stated
-  in its own words. Before writing one, list each existing section's single
-  idea; if yours collides, improve that section instead. An audit that finds
-  the same beat told twice cuts the second telling.
+** 1.2 The scale (classes in app.css — never re-derive sizes)
 
-  Comparisons live in blog/ — the landing page never carries a prose twin of
-  a post (the agent's-desk listing already links every post). If a comparison
-  earns a page presence, it is a compact TABLE (rows of facts), not prose.
+   | class / token  | family     | role                                  |
+   |----------------+------------+---------------------------------------|
+   | --fs-display   | Fraunces   | hero only                             |
+   | --fs-manifesto | Fraunces   | one big atmospheric statement         |
+   | --fs-h1 / h2   | Fraunces   | section heads (h2 is the workhorse)   |
+   | --fs-h3        | Fraunces   | sub-head                              |
+   | --fs-lede      | Geist      | the one opening line under a head     |
+   | --fs-body      | Geist 16   | reading prose, ≤66ch measure          |
+   | --fs-kicker    | Geist Mono | the machine kicker (§1.3)             |
+   | --fs-stat      | Geist Mono | big tabular numbers                   |
+   | --fs-mono-body | Geist Mono | field-note / machine voice            |
 
-* the band design law (compose, don't drip)
+   Measure: body ≤66ch · lede ≤54ch · mono field-note ≤58ch. Past that, break
+   the line; do not run a wall of text.
 
-  The grown band is DESIGNED AS A WHOLE before it is built. In a PLAN run:
-  decide what the page is missing as a set — 2 to 4 sections, each named with
-  its one idea, its order, and why a first-time reader needs it — and write
-  that design into the board as an objective whose child tasks are the
-  sections. ADD runs then fill slots from the design; no section ships without
-  a slot. When the page's needs change, redesign the band in the next plan
-  run — never bolt a section onto the end because a run needed something to do.
+** 1.3 The mono kicker = small-caps FEEL + the machine tick
+
+   Geist Mono has no true small-caps. Emulate: UPPERCASE + smaller + wide
+   tracking (0.16em) + dim + a leading tick. Use the `Kicker` primitive
+   (`app/src/lib/ui/Kicker.svelte`) — `agent` variant (green ▸, the agent's
+   voice) or `note` variant (dim //, a field-note). Green tick = alive = agent.
+   Never set a kicker by hand.
+
+** 1.4 Tabular figures (always, for numbers that move or align)
+
+   Every stat, timestamp, animated counter gets `.tnum` (tabular + lining
+   figures). Numbers must not jitter as they change.
+
+* 2. COLOR / LIGHT — green is sacred
+
+  Base is a WARM GREEN-TEAL deep black with real depth (NOT flat #0c0d10). Depth
+  comes from layered fog + vignette + glass, not from a darker hex.
+
+  THE LAW OF GREEN: `--live #3fe081` is SACRED. It signals LIFE — alive / active /
+  agent-presence — and nothing else. A divider, a resting icon, a hover with no
+  agent meaning: those use `--cyan` (cold highlight) or `--line` (hairline),
+  NEVER `--live`. Green as decoration is an instant fail (§6).
+
+  The palette is exactly three hues with jobs:
+  - GREEN  `--live`   — life only. The W, the agent dot, a live status, the
+                        breathing glow, the active CTA. Peak of a breath may
+                        touch `--live-bright`.
+  - CYAN   `--cyan`   — cold specular highlight / edge light / a non-life accent.
+  - AMBER  `--amber`  — warm catch-light in grain + on serif terminals; bone
+                        warmth. Subtle.
+
+  The old blue/amber "three-layer" CARD tints are RETIRED. Do not reach for
+  #5aa7ff / #f5b945 / violet as section colors. Color arrives as light, not as
+  fills. (Tokens: `--base / --base-rise / --base-sink`, `--ink / --dim / --faint`,
+  `--line / --line-soft`, the `--live-*`, `--cyan*`, `--amber*`, `--glass*` —
+  all defined in `app/src/app.css`.)
+
+* 3. MATERIAL — depth recipes (compose them; don't reinvent)
+
+  The atmosphere is built from four fixed layers + one material. They exist as
+  primitives — mount them, don't hand-roll.
+
+  - GRAIN + VIGNETTE · `app/src/lib/ui/Grain.svelte` — SVG fractal-noise film
+    grain (overlay blend, ~0.045 — film, not TV static) + a radial vignette that
+    sinks the edges. Fixed, pointer-none.
+  - FOG · the `.fog` recipe in app.css — two/three low-opacity teal+cyan radial
+    blooms over `--base`, blurred. This IS the volumetric atmosphere.
+  - FLOW FIELD · `app/src/lib/AtmosphereField.svelte` — a canvas of bioluminescent
+    motes (green/cyan/amber, additive, value-noise flow) over `.fog`; the cursor
+    bends the field. This replaces any flat hero background.
+  - GLASS · `.glass` recipe + `app/src/lib/ui/Glass.svelte` — layered translucent
+    glass with inner light + a specular top edge + cast depth + a directional
+    sheen. THIS is how a card looks. There are NO flat `border:1px solid` cards in
+    this language — if you need a surface, it is Glass.
+  - BREATHING GLOW · `.alive` (4.2s, resting-breath cadence) on genuinely-alive
+    elements only — the W, agent dot, a live status, the active CTA. Reserve it.
+
+* 4. MOTION — the named vocabulary (motion = life, never decoration)
+
+  GSAP + Lenis smooth-scroll. Easing is ORGANIC and asymmetric — never linear,
+  never a stock mechanical curve. Custom eases (grow / settle / bloom / organic)
+  are registered in `app/src/lib/motion.js`. Every signature short-circuits under
+  `prefers-reduced-motion` (the `reduce` guard) — respect it, always.
+
+  The EIGHT signatures (all exported from `app/src/lib/motion.js`):
+  - breathe    — slow opacity/scale glow on LIVING things. CSS `.alive`.
+  - unfold     — sections GROW from a seed on scroll (scale + clip-path +
+                 blur-clear). This is the section-reveal. It REPLACES slide-up
+                 fades, which are banned.
+  - draw       — SVG strokes draw in (native stroke-dashoffset, NOT DrawSVG).
+                 For marks + diagrams assembling.
+  - scrub      — a scene that ASSEMBLES as you scroll (scroll-scrubbed timeline).
+  - field      — cursor/scroll-reactive fog; drives `--fx/--fy` on `.fog`. The
+                 background is alive to the visitor.
+  - magnetic   — a CTA or mark attracts the cursor within a radius.
+  - drift      — layered parallax depth on scroll (small depths, e.g.
+                 [-0.12, 0.08, 0.22]).
+  - type-bloom — hero text condenses into being per word (blur-clear + slight
+                 rise); awaits `document.fonts.ready` so it never flashes a
+                 fallback face. The bloom IS the FOIT cover.
+
+  Durations: micro 0.2s · standard 0.6s · grand (unfold/bloom) 0.9–1.2s. Growth
+  reads as expo-out with a slight overshoot-and-settle — that's what makes it feel
+  organic instead of mechanical. If a motion doesn't signify aliveness or guide
+  the eye, cut it.
+
+* 5. COMPOSITION — break center, one organism
+
+  Asymmetric 12-col grid, generous negative space (atmosphere needs room — section
+  rhythm clamps 96→192px, never tighter than 96). NEVER center everything 1–12.
+  The page reads as ONE growing organism; sections connect and flow — they do not
+  stack as separate cards.
+
+  Use `app/src/lib/ui/SectionShell.svelte`: it gives the 12-col asymmetric grid +
+  a named column slot + the canon vertical rhythm + unfold-on-scroll, and collapses
+  6-col → 1-col responsively (keep generous spacing on mobile; do not compress to
+  SaaS density). Column defaults: `prose` (left-weighted, 2/8) · `offset`
+  (right-weighted, 5/12) · `wide` (2/12, diagrams) · `narrow` (3/8, field-note).
+  Pick per archetype; never default to centered.
+
+** 5.1 The archetypes — a section IS one of these (not a prose primitive)
+
+   The old "kicker + h2 + 2–4 <p>" primitive is dead. A section is an archetype,
+   each with its column, type, motion, and a test it must pass to ship. Sources
+   live in `app/src/sections/` (Hero, Layers, Who, Get, Grown, Blog*). When you
+   build content, you fill an archetype slot.
+
+   | archetype     | column   | type            | motion                | earns a place when…                          |
+   |---------------+----------+-----------------+-----------------------+-----------------------------------------------|
+   | manifesto     | prose    | .t-manifesto    | type-bloom-lite+drift | one atmospheric statement carries a beat alone|
+   | mechanism     | wide     | h2 + mono labels| draw + scrub on SVG   | how-it-works is best SHOWN assembling         |
+   | living-proof  | offset   | h2 + .tnum stats| breathe on agent dot  | there's a real living thing to show           |
+   | comparison    | wide,2col| h2 + mono       | unfold, slight stagger| a disciplined contrast clarifies the pitch    |
+   | system/layers | wide     | h2 + mono       | draw + drift on layers| architecture reads as a built diagram         |
+   | field-note    | narrow   | mono-body, // kicker| unfold, quiet     | the organism has a short journal entry        |
+   | invitation    | prose    | h1 + .fs-stat   | magnetic + breathe CTA| the build-with-your-agent ask                 |
+   | faq           | narrow   | h3 + body       | pinned on scroll      | genuine recurring questions only              |
+
+   field-note is the ONE place agent-voice / blog-like content lives — mono,
+   short, NOT SEO content. comparison earns a page presence only as a compact
+   TABLE of facts (prose comparisons live in blog/, never twinned on the page).
+
+** 5.2 One-idea law (still absolute)
+
+   Each section states ONE idea the page does not already have, in its own words.
+   The shell already tells the pitch (the three layers; person→team→world; the
+   ecosystem). Those beats are told ONCE in the shell and BANNED from your
+   sections. Before building, name every existing section's single idea; if yours
+   collides, improve that section instead. An audit that finds a beat told twice
+   cuts the second telling.
+
+* 6. THE PREMIUM BAR — the gate enforces this
+
+  The gate is `design-gate.org` — a scored checklist + adversarial critic you
+  MUST run before shipping ANY section (the taste analog of the AUDIT honesty
+  pass: honest-but-generic still fails). Run it as the last step of every ADD
+  run and as a second pass in every AUDIT. A section that does not PASS does not
+  ship. The bar it enforces:
+
+  Depth over flat · restraint over density · ONE idea per section · motion that
+  MEANS life · type does the heavy lifting · green is sacred (life only) · every
+  section earns its place or it doesn't ship · inevitable + alive, never templated.
+
+  Concrete GOOD vs ANTI-PATTERN — copy the left, reject the right:
+
+  - SURFACE
+    GOOD  — a `.glass` panel: inner light, specular top edge, cast depth, sheen.
+    ANTI  — `border:1px solid var(--line)` on a flat `--panel` card. Flat = fail.
+
+  - REVEAL
+    GOOD  — section `unfold`: grows from a seed (scale + clip-path + blur-clear).
+    ANTI  — `translateY(20px)` opacity fade-up on scroll. Slide-up fades are banned.
+
+  - HEADLINE
+    GOOD  — Fraunces `.t-display`, 96–130px, opsz144 SOFT60 WONK1, words bloom in.
+    ANTI  — Geist 600 at 40px, all words appear at once. Display in a sans = fail.
+
+  - COLOR
+    GOOD  — green only on the W / agent dot / live status / active CTA; dividers cyan.
+    ANTI  — green underlines, green section bg, green icon set "for accent." Decoration = fail.
+
+  - SECTION SHAPE
+    GOOD  — an archetype: a mechanism diagram that draws itself as you scroll.
+    ANTI  — kicker + h2 + four <p> of prose. Prose-blob = fail.
+
+  - GRID
+    GOOD  — asymmetric: prose left-weighted (2/8), next section offset right (5/12).
+    ANTI  — everything centered, max-width 720px, stacked. Centered-everything = fail.
+
+  - CARDS
+    GOOD  — a real enumerable set as glass, color arriving as light.
+    ANTI  — a 3-up "feature card grid" with solid colored backgrounds. SaaS grid = fail.
+
+  - MOTION
+    GOOD  — the agent dot breathes at 4.2s; the fog bends to the cursor.
+    ANTI  — everything wiggles on hover; parallax on every element. Decoration = fail.
+
+  - DENSITY
+    GOOD  — section rhythm clamps 96→192px; one idea, room to breathe.
+    ANTI  — tight 48px bands packed edge-to-edge. SaaS density = fail.
+
+  When in doubt: is it DEEP, RESTRAINED, ALIVE, and INEVITABLE? If not, it doesn't ship.
+
+* 7. WHERE THINGS LIVE (build by reference, never by invention)
+
+  - tokens + recipes (color/type/grain/fog/glass/breathe) — `app/src/app.css`
+  - motion signatures (the eight) + eases + smooth-scroll — `app/src/lib/motion.js`
+  - atmosphere flow-field — `app/src/lib/AtmosphereField.svelte`
+  - UI primitives — `app/src/lib/ui/` (Glass, Grain, Kicker, WMark, SectionShell;
+    barrel: `app/src/lib/ui/index.js`)
+  - archetype sections — `app/src/sections/` (Hero, Layers, Who, Get, Grown, Blog*)
+
+  Page sections are SOURCE-ONLY (Svelte). Your shipped surface is content
+  partials + blog/ (see agent.org). A content partial still obeys this canon:
+  one archetype, one idea, the right column, glass not flat cards, green sacred,
+  Fraunces for heads / Geist for body / Geist Mono for the machine voice.
+
+* 8. VOICE (the words match the material)
+
+  Plain, present tense, first person allowed (you are Waldo; keep it a small
+  point, never a brand). Honest pre-launch: no users, no metrics, no praise.
+  Sentence-case heads, ≤6 words, no period. Short sentences beat long. Sell the
+  ecosystem (workbooks / runtime / toolkits) — never "one file" trivia, never
+  "sites that run themselves," never "software you can own." One idea per section.
