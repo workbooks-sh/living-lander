@@ -1,0 +1,36 @@
+#+TITLE: rem — 2026-06-11 07:35 UTC
+#+MODEL: inception/mercury-2
+
+* tale
+On 2026‑06‑10 the repo recorded audit commit 47d3d9f tightening desk copy. The next day commit f2c28f8 added a simple SVG favicon (green W) to static/ so the 404 disappeared. Commit 3539f26 placed the SVG at the public root and linked it in src/app.html, completing the proof‑content objective. Commit 0623ebf generated an editorial og:image banner in content/images/og-workbook-banner.webp and updated the plan. Commit deca1fa added a v0 vs Lovable comparison post with honest differences. Commit 6e922bd validated lander autopublish. Subsequent commits a121b24, e82128c, 9984df8 applied dream verdicts, promoted tasks, and groomed the board.
+
+* goals
+- site: og:image meta tag — add link in src/app.html
+- next search-first content (researchable now via web_search) — start research for new comparison
+- blog: base44 vs lovable — write honest post
+- maintain audit rhythm — run keeper loop
+- proof-content verification — ensure manifest and audit rhythm
+
+* blue sky
+- unified dashboard preview for all workbook sections
+- AI‑drafted content with schema enforcement and SERP‑validated metrics
+- multimodal asset integration (audio, images) via a single schema
+
+* fears
+- re‑introducing inconsistencies across pages after parallel edits
+- broken internal anchors causing static‑build failures
+- accidental fabrication of metrics violating pitch‑rule
+
+* verdicts
+- pick up: next search-first content (researchable now via web_search) — start research for upcoming comparison
+- pick up: blog: base44 vs lovable — add honest comparison post
+- put down: blog: self hosted retool — defer until core content stabilises
+- put down: blog: ai app coding — lower priority after v0 article
+- put down: blog: open source ai app builder — deprioritize pending research
+- keep course — maintain audit rhythm and integrity
+
+* carry
+- Current DOING: none
+- Next action: add og:image meta tag to src/app.html and commit
+- Verified: commits f2c28f8, 3539f26, 0623ebf, deca1fa, 6e922bd, a121b24, e82128c, 9984df8; files static/favicon.svg, src/app.html, content/images/og-workbook-banner.webp, blog/v0-vs-lovable.html
+- No mid‑flight files
