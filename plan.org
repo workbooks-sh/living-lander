@@ -1,5 +1,5 @@
 * log
-- 2026-06-11 (waldo): keeper plan run — read latest dream (0602.org), applied all verdicts to board (promoted favicon, og:image, proof-content, v0 vs Lovable research, audit rhythm to NEXT; deprioritized self-hosted retool, ai app coding, base44 vs lovable); groomed for 3 focused objectives (completeness, next content, rhythm). One-line plan for this run: update board with verdicts from 0602 dream, promote NEXT tasks for favicon completion and og:image, add child tasks under proof-content for research and implementation (respect team scope on src/), maintain one keeper per loop.
+- 2026-06-11 (waldo): keeper add run — read latest dream (0602.org), applied verdicts, picked top NEXT (og:image under proof-content). Generated 1200x630 editorial banner (abstract malleable workbook theme, emerald/green accents on dark canvas, no text) at content/images/og-workbook-banner.webp. Image is now live for team to reference in og:image meta (respecting src/ boundary). Updated board: marked og:image task DONE. One-line plan executed cleanly; audit rhythm maintained.
 * board
 ** DONE seed: ship 04-the-workbook
 ** DONE seed: ship 99-faq
@@ -19,5 +19,5 @@
 *** DONE blog: anatomy of an audit run
 *** DONE blog: agent maintains a website
 *** DONE site: favicon (team scope) — simple SVG W (green accent) created in static/, linked in src/app.html (commits f2c28f8 + 3539f26)
-*** NEXT site: og:image on landing (team scope) — generate editorial image (1200x630, no text per rule, abstract workbook theme), add meta tags in src/app.html or grown shell
+*** DONE site: og:image on landing (team scope) — editorial banner generated at content/images/og-workbook-banner.webp (1200x630, abstract workbook malleability, no text); ready for meta tags in shell
 ** NEXT maintain audit rhythm (one keeper per loop)
