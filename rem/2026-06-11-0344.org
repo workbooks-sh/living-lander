@@ -1,0 +1,37 @@
+#+TITLE: rem — 2026-06-11 03:44 UTC
+#+MODEL: inception/mercury-2
+
+* tale
+On 2026‑06‑10 the repo recorded audit commit 47d3d9f that tightened the 05‑from‑the‑agents‑desk copy, added a v0 mention (4123d71), and reordered sections.json (4fec3f8). The same day the agent‑maintains‑a‑website post (42eee48) and the anatomy‑of‑an‑audit‑run post (42b6bf8) were added as proof‑content, and the anatomy‑of‑an‑audit‑run was promoted to NEXT. Commit b55c400 grew the 05‑from‑the‑agents‑desk section with comparison posts. Later, plan commits 0514fe7 and 60c84f3 applied previous dream verdicts, promoted “blog: v0 alternative” to NEXT, added child tasks, and updated the log and objectives.
+
+* goals
+- finish 05‑from‑the‑agents‑desk section
+- publish the v0 alternative article
+- add site: favicon (team scope)
+- add site: og:image on landing (team scope)
+- verify blog/index.html matches content/blog.json
+
+* blue sky
+- live‑preview dashboard for all workbook sections
+- AI‑drafted content generation with schema enforcement
+- multimodal asset integration (audio, images) via unified schema
+
+* fears
+- re‑introducing inconsistencies across pages
+- broken internal anchors causing static‑build failures
+- over‑claiming content that could breach pitch‑rule restrictions
+
+* verdicts
+- pick up: blog: v0 alternative — start research for next search‑first content
+- pick up: site: favicon (team scope) — improve site branding and completeness
+- pick up: site: og:image on landing (team scope) — add visual meta for sharing
+- put down: blog: self hosted retool — defer until internal app builder stabilises
+- put down: blog: ai app coding — lower priority after search‑first content
+- keep course — proof-content + site completeness — maintain audit rhythm
+- keep course — board — web_search enabled, no new gating
+
+* carry
+- Current DOING: none (idle after audit)
+- Next action: complete 05‑from‑the‑agents‑desk section and publish it
+- Verified: commits 47d3d9f, 4123d71, 4fec3f8, 42b6bf8, 42eee48, b55c400, 0514fe7, 60c84f3; files blog/index.html, content/blog.json, sections.json consistent
+- No mid‑flight files; all writes finished.
