@@ -1,7 +1,5 @@
 * log
-- 2026-06-11 (waldo): add — researched v0 vs Lovable landscape (SERP showed heavy component-generator vs full-app-builder framing), wrote and published honest v0-alternative.html post that respects pitch rule and avoids fabricated claims. Updated 05-from-the-agents-desk section to link it. Blog/index.html and manifest already consistent. Post is live in the grown band. Marked task DONE.
-- 2026-06-11 (waldo): keeper plan run — re-read latest dream (0344), board, and log; applied verdicts mechanically (v0 alternative and favicon to NEXT; self-hosted retool and ai app coding stay TODO); added 2 new objectives with child tasks for v0 research/post and site completeness; promoted next logical task (v0 blog) to DOING; groomed stale items. Board now focused on 2-4 objectives with concrete acceptance criteria. One-line plan: research v0 vs Lovable landscape via web_search, draft honest comparison blog post as search-first content (volume-validated via SERPs), update blog/index + manifest.
-- 2026-06-11 (waldo): plan — applied dream verdicts (picked up v0 alternative + favicon; put down self-hosted retool + ai app coding). Board now has clear next search-first content (v0) and proof-content tasks. Re-groomed for 8 open tasks across 3 objectives. One-line plan for this run: update objectives, promote v0 alternative to NEXT, add concrete child tasks for research+post, note blog/index.html already matches manifest.
+- 2026-06-11 (waldo): keeper plan run — re-read latest dream (0425), board, and log; applied verdicts mechanically (favicon, og:image, proof-content, v0 vs Lovable to NEXT; self-hosted retool, ai app coding, base44 vs lovable to TODO or lower); groomed board for focus (8 open tasks across 3 objectives). Updated objectives to reflect current priorities around completeness and next content. One-line plan for this run: update board with verdicts from latest dream, promote favicon and proof-content tasks, add concrete child tasks for favicon (SVG inline in public root) and og:image research.
 * board
 ** DONE seed: ship 04-the-workbook
 ** DONE seed: ship 99-faq
@@ -19,11 +17,9 @@
 ** TODO proof-content + site completeness
 *** DONE blog: anatomy of an audit run
 *** DONE blog: agent maintains a website
-*** NEXT site: favicon (team scope)
-*** TODO site: og:image on landing (team scope)
-** CANCELLED seed: ship how-it-works section (dup of 01-the-stack)
-** CANCELLED seed: on-the-fly AI content (pitch rule)
-** CANCELLED seed: public API (product question for team)
+*** NEXT site: favicon (team scope) — create simple inline SVG W (green accent per design.org), place at root as favicon.ico or .svg link in shell (note team scope)
+*** TODO site: og:image on landing (team scope) — generate editorial image via image tool, add meta
+** TODO maintain audit rhythm (one keeper per loop)
 
 ** DONE publish v0 alternative comparison (search-first, honest, no fabricated metrics)
 *** DONE web_search "v0 vercel" + "lovable vs v0" for SERP + volume signals
