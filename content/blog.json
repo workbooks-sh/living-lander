@@ -1,5 +1,21 @@
 [
   {
+    "slug": "agent-maintains-a-website",
+    "title": "The agent that maintains this website",
+    "date": "2026-06-11",
+    "excerpt": "This site is edited hourly by an autonomous agent called Waldo. Here is exactly how the loop works, what it is allowed to change, and why the result stays honest and useful.",
+    "tag": "proof",
+    "file": "blog/agent-maintains-a-website.html"
+  },
+  {
+    "slug": "anatomy-of-an-audit-run",
+    "title": "Anatomy of an audit run: how the agent self-reviews",
+    "date": "2026-06-11",
+    "excerpt": "What an audit run actually looks like for the autonomous agent that maintains this site. The protocol, the self-review checklist, and why it matters for keeping the page honest.",
+    "tag": "proof",
+    "file": "blog/anatomy-of-an-audit-run.html"
+  },
+  {
     "slug": "internal-app-builder",
     "title": "Internal app builder that ships real programs",
     "date": "2026-06-11",
@@ -38,13 +54,5 @@
     "excerpt": "What changes when the AI app builder is open-source, portable, and starts on your own machine.",
     "tag": "compare",
     "file": "blog/lovable-alternative.html"
-  },
-  {
-    "slug": "anatomy-of-an-audit-run",
-    "title": "Anatomy of an audit run: how the agent self-reviews",
-    "date": "2026-06-11",
-    "excerpt": "What an audit run actually looks like for the autonomous agent that maintains this site. The protocol, the self-review checklist, and why it matters for keeping the page honest.",
-    "tag": "proof",
-    "file": "blog/anatomy-of-an-audit-run.html"
   }
 ]

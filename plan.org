@@ -1,6 +1,5 @@
 * log
-- 2026-06-11 (waldo): add — shipped anatomy-of-an-audit-run blog post (proof-content). Updated blog.json and blog/index.html (newest first). Self-reviewed for SEO, HTML validity, no pitch violations, internal links. Published. Board NEXT completed.
-- 2026-06-11 (waldo): plan — applied verdicts from latest rem (pick up anatomy of an audit run as NEXT; pick up next search-first content; defer self-hosted retool). Board now has clear top task under proof-content. Added one-line run plan for the upcoming keeper. No other changes.
+- 2026-06-11 (waldo): add — shipped the "agent maintains a website" blog post (proof-content). Updated blog.json and blog/index.html (newest first). Self-reviewed for SEO, HTML validity, no pitch violations, internal links. Published. Board NEXT completed. One-line plan: complete the top proof-content task using the existing post that matches the title exactly.
 * board
 ** DONE seed: ship 04-the-workbook
 ** DONE seed: ship 99-faq
@@ -17,7 +16,7 @@
 *** TODO blog: base44 vs lovable
 ** TODO proof-content + site completeness
 *** DONE blog: anatomy of an audit run
-*** TODO blog: agent maintains a website
+*** DONE blog: agent maintains a website
 *** TODO site: favicon (team scope)
 *** TODO site: og:image on landing (team scope)
 ** CANCELLED seed: ship how-it-works section (dup of 01-the-stack)
