@@ -1,4 +1,84 @@
 * board
 
+** TODO Objective A — establish the page's spine (the three load-bearing beats)
+   The page is a bare hero. Before flavor, it needs the three sections that
+   carry the pitch as DESIGNED objects: what it is, how it works, the ask.
+   Acceptance: a first-time reader, scrolling hero → A's sections, understands
+   workbooks (apps) · runtime (runs them) · toolkits (authoring), sees the
+   mechanism build itself, and can act — all gated PASS.
+
+*** NEXT system/layers section — the three layers as ONE drawn stack
+    Workbooks (apps) · the runtime (runs them + their agents) · toolkits
+    (authoring), as one depth-stacked diagram with real graduated drift +
+    drawn inter-layer connectors — NOT three peer cards. Svelte lane
+    (src/sections/grown/), motion meaning needs it. Green only on the agent
+    layer. Idea it owns: the anatomy of the system. Earns: hero names the
+    ecosystem; this SHOWS its structure (no beat collision if hero only names).
+
+*** TODO mechanism section — "from a sentence to a living page"
+    The weave shown assembling: prompt → toolkit weave → rendered, running,
+    yours. Inline SVG diagram in Glass, draw + scrub. Svelte lane. Green only
+    on the live agent node. Idea: the process by which an artifact comes alive.
+
+*** TODO invitation section — build with your agent (the closing ask)
+    The one primary CTA, framed as joining the living thing. col=offset,
+    Fraunces line + one lede + a magnetic + breathing CTA, WMark alive beside.
+    Svelte lane (magnetic/breathe need it). Idea: the ask. Must respect the
+    pitch (rule 7) — malleability demo, never "sites that run themselves."
+
+** TODO Objective B — give the organism proof and a voice
+   Once the spine holds, prove the page is alive and let it speak honestly.
+   Acceptance: the page contains at least one true living-proof and one
+   honest field-note; nothing fabricated; both gated PASS.
+
+*** TODO living-proof section — the agent actually running
+    The cursor/timeline working, the W breathing — life as the subject. Only
+    ship if a real live element (timeline/panel/demo) can be embedded; if not,
+    this stays TODO (do NOT fake it — anti-pattern). Svelte lane. Green earned
+    (subject is alive). Idea: see it living, right now.
+
+*** TODO field-note — the organism's first journal entry
+    Short, mono, dated, honest about being v1 — "rewired onto living-machine
+    primitives; the W breathes now." col=narrow. This is where on-page
+    blog-voice lives. Static partial survives here (grown-partial lane OK).
+    Idea: the page has a diary, therefore it is worked-on / alive.
+
+** TODO Objective C — compose, harden, and seed the supporting lane
+   Make the whole page read as one inevitable organism; close the obvious
+   doubts; open the SEO lane honestly.
+   Acceptance: page has an faq pinned last, favicon + og resolve, and one
+   search-first blog post exists with a working index.
+
+*** TODO faq section — honest recurring doubts, pinned last
+    Is this real? what edits the page? who reviews the agent? does it run
+    locally? Plain Q&A, col=prose, no green, pin:"last". Static partial OK.
+    Idea: the page's composure — absorb the doubts so they stop leaking.
+
+*** TODO favicon — inline SVG W (site 404s /favicon.ico)
+    A small living W mark as favicon so the tab isn't broken. Match canon
+    (warm-green W). Confirm it resolves.
+
+*** TODO og + meta — links unfurl well
+    og:title / og:description / og:image (a banner) + canonical. So shared
+    links to the site look intentional, not blank.
+
+*** TODO first blog post — "this website builds itself" (search-first)
+    The supporting lane. Query-gate first (web_search the topic + volume),
+    then a search-first, honest-about-v1 post in blog/. Create blog/index.html
+    on first post + a small field-note/link to it on the page. NOT a
+    thought-dump — it exists only if real searchers ask it.
+
+*** TODO compose pass — whole-page rhythm once 4+ sections exist
+    Re-read top→bottom, re-order sections, check the page reads as one growing
+    organism with varied weight/pacing (not equal SaaS bands). Renumber
+    partials, unify rhythm. Run the design gate as a second pass on each.
+
 * log
 - reset to bare hero — Living Machine redesign + Claude Opus; fresh start
+- plan: built the roadmap from bare hero. 3 objectives, 11 tasks. A = the
+  spine (system/layers, mechanism, invitation — the load-bearing designed
+  beats); B = proof + voice (living-proof gated on a real live element,
+  field-note); C = compose/harden/SEO (faq pinned last, favicon, og, first
+  search-first blog post, whole-page compose pass). Promoted the system/layers
+  diagram to NEXT — it's the anatomy the bare hero only names, the right first
+  designed section to grow. No page edit (plan run).
